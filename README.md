@@ -1,5 +1,5 @@
 # puzzle_I_cracked
-纪录所有我解决的比较有意思的谜题，问题。
+纪录所有我曾经和将要解决的比较有意思的谜题，问题，小项目。
 
 1.https://glowing.com/jobs/mobiledeveloper 的红蓝块移动路径问题:
 
