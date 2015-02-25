@@ -1,0 +1,6 @@
+1.rbtree是Myeclipse生成的工程文件夹，载入Myeclipse就可以编译运行。
+
+
+2.redblacktree文件夹里面放的是我的java源文件，由于我是采用面向对象方法，所以分成了几个 java文件，打包在redblacktree下面，必须放在redblacktree文件夹下面才能正常编译执行，编译环境是Myeclipse6.5
+
+3.为了编译查找，我把源文件另外拷贝了份放在工程文件夹外面，其中test.java是主文件。
