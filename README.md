@@ -7,7 +7,8 @@ Q:There're 7 red tiles, 8 blue titles and one white title in a 4 x 4 plane. We c
 <img src="/1Red Blue Puzzle/smallQuestion.png" alt="alt text" title="Title" />
 Answer:解决方案的路径在”Red Blue Puzzle“文件夹下,python解决,记得2013年末那个星期好几个凌晨。
 
-2.long time ago,Red-Black tree algorithm experiment
+2.long time ago,Red-Black tree algorithm experiment:
+
 Q：实现红黑树、二叉搜索树相关算法：插入（红黑树涉及树的调整：左旋、右旋等），删除，搜索（指定Key值节点）。 
         另外，红黑树实现计算树黑高的算法。 
 
