@@ -6,13 +6,34 @@
 
 # Interestingly, φ(87109)=79180, and it can be seen that 87109 is a permutation of 79180.
 
-# Find the value of n, 1 < n < 107, for which φ(n) is a permutation of n and the ratio n/φ(n) produces a minimum.
+# Find the value of n, 1 < n < 107, for which φ(n) is a permutation of n and the ratio n/φ(n) 
+
+# produces a minimum.
+
 import time
 from termcolor import colored
+from fractions import gcd
 
+
+
+def phi_function(n):
+    # https://zh.wikipedia.org/wiki/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0
+    relateively_primes = []
+    if n == 1:
+        relateively_primes = [1]
+    else:
+        for i in range(1, n):
+            if gcd(i, n) == 1: 
+                relateively_primes.append(i)
+    # print(" relateively_primes=", relateively_primes)
+    return len(relateively_primes)
+    
 
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    for i in range(1, 10):
+        # print("i=",i)
+        phi = phi_function(i)
+        print('phi=', phi)
 
 if __name__ == "__main__":
     tic = time.clock()
