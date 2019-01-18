@@ -30,10 +30,8 @@ def phi_function(n):
     
 
 def main_process():
-    for i in range(1, 10):
-        # print("i=",i)
-        phi = phi_function(i)
-        print('phi=', phi)
+    phi = phi_function(87109)
+    print('phi=', phi)
 
 if __name__ == "__main__":
     tic = time.clock()
@@ -41,4 +39,4 @@ if __name__ == "__main__":
     main_process()
 
     toc = time.clock()
-    print("time=",toc - tic)
+    print(colored('time=', 'red'), toc - tic)
