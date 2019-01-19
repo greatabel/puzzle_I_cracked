@@ -12,9 +12,22 @@
 import time
 from termcolor import colored
 
-
+# https://www.mathblog.dk/project-euler-71-proper-fractions-ascending-order/
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    a = 3
+    b = 7
+    r = 0
+    s = 1
+    limit = 10 ** 6
+    for q in reversed(range(2, limit)):
+        p = int((a*q - 1) / b)
+        if p * s > r * s:
+            s = q
+            r = p
+    print(r , s, r/s, 3/7)
+
+
+    print(colored('mycount=', 'red'), r)
 
 if __name__ == "__main__":
     tic = time.clock()
