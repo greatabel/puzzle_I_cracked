@@ -13,7 +13,7 @@
 import time
 from termcolor import colored
 from fractions import gcd
-
+from itertools import permutations  
 
 
 def phi_function(n):
@@ -27,11 +27,16 @@ def phi_function(n):
                 relateively_primes.append(i)
     # print(" relateively_primes=", relateively_primes)
     return len(relateively_primes)
-    
+
+def permutation_of_number(n):
+    perms = [ int(''.join(p)) for p in permutations(str(n))]
+    # print('permutations=', perms)
+    return perms
 
 def main_process():
     phi = phi_function(87109)
     print('phi=', phi)
+    permutation_of_number(phi)
 
 if __name__ == "__main__":
     tic = time.clock()
