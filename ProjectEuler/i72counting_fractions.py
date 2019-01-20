@@ -14,7 +14,7 @@ How many elements would be contained in the set of reduced proper fractions for 
 import time
 from termcolor import colored
 
-
+# https://www.mathblog.dk/project-euler-72-reduced-proper-fractions/
 def main_process():
     print(colored('mycount=', 'red'), 'results')
 
