@@ -10,10 +10,16 @@
 # How many fractions lie between 1/3 and 1/2 in the sorted set of reduced proper fractions for d ≤ 12,000?
 import time
 from termcolor import colored
-
+from math import gcd as bltin_gcd
 
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    num = 0
+    limit = 12000
+    for d in range(2, limit + 1):
+        for n in range(d//3, d//2 + 1):
+            if ( d > 2 * n ) and (d < 3 * n) and bltin_gcd(n, d) == 1:
+                num += 1
+    print(colored('mycount=', 'red'), num)
 
 if __name__ == "__main__":
     tic = time.clock()
