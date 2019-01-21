@@ -16,7 +16,19 @@ from termcolor import colored
 
 # https://www.mathblog.dk/project-euler-72-reduced-proper-fractions/
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    limit = 10 ** 6
+    phi_list = list(range(0,limit + 1))
+    sum_phi = 0
+    # print(phi_list)
+    for i in range(2, limit + 1 ):
+        # print('i=', i, 'here', phi_list[i])
+        if phi_list[i] == i:
+
+            for j in range(i, limit + 1, i):
+                phi_list[j] *= (i - 1)/ i
+        sum_phi += phi_list[i]
+    # print(phi_list)
+    print(colored('mycount=', 'red'), sum_phi)
 
 if __name__ == "__main__":
     tic = time.clock()
