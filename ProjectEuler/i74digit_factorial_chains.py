@@ -23,9 +23,24 @@ How many chains, with a starting number below one million, contain exactly sixty
 '''
 import time
 from termcolor import colored
+import math
 
+
+def sum_factorial_digits(n):
+    digits = []
+    while n > 0:
+        s = n % 10
+        digits.append(s)
+        n = n // 10
+
+    mysum = 0
+    for digit in digits:
+        mysum += math.factorial(digit)
+    print('n=', n, ' sum=', mysum)
 
 def main_process():
+    for i in (145, 169, 871, 872):
+        sum_factorial_digits(i)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
