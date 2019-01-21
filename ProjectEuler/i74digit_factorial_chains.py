@@ -36,12 +36,24 @@ def sum_factorial_digits(n):
     mysum = 0
     for digit in digits:
         mysum += math.factorial(digit)
-    print('n=', n, ' sum=', mysum)
+    # print('n=', n, ' sum=', mysum)
+    return mysum
 
 def main_process():
-    for i in (145, 169, 871, 872):
-        sum_factorial_digits(i)
-    print(colored('mycount=', 'red'), 'results')
+    # for i in (145, 169, 871, 872):
+    #     sum_factorial_digits(i)
+    limit = 10 ** 6
+    count = 0
+    for i in range(1, limit+1):
+        seq = []
+        while (i not in seq):
+            seq.append(i)
+            i = sum_factorial_digits(i)
+        if len(seq) == 60:
+            count += 1
+            print('count=', count)
+
+    print(colored('mycount=', 'red'), count)
 
 if __name__ == "__main__":
     tic = time.clock()
