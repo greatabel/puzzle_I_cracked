@@ -22,8 +22,25 @@ import time
 from termcolor import colored
 
 
+def gougu_triple(limit):
+    count = 0
+    for l in range(3, limit):
+        for a in range(1, int(l/2)):
+            for b in range(1, int((l - a)/2)):
+                c = l - a  - b
+                if a ** 2 + b ** 2 == c **2:
+                    count += 1
+                    if count % 100 == 0:
+                        print('c=', count, '%', l*100/limit)
+                    # print(a, b, c)
+    print(count)
+
+
+
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    # gougu_triple(100)
+    gougu_triple(1500000)
+    # print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
     tic = time.clock()
