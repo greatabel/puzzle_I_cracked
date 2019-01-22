@@ -19,7 +19,7 @@ def find_allways(total, sizes):
         num = total // size  
         num += 1
         for i in range(0, num):
-            mycount += find_allways(  total - size * i, sizes[1:])
+            mycount += find_allways( total - size * i, sizes[1:])
        
         return mycount
 
