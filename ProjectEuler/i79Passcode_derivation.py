@@ -14,7 +14,12 @@ from termcolor import colored
 
 
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    myfile = open('i79_keylog.txt').read()
+    known_nums = []
+    for i in myfile.split('\n'):
+        if i != '':
+            known_nums.append(i)
+    print(colored('mycount=', 'red'), known_nums, len(known_nums))
 
 if __name__ == "__main__":
     tic = time.clock()
