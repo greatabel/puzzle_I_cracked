@@ -26,10 +26,36 @@ import math
 #     # print(L[total])
 #     return L[total] + 1
 
+# 太慢too
+# def dynamic_parition(n):
+
+#     dp=[[0 for i in range(n+1)] for j in range(n+1)]
+#     dp[0][0]=1
+#     for i in range(1,n+1):
+#         for j in range(1,n+1):
+#             if i < j:
+#                 dp[i][j]=dp[i][i]
+#             elif i==j:
+#                 dp[i][j]=1+dp[i][j-1]
+#             else:
+#                 dp[i][j]=dp[i][j-1]+dp[i-j][j]
+#     # print(dp[n][n])
+#     return dp[n][n]
+
+
+
 
 if __name__ == "__main__":
     tic = time.clock()
     d = 1000000
+    my_estimate = 50000
+    # for n in range(my_estimate, my_estimate + 500):
+        # p_n = dynamic_parition(n)
+        # if p_n % d == 0:
+        #     print('find n=', n , " p_n=", p_n)
+        #     break
+        # if n % 100 == 0:
+        #     print(n)
     # d = 1000
     # my_estimate = 2019
     # for n in range(1, my_estimate):
