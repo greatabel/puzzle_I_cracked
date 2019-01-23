@@ -41,14 +41,30 @@ import math
 #                 dp[i][j]=dp[i][j-1]+dp[i-j][j]
 #     # print(dp[n][n])
 #     return dp[n][n]
+from itertools import *
 
+def pentagonal(n):
+    return n*(3*n - 1) / 2
+
+partitions = {}
+generalized_pentagonals = sorted(map(pentagonal, list(range(-250, 250))))[1:]
+
+# https://zach.se/project-euler-solutions/78/
+def partition(n):
+    if n <= 1: return 1
+    if n not in partitions:
+        signs = cycle([1, 1, -1, -1])
+        pentagonals = takewhile(lambda p: p <= n, generalized_pentagonals)
+        partitions[n] = sum(sign * partition(n - p) for sign, p in zip(signs, pentagonals))
+
+    return partitions[n]
 
 
 
 if __name__ == "__main__":
     tic = time.clock()
-    d = 1000000
-    my_estimate = 50000
+    print(next((n for n in count(0) if partition(n) % 1000000 == 0)))
+
     # for n in range(my_estimate, my_estimate + 500):
         # p_n = dynamic_parition(n)
         # if p_n % d == 0:
