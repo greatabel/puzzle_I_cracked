@@ -17,8 +17,8 @@ def main_process():
     myfile = open('i79_keylog.txt').read()
     known_nums = []
     for i in myfile.split('\n'):
-        if i != '' and int(i) not in known_nums:
-            known_nums.append(int(i))
+        if i != '' and i not in known_nums:
+            known_nums.append(i)
 
     print(colored('mycount=', 'red'), known_nums, len(known_nums))
 
