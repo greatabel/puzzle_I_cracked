@@ -7,7 +7,7 @@ def main_process():
     inputs = ['319', '680', '180']
     for item in inputs:
         for index,ch in enumerate(item):
-            print(index, ch)
+            print(index, ch, item[index+1:])
         print('\n')
 
 
