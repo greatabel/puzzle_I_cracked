@@ -3,12 +3,23 @@ from termcolor import colored
 
 
 def main_process():
+    create_adjacent()
+    
+def create_adjacent():
     adjacent_points = {}
-    inputs = ['319', '680', '180']
+    inputs = ['319', '680', '180', '690']
     for item in inputs:
         for index,ch in enumerate(item):
-            print(index, ch, item[index+1:])
-        print('\n')
+            adjacents = [int(i) for i in item[index+1:]]
+            if adjacents != []:
+                if int(ch) not in adjacent_points:
+                    adjacent_points[int(ch)] = adjacents
+                else:
+                    adjacent_points[int(ch)] = \
+                        adjacent_points[int(ch)] + list(set(adjacents) - set(adjacent_points[int(ch)]))
+            # print('index=', index, 'ch=', ch, 'adjacents=', adjacents)
+    print(adjacent_points)
+    return adjacent_points
 
 
     print(colored('mycount=', 'red'))
