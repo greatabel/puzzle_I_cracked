@@ -1,6 +1,6 @@
 from collections import deque
 
-
+# https://docs.python.org/3/library/collections.html#collections.deque
 def main_process():
     d = deque('ghi')
     for elem in d:
@@ -15,6 +15,7 @@ def main_process():
     popleft = d.popleft()
     print('popleft=', popleft)
     print('d=', d)
+    print(list(reversed(d)))
 
 
 if __name__ == "__main__":
