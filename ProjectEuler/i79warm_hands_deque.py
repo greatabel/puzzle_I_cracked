@@ -1,5 +1,8 @@
 from collections import deque
 
+def find_shortest_path(start, graph):
+    ""
+    
 # https://docs.python.org/3/library/collections.html#collections.deque
 def main_process():
     d = deque('ghi')
