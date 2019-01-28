@@ -1,11 +1,12 @@
 from collections import deque
+from i79warm_hands import create_adjacent
 
-def find_shortest_path(start, graph):
-    ""
+
+
     
 # https://docs.python.org/3/library/collections.html#collections.deque
 def main_process():
-    d = deque('ghi')
+    d = deque('abcdefghi')
     for elem in d:
         print(elem)
     print('d=', d)
@@ -19,6 +20,8 @@ def main_process():
     print('popleft=', popleft)
     print('d=', d)
     print(list(reversed(d)))
+    graph = create_adjacent()
+    find_shortest_path(1, graph)
 
 
 if __name__ == "__main__":
