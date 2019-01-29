@@ -2,7 +2,11 @@ from collections import deque
 from i79warm_hands import create_adjacent
 
 
-
+def find_shortest_path(start, graph):
+    queue = deque([(start, [start])])
+    while queue:
+        curr, path = queue.popleft()
+        print('curr, path =>', curr, path)
     
 # https://docs.python.org/3/library/collections.html#collections.deque
 def main_process():
