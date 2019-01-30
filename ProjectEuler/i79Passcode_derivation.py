@@ -11,6 +11,9 @@ the file so as to determine the shortest possible secret passcode of unknown len
 
 import time
 from termcolor import colored
+from itertools import *
+from collections import defaultdict
+
 
 
 def main_process():
@@ -21,6 +24,19 @@ def main_process():
             known_nums.append(i)
 
     print(colored('mycount=', 'red'), known_nums, len(known_nums))
+    
+    appearances = defaultdict(list)
+    for attempt in known_nums:
+        for i, n in enumerate(attempt):
+            appearances[n].append(i)
+
+    average_positions = {}
+    for k,v in list(appearances.items()):
+        average_positions[k] = float(sum(v))/float(len(v))
+
+    a = [k for k,v in sorted(list(average_positions.items()), key=lambda a: a[1])]
+    print(''.join(str(x) for x in a))
+
 
 if __name__ == "__main__":
     tic = time.clock()
