@@ -14,7 +14,7 @@ import time
 from termcolor import colored
 from decimal import Decimal, localcontext
 
-
+# https://stackoverflow.com/questions/37707042/python-project-euler-80-understanding-the-error
 def main_process():
     total = 0
     for x in range(1,100):
