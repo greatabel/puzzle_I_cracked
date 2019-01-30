@@ -12,10 +12,23 @@ of the first one hundred decimal digits for all the irrational square roots.
 
 import time
 from termcolor import colored
+from decimal import Decimal, localcontext
 
 
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    total = 0
+    for x in range(1,100):
+        print('x=', x)
+        with localcontext() as ctx:
+            ctx.prec = 105
+            if len(str(Decimal(x).sqrt())) == 1:
+                total += 0
+            else:
+                a = sum([int(i) for i in str(Decimal(x).sqrt())[2:101]])+int(str(Decimal(x).sqrt())[0])
+                print('a=', a)
+                total += a
+
+    print(colored('mycount=', 'red'), total)
 
 if __name__ == "__main__":
     tic = time.clock()
