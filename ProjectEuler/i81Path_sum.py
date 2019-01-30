@@ -12,6 +12,13 @@ from termcolor import colored
 
 
 def main_process():
+    myfile = open('i81_matrix.txt').read()
+    matrix = []
+    for line in myfile.split('\n'):
+        if line and line != '':
+            row = [int(r) for r in line.split(',')]
+            matrix.append(row)
+
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
