@@ -19,10 +19,22 @@ Find the least value of M such that the number of solutions first exceeds one mi
 
 import time
 from termcolor import colored
+import math
+
 
 
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    L, c, a = 1000000, 0, 2
+    while c < L:
+        a += 1
+        for bc in range(3, 2*a):
+            if (bc*a) % 12 == 0:
+                s = math.sqrt(bc*bc + a*a)
+                if not s % 1:    # check if s is an perfect square (integer)
+                    c += min(bc, a+1) - (bc+1)//2 
+     
+
+    print(colored('mycount=', 'red'), a)
 
 if __name__ == "__main__":
     tic = time.clock()
