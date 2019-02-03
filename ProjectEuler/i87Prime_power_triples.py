@@ -25,9 +25,9 @@ from itertools import product
 #                     count += 1
 #     print('count=', count)
 
-def loop(limit):
+def loop(seta, setb, setc, limit):
     mylist = []
-    for a, b, c in product((1,2,3), (3, 5), (10, 20)):
+    for a, b, c in product(seta, setb, setc):
         isum = a ** 2 + b ** 3 + c ** 4
         print(a, b, c, 'isum=', isum)
         if isum >= limit:
@@ -42,7 +42,8 @@ def main_process():
     # mytry(55 * 10**6)
     limit = 5 * 10 ** 7
     limit = 1000000
-    loop(limit)
+    seta, setb, setc = (1,2,3), (3, 5), (10, 20)
+    loop(seta, setb, setc, limit)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
