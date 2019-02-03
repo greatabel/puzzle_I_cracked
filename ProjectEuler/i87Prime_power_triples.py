@@ -14,19 +14,24 @@ as the sum of a prime square, prime cube, and prime fourth power?
 
 import time
 from termcolor import colored
+from itertools import product
+# def mytry(n):
+#     count = 0
+#     for i in (2, 3, 5):
+#         for j in (2, 3, 5):
+#             for k in (2, 3, 5):
+#                 mysum = i ** 2 + j ** 3 + k ** 4
+#                 if mysum < n:
+#                     count += 1
+#     print('count=', count)
+def loop():
+    for a, b, c in product((1,2,3), (10, 20), (100, 200)):
+        print(a, b, c)
 
-def mytry(n):
-    count = 0
-    for i in (2, 3, 5):
-        for j in (2, 3, 5):
-            for k in (2, 3, 5):
-                mysum = i ** 2 + j ** 3 + k ** 4
-                if mysum < n:
-                    count += 1
-    print('count=', count)
 
 def main_process():
-    mytry(55 * 10**6)
+    # mytry(55 * 10**6)
+    loop()
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
