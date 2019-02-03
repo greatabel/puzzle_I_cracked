@@ -24,14 +24,25 @@ from itertools import product
 #                 if mysum < n:
 #                     count += 1
 #     print('count=', count)
-def loop():
-    for a, b, c in product((1,2,3), (10, 20), (100, 200)):
-        print(a, b, c)
+
+def loop(limit):
+    mylist = []
+    for a, b, c in product((1,2,3), (3, 5), (10, 20)):
+        isum = a ** 2 + b ** 3 + c ** 4
+        print(a, b, c, 'isum=', isum)
+        if isum >= limit:
+            break
+        if isum not in mylist:
+            mylist.append(isum)
+    print(mylist)
+        
 
 
 def main_process():
     # mytry(55 * 10**6)
-    loop()
+    limit = 5 * 10 ** 7
+    limit = 1000000
+    loop(limit)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
