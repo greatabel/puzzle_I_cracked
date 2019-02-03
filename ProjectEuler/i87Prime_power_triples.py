@@ -25,24 +25,43 @@ from itertools import product
 #                     count += 1
 #     print('count=', count)
 
+def sieve_of_eratosthenes(max_integer):
+    sieve = [True for _ in range(max_integer + 1)]
+    sieve[0:1] = [False, False]
+    for start in range(2, max_integer + 1):
+        if sieve[start]:
+            for i in range(2 * start, max_integer + 1, start):
+                sieve[i] = False
+    primes = []
+    for i in range(2, max_integer + 1):
+        if sieve[i]:
+            primes.append(i)
+    return primes
+
 def loop(seta, setb, setc, limit):
-    mylist = []
+    mylist = set()
     for a, b, c in product(seta, setb, setc):
         isum = a ** 2 + b ** 3 + c ** 4
-        print(a, b, c, 'isum=', isum)
-        if isum >= limit:
-            break
-        if isum not in mylist:
-            mylist.append(isum)
-    print(mylist)
+        
+        if isum < limit:
+            
+            if len(mylist) % 10000 == 0:
+                print(a, b, c, 'isum=', isum, len(mylist))
+            mylist.add(isum)
+        # elif (a > b and b > c):
+        #     break
+    print('len=', len(mylist))
         
 
 
 def main_process():
     # mytry(55 * 10**6)
     limit = 5 * 10 ** 7
-    limit = 1000000
-    seta, setb, setc = (1,2,3), (3, 5), (10, 20)
+    # limit = 100
+    # t = sieve_of_eratosthenes(20)
+
+    seta, setb, setc = sieve_of_eratosthenes(7072),sieve_of_eratosthenes(369),sieve_of_eratosthenes(85)
+    # print('seta=', seta, setb, setc)
     loop(seta, setb, setc, limit)
     print(colored('mycount=', 'red'), 'results')
 
