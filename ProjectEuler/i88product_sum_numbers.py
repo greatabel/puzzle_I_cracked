@@ -27,9 +27,23 @@ What is the sum of all the minimal product-sum numbers for 2≤k≤12000?
 import time
 from termcolor import colored
 
+def prodsum(kmax, n, p, s, c, start):
+    k = p - s + c     # product - sum + number of factors
+    if k < kmax:
+        if p < n[k]: n[k] = p
+        for i in range(start, kmax//p * 2):
+            prodsum(kmax, n, p*i, s+i, c+1, i)
+
+
 
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    kmax = 12000
+    n = [2*kmax] * kmax    # the minimal product-sum is < 2*k + 1 
+    prodsum(kmax, n, 1, 1, 1, 2)
+
+    #  convert to set to remove duplicates from slice of n
+    print("Project Euler 88 Solution =", sum(set(n[2:])))
+    # print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
     tic = time.clock()
