@@ -24,11 +24,24 @@ Find the number of characters saved by writing each of these in their minimal fo
 Note: You can assume that all the Roman numerals in the file contain no more than four consecutive identical units.
 '''
 
+
 import time
 from termcolor import colored
 
+def mytry():
+    replacements = [
+        ("VIIII", "IX"), 
+        ("IIII", "IV"), 
+        ("LXXXX", "XC"), 
+        ("XXXX", "XL"),
+        ("DCCCC", "CM"), 
+        ("CCCC", "CD"),
+    ]
+    myfile = open('i89_roman.txt').read()
+    print(len(myfile))
 
 def main_process():
+    mytry()
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
