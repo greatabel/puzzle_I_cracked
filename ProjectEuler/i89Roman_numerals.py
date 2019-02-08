@@ -28,7 +28,8 @@ Note: You can assume that all the Roman numerals in the file contain no more tha
 import time
 from termcolor import colored
 
-def mytry():
+def subtractive(roman):
+    result = roman
     replacements = [
         ("VIIII", "IX"), 
         ("IIII", "IV"), 
@@ -37,12 +38,20 @@ def mytry():
         ("DCCCC", "CM"), 
         ("CCCC", "CD"),
     ]
-    myfile = open('i89_roman.txt').read()
-    print(len(myfile))
+    for old, new in replacements:
+        result = result.replace(old, new)
+    return result
 
 def main_process():
-    mytry()
-    print(colored('mycount=', 'red'), 'results')
+    current = 0
+    improved = 0
+    myfile = open('i89_roman.txt').read()
+    for line in myfile.split('\n'):
+        if line and line != '':
+            roman = line.strip()
+            current += len(roman)
+            improved += len(subtractive(roman))
+    print(colored('mycount=', 'red'), current - improved)
 
 if __name__ == "__main__":
     tic = time.clock()
