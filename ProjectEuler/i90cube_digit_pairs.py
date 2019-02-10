@@ -29,9 +29,11 @@ How many distinct arrangements of the two cubes allow for all of the square numb
 
 import time
 from termcolor import colored
-
+from itertools import combinations
 
 def main_process():
+    cube = list(combinations(list(range(0,10)), 2))
+    print(cube)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
