@@ -14,10 +14,18 @@ Given that 0 ≤ x1, y1, x2, y2 ≤ 50, how many right triangles can be formed?
 
 import time
 from termcolor import colored
+from math import gcd
 
 
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    n = 50
+    t = 0
+    for x in range(1, n+1):
+        for y in range(1, n):
+            m = gcd(x, y)
+            t += min(x*m//y, m*(n-y)//x)
+    result = t*2 + n*n*3
+    print(colored('mycount=', 'red'), result)
 
 if __name__ == "__main__":
     tic = time.clock()
