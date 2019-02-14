@@ -17,8 +17,19 @@ How many starting numbers below ten million will arrive at 89?
 import time
 from termcolor import colored
 
+def get_digits(n):
+    b = str(n)
+    c = []
+    for digit in b:
+        c.append(int(digit))
+    return c
+
+def first_try(start):
+    digits = get_digits(start)
+
 
 def main_process():
+    first_try(44)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
