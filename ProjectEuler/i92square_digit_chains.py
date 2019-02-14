@@ -26,6 +26,10 @@ def get_digits(n):
 
 def first_try(start):
     digits = get_digits(start)
+    isum = 0
+    for digit in digits:
+        isum += digit ** 2
+    print(isum)
 
 
 def main_process():
