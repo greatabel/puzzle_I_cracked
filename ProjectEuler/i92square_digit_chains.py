@@ -33,10 +33,11 @@ def get_digits_sum(start):
 
 
 def main_process():
-    start = 44
+    # start = 44
+    start = 85
     mylist = []    
-    mysum = get_digits_sum(44)
-    print('#', mysum)
+    mysum = get_digits_sum(start)
+
     while (mysum not in mylist):
         mylist.append(mysum)
         print(mysum)
