@@ -35,14 +35,22 @@ def get_digits_sum(start):
 def main_process():
     # start = 44
     start = 85
-    mylist = []    
-    mysum = get_digits_sum(start)
+    
 
-    while (mysum not in mylist):
-        mylist.append(mysum)
-        print(mysum)
-        mysum = get_digits_sum(mysum)
-    print(colored('mycount=', 'red'), 'results')
+    count = 0
+    limit = 10 ** 6
+    # limit = 100
+    for i in range(1, limit):
+        mylist = []    
+        mysum = get_digits_sum(i)
+        # while (mysum not in mylist):
+        while (mysum != 89 and mysum != 1):
+            mylist.append(mysum)
+            print(mysum)
+            mysum = get_digits_sum(mysum)
+        if mysum == 89:
+            count += 1
+    print(colored('mycount=', 'red'), count)
 
 if __name__ == "__main__":
     tic = time.clock()
