@@ -24,16 +24,23 @@ def get_digits(n):
         c.append(int(digit))
     return c
 
-def first_try(start):
+def get_digits_sum(start):
     digits = get_digits(start)
     isum = 0
     for digit in digits:
         isum += digit ** 2
-    print(isum)
+    return isum
 
 
 def main_process():
-    first_try(44)
+    start = 44
+    mylist = []    
+    mysum = get_digits_sum(44)
+    print('#', mysum)
+    while (mysum not in mylist):
+        mylist.append(mysum)
+        print(mysum)
+        mysum = get_digits_sum(mysum)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
