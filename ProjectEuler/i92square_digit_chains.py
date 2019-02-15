@@ -34,19 +34,20 @@ def get_digits_sum(start):
 
 def main_process():
     # start = 44
-    start = 85
+    # start = 85
     
 
     count = 0
-    limit = 10 ** 6
+    limit = 10 ** 7
     # limit = 100
-    for i in range(1, limit):
+    for i in range(1, limit + 1):
+        # print("i=", i)
         mylist = []    
         mysum = get_digits_sum(i)
         # while (mysum not in mylist):
         while (mysum != 89 and mysum != 1):
             mylist.append(mysum)
-            print(mysum)
+            # print(mysum)
             mysum = get_digits_sum(mysum)
         if mysum == 89:
             count += 1
