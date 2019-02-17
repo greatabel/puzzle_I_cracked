@@ -22,8 +22,27 @@ consecutive positive integers, 1 to n, can be obtained, giving your answer as a 
 import time
 from termcolor import colored
 
+def operate(a, b, operator):
+    if operator == 0:
+        return a + b
+    elif operator == 1:
+        return a -b 
+    elif operator == 2:
+        return a * b
+    elif operator == 3:
+        return a / b
+
+def mytry(a, b, c, d):
+    operators = {0, 1, 2, 3}
+    for i in range(0, 4):
+        for op in operators:
+            result = operate(a, b, op)
+            print(result)
+
+    "Helloh"
 
 def main_process():
+    mytry(1, 2, 3, 4)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
