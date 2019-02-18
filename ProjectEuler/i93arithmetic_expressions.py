@@ -21,6 +21,8 @@ consecutive positive integers, 1 to n, can be obtained, giving your answer as a 
 
 import time
 from termcolor import colored
+import itertools
+
 
 def operate(a, b, operator):
     if operator == 0:
@@ -47,6 +49,11 @@ def mytry(a, b, c, d):
     "Helloh"
 
 def main_process():
+    count = 0
+    for terms in itertools.combinations(range(1, 10), 4):
+        count += 1
+        print(terms)
+    print('count=', count)
     mytry(1, 2, 3, 4)
     print(colored('mycount=', 'red'), 'results')
 
