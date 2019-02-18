@@ -39,17 +39,18 @@ def operate(a, b, operator):
     else:
         return None
 
-def mytry(a, b, c, d):
-    operators = {0, 1, 2, 3}
-    for i in range(0, 4):
-        for op in operators:
-            result = operate(a, b, op)
-            print(result)
+# def mytry(a, b, c, d):
+#     operators = {0, 1, 2, 3}
+#     for i in range(0, 4):
+#         for op in operators:
+#             result = operate(a, b, op)
+#             print(result)
 
-    "Helloh"
+#     "Helloh"
 
 def seq_length(s, c=1):
-    while c in s: c+= 1
+    while c in s: 
+        c+= 1
     return c-1
 
 def main_process():
