@@ -49,12 +49,14 @@ def mytry(a, b, c, d):
     "Helloh"
 
 def main_process():
+    for op in itertools.product([0, 1, 2, 3], repeat=3):
+        print(op)
     # count = 0
-    for terms in itertools.combinations(range(1, 10), 4):
-        # count += 1
-        print('terms=', terms)
-        for n in itertools.permutations(terms):
-            print(n)
+    # for terms in itertools.combinations(range(1, 10), 4):
+    #     # count += 1
+    #     print('terms=', terms)
+    #     for n in itertools.permutations(terms):
+    #         print(n)
     # print('count=', count)
     # mytry(1, 2, 3, 4)
     print(colored('mycount=', 'red'), 'results')
