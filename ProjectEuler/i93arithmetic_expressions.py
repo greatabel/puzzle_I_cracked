@@ -49,24 +49,26 @@ def operate(a, b, operator):
 #     "Helloh"
 
 def seq_length(s, c=1):
+    # print('s=', s)
     while c in s: 
         c+= 1
+    # print('c=', c)
     return c-1
 
 def main_process():
 
-    maxt, maxs = 0, 0
+    maxset, maxs = 0, 0
     for terms in itertools.combinations(range(1, 10), 4):
         # count += 1
         s = set()
-        print('terms=', terms)
+        # print('terms=', terms)
         for n in itertools.permutations(terms):
-            print(n)
+            # print(n)
 
             for op in itertools.product([0, 1, 2, 3], repeat=3):
-                print(op)
+                # print(op)
                 x = operate(operate(n[0],n[1], op[1]),operate(n[2],n[3], op[2]), op[0])
-                print(n[0], 'op=', op , n[1], '=', x)
+                # print(n[0], 'op=', op , n[1], '=', x)
                 if x%1 == 0 and x > 0: 
                     s.add(int(x))
                 x = operate(operate(operate(n[0],n[1], op[2]),n[2], op[1]),n[3], op[0])    # ((a.b).c).d
@@ -74,10 +76,11 @@ def main_process():
                     s.add(int(x))
 
             if seq_length(s) > maxs:
-                maxs, maxt = seq_length(s), terms
+                maxs, maxset = seq_length(s), terms
     # print('count=', count)
     # mytry(1, 2, 3, 4)
-    print(colored('mycount=', 'red'), ''.join(str(i) for i in maxt))
+    print('maxset=', maxset)
+    print(colored('mycount=', 'red'), ''.join(str(i) for i in maxset))
 
 if __name__ == "__main__":
     tic = time.clock()
