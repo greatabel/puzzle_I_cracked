@@ -30,7 +30,12 @@ def operate(a, b, operator):
     elif operator == 2:
         return a * b
     elif operator == 3:
-        return a / b
+        if b == 0:
+            return None
+        else:
+            return a / b
+    else:
+        return None
 
 def mytry(a, b, c, d):
     operators = {0, 1, 2, 3}
