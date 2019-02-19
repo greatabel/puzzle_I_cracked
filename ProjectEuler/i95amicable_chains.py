@@ -20,8 +20,24 @@ Find the smallest member of the longest amicable chain with no element exceeding
 import time
 from termcolor import colored
 
+limit = 10 ** 6
+# test
+limit = 1000
+
+def perfect_number(n):
+    isum = 0
+    for x in range(1, n):
+        
+        if n % x == 0:
+            isum += x
+    return isum
+
+
 
 def main_process():
+    for i in range(1, limit):
+        if perfect_number(i) == i:
+            print(i)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
