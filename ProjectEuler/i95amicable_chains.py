@@ -22,22 +22,29 @@ from termcolor import colored
 
 limit = 10 ** 6
 # test
-limit = 1000
+limit = 100
 
-def perfect_number(n):
-    isum = 0
-    for x in range(1, n):
+# def perfect_number(n):
+#     isum = 0
+#     for x in range(1, n):
         
-        if n % x == 0:
-            isum += x
-    return isum
+#         if n % x == 0:
+#             isum += x
+#     return isum
 
 
 
 def main_process():
-    for i in range(1, limit):
-        if perfect_number(i) == i:
-            print(i)
+    # for i in range(1, limit):
+    #     if perfect_number(i) == i:
+    #         print(i)
+    d = [1] * limit
+    # print('d=', d)
+    for i in range(2, limit//2):
+        for j in range(2*i, limit , i):
+            d[j] += i
+    print('d=', d)
+
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
@@ -47,3 +54,5 @@ if __name__ == "__main__":
 
     toc = time.clock()
     print("time=",toc - tic)
+
+
