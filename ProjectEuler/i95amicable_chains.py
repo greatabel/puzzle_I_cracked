@@ -16,13 +16,13 @@ Since this chain returns to its starting point, it is called an amicable chain.
 Find the smallest member of the longest amicable chain with no element exceeding one million.
 
 '''
-
+# https://blog.dreamshire.com/project-euler-95-solution/
 import time
 from termcolor import colored
 
 limit = 10 ** 6
 # test
-limit = 100
+# limit = 100
 
 # def perfect_number(n):
 #     isum = 0
@@ -43,9 +43,21 @@ def main_process():
     for i in range(2, limit//2):
         for j in range(2*i, limit , i):
             d[j] += i
-    print('d=', d)
 
-    print(colored('mycount=', 'red'), 'results')
+    max_cl = 0
+    for i in range(2, limit):
+        n, chain = i, []
+        while d[n] < limit:
+            d[n], n = limit+1, d[n]
+            try: k = chain.index(n)
+            except ValueError: 
+                chain.append(n)
+            else: 
+                if len(chain[k:]) > max_cl:
+                    max_cl, min_link = len(chain[k:]), min(chain[k:])
+
+
+    print(colored('min_link=', 'red'), min_link)
 
 if __name__ == "__main__":
     tic = time.clock()
