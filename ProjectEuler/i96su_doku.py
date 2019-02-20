@@ -99,7 +99,7 @@ def main_process():
     file = open('i96sudoku.txt','r').readlines()
     fx = ''.join([line[:9] for line in file if not 'Grid' in line])
     fx = [fx[i:(i+81)] for i in range(0,len(fx),81)]
-    print('here')
+
     [r(p) for p in fx]
     print(colored('mycount=', 'red'), s)
 
@@ -111,16 +111,3 @@ if __name__ == "__main__":
     toc = time.clock()
     print("time=",toc - tic)
 
-
-
-
-
-
-
-
-
-
-
-
-
-    
