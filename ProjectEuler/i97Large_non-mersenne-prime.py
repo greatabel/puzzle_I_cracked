@@ -14,8 +14,11 @@ import time
 from termcolor import colored
 
 
+def solve(a, b, c, m):
+    return (c * pow(a, b, m) + 1) % m
+
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    print(colored('mycount=', 'red'), "%010d" % solve(2, 7830457, 28433, 10**10))
 
 if __name__ == "__main__":
     tic = time.clock()
