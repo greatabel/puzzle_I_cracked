@@ -64,50 +64,144 @@ corner of each solution grid; for example, 483 is the 3-digit number found in th
 the solution grid above.
 
 '''
-
-# https://blog.dreamshire.com/project-euler-96-solution/
+# I do not want to solve this problem , solution use:
+# https://github.com/AntonKueltz/project-euler/blob/master/python/euler96.py
 import time
 from termcolor import colored
+def read_in_puzzles():
+    f = open("i96sudoku.txt", "r")
+    lines = f.read().split("\n")
 
+    puzzles = []
+    puzzle = []
+    for i, line in enumerate(lines):
+        if line[:4] == "Grid":
+            puzzle = []
+        else:
+            puzzle.append([int(c) for c in line])
+            if i % 10 == 9:
+                puzzles.append(puzzle)
 
-s = 0
-def same_row(i,j):
-    return (i/9 == j/9)
+    return puzzles
 
-def same_col(i,j):
-    return (i-j) % 9 == 0
+def rowcol_elim(puzzle, row, col, not_in_box):
+    for val in list(not_in_box):
+        can_go_elsewhere = False
+        
+        for i in range(int(row/3)*3, int(row/3)*3+3):
+            for j in range(int(col/3)*3, int(col/3)*3+3):
+                if (i, j) == (row, col): continue
+                if puzzle[i][j] != 0: continue
+                if val in puzzle[i]: continue
 
-def same_block(i,j):
-    return (i/27 == j/27 and (i % 9)/3 == (j % 9)/3)
+                column = []
+                for k in range(len(puzzle)):
+                    column.append(puzzle[k][j])
+                if val in column: continue
 
-def r(a):
-    global s
-    i = a.find('0')
-    if i == -1:
-        s+=int(a[0:3])
+                can_go_elsewhere = True
 
-    excluded_numbers = set()
-    for j in range(81):
-        if same_row(i,j) or same_col(i,j) or same_block(i,j):
-            excluded_numbers.add(a[j])
+        if not can_go_elsewhere: return val
+    return 0    
 
-    for m in '123456789':
-        if m not in excluded_numbers:
-            r(a[:i] + m + a[i+1:])
+def solve_square(puzzle, row, col, backtrack=False):
+    tmp = []
+    for i in range(len(puzzle[row])):
+        if puzzle[row][i] != 0: tmp.append(puzzle[row][i])
+    not_in_row = set(range(1,10)).difference(set(tmp))
 
-def main_process():
-    file = open('i96sudoku.txt','r').readlines()
-    fx = ''.join([line[:9] for line in file if not 'Grid' in line])
-    fx = [fx[i:(i+81)] for i in range(0,len(fx),81)]
+    tmp = []
+    for i in range(len(puzzle)):
+        if puzzle[i][col] != 0: tmp.append(puzzle[i][col])
+    not_in_col = set(range(1,10)).difference(set(tmp))
 
-    [r(p) for p in fx]
-    print(colored('mycount=', 'red'), s)
+    tmp = []
+    for i in range(int(row/3)*3, int(row/3)*3+3):
+        for j in range(int(col/3)*3, int(col/3)*3+3):
+            if puzzle[i][j] != 0: tmp.append(puzzle[i][j])
+    not_in_box = set(range(1,10)).difference(set(tmp))
+
+    candidates = not_in_row.intersection(not_in_col.intersection(not_in_box))
+    if backtrack: return list(candidates)
+    if len(candidates) == 1: return list(candidates)[0]
+    else: return rowcol_elim(puzzle, row, col, not_in_box)
+
+def valid(puzzle, row, col, val):
+    column = []
+    for i in range(len(puzzle)):
+        if i != row: column.append(puzzle[i][col])
+
+    row_ = []
+    for i in range(len(puzzle[row])):
+        if i != col: row_.append(puzzle[row][i])
+
+    box = []
+    for i in range(int(row/3)*3, int(row/3)*3+3):
+        for j in range(int(col/3)*3, int(col/3)*3+3):
+            if (i, j) != (row, col): box.append(puzzle[i][j])
+    
+    return (not val in row_) and \
+           (not val in column) and \
+           (not val in box)
+
+def validpuzzle(puzzle):
+    for i in range(9):
+        for j in range(9):
+            if puzzle[i][j] == 0: return False
+            if not valid(puzzle, i, j, puzzle[i][j]): return False
+    return True
+
+def backtrack(puzzle):
+    if validpuzzle(puzzle): return puzzle
+
+    for i in range(9):
+        for j in range(9):
+            if puzzle[i][j] == 0:
+                for val in range(1,10):
+                    if valid(puzzle, i, j, val):
+                        puzzle[i][j] = val
+                        solved = backtrack(puzzle)
+                        if solved != None: return solved
+                        else: puzzle[i][j] = 0
+                        
+                return None
+
+def solve(puzzle):
+    solved = False
+    puzzle_before_guess = []
+    
+    while not solved:
+        prev_round = [[i for i in row] for row in puzzle]
+        solved = True
+        
+        for row in range(len(puzzle)):
+            for col in range(len(puzzle[row])):
+                if puzzle[row][col] == 0:
+                    solved = False
+                    val = solve_square(puzzle, row, col)
+                    puzzle[row][col] = val
+
+        # shortcut
+        if(puzzle[0][0] != 0 and puzzle[0][1] != 0 and puzzle[0][2] != 0):
+            return
+
+        # puzzle solution cannot be logically deduced, do brute force :(  
+        if prev_round == puzzle and not solved:
+            backtrack(puzzle)
+            return
+
+def euler96():
+    puzzles = read_in_puzzles()
+    assert(len(puzzles) == 50)
+    acc = 0
+
+    for puzzle in puzzles:
+        solve(puzzle)
+        acc += (100*puzzle[0][0] + 10*puzzle[0][1] + puzzle[0][2])
+
+    return acc
 
 if __name__ == "__main__":
-    tic = time.clock()
-    
-    main_process()
+    print(euler96())
 
-    toc = time.clock()
-    print("time=",toc - tic)
 
