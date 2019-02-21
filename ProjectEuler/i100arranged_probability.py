@@ -15,7 +15,7 @@ from termcolor import colored
 
 low_bound = 10 ** 12
 
-# 在想过推理的帮助下 i100analysis.png
+# 在想过推理的帮助下 i100analysis.jpg
 def main_process():
     n = 120
     b = 85
