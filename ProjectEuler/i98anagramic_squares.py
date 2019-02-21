@@ -18,10 +18,32 @@ NOTE: All anagrams formed must be contained in the given text file.
 
 import time
 from termcolor import colored
+import itertools
+
+
 
 
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    # file_url = "https://projecteuler.net/project/resources/p098_words.txt"
+    def sq(n):
+        x = int(''.join(y[letter_set[i]] for i in n))
+        return x if int(x**0.5)**2 == x else False
+    
+    words = [(w[1:-1], sorted(w[1:-1])) 
+        for w in open('i98words.txt').read().split(',') if len(w)>6]
+
+    word_pairs = []
+    while words:
+        w = words.pop()
+        word_pairs+= ((w[0], a[0]) for a in words if w[1] == a[1])
+
+    max_sq = 0
+    for w, a in word_pairs:
+        letter_set = {x:y for y, x in enumerate(set(w))}
+        for y in itertools.permutations('123456789', len(letter_set)):
+            if sq(w) and sq(a): max_sq = max(sq(w), sq(a), max_sq)
+
+    print(colored('mycount=', 'red'), max_sq)
 
 if __name__ == "__main__":
     tic = time.clock()
