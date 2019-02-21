@@ -13,9 +13,19 @@ determine the number of blue discs that the box would contain.
 import time
 from termcolor import colored
 
+low_bound = 10 ** 12
 
+# 在想过推理的帮助下 i100analysis.png
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    n = 120
+    b = 85
+    while n <= low_bound:
+        tempb = 3 * b + 2 * n - 2
+        tempn = 4 * b + 3 * n - 3
+        b = tempb
+        n = tempn
+
+    print(colored('mycount=', 'red'), 'total n=', n, 'b=', b)
 
 if __name__ == "__main__":
     tic = time.clock()
