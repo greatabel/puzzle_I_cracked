@@ -14,10 +14,22 @@ NOTE: The first two lines in the file represent the numbers in the example given
 
 import time
 from termcolor import colored
+from math import log
 
+file_url = 'i99base_exp.txt'
 
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    pairs = open(file_url).read().split('\n')
+    # print(len(pairs))
+    mv , ml = 0, 0
+    for lnumber, line in enumerate(pairs):
+        b, e = line.split(',')
+        # print('lnumber=', lnumber, b, 'e=', e)
+        v = int(e) * log(int(b))
+        if v > mv:
+            mv, ml = v, lnumber
+
+    print(colored('mycount=', 'red'), ml + 1)
 
 if __name__ == "__main__":
     tic = time.clock()
