@@ -24,7 +24,7 @@ import math
 import numpy as np
 
 
-
+# 太简单，不想写，用 www.cnblogs.com/theskulls/p/5137927.html
 def isContainmentTraingle(triangle):
     X1 = triangle[0] - triangle[2]
     Y1 = triangle[1] - triangle[3]
