@@ -27,6 +27,8 @@ Given that A is an optimum special sum set for n = 7, find its set string.
 NOTE: This problem is related to Problem 105 and Problem 106.
 '''
 
+# skip this problem ,use https://bartriordan.wordpress.com/2014/04/16/project-euler-problem-103-solution/
+# solution, I am not interested in this problem
 import itertools
 import time
 
