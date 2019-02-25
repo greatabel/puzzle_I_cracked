@@ -13,7 +13,7 @@ nine digits are 1-9 pandigital, find k.
 
 import time
 from termcolor import colored
-
+import math
 
 
 def is_pandigital(n):
@@ -29,30 +29,25 @@ def is_pandigital(n):
     else:
         return False
 
+def top_digits(n):
+    t = n * 0.20898764024997873 + (-0.3494850021680094)
+    t = int((pow(10, t - int(t) + 8)))
+    return t
+
 def brute_approach():
-    fn1 = 1
-    fn2 = 1
-    tailcut = 10 ** 9
-    n = 2
-    found = False
-
-    while not found:
-        n += 1
-        fn = fn1 + fn2
-        tail = fn % tailcut
-        if is_pandigital(tail):
-            print('F')
-        print('tail = ', tail)
-
-        fn2 = fn1
-        fn1 = fn
+    fk, f0, f1 = 2, 1, 1
+    while not is_pandigital(f1) or not is_pandigital(top_digits(fk)):
+        f0, f1 = f1, (f1+f0) % 10**9
+        fk += 1
+    print("Project Euler 104 Solution =", fk)
 
 
 def main_process():
     # print(is_pandigital(98991))
     # print(is_pandigital(934581267))
+    # https://blog.dreamshire.com/project-euler-104-solution/
     brute_approach()
-    print(colored('mycount=', 'red'), 'results')
+    # print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
     tic = time.clock()
