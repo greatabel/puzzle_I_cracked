@@ -17,14 +17,17 @@ NOTE: This problem is related to Problem 103 and Problem 106.
 
 # use https://github.com/hughdbrown/Project-Euler/blob/master/euler-105.py
 # not intrested in this problem , skip it by using  hughdbrown solution
+
 import time
 from termcolor import colored
+
 
 def powerset(s) :
     length = len(s)
     for i in range(1, 1 << length) :
         yield [c for j, c in enumerate(s) if (1 << j) & i]
     return
+
 
 def isSpecialSet(s) :
     for i in range(1,1+int(len(s)/2) ):
@@ -44,6 +47,7 @@ def isSpecialSet(s) :
                 return False    
     return True
 
+
 def main_process():
     total = 0
     with open("i105sets.txt") as f :
@@ -55,7 +59,7 @@ def main_process():
                 total += sum(a)
             else :
                 print("Not special: ", a)
-    print(total)
+    print('#'*10, total)
 
 
 
