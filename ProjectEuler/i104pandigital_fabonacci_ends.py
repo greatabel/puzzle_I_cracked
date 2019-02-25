@@ -20,8 +20,18 @@ tailcut = 10 ** 9
 n = 2
 found = False
 
-def Is_pandigital(n):
-    ''
+def is_pandigital(n):
+    nlist = []
+    for ch in str(n):
+        nlist.append(int(ch))
+    # print('n=', nlist)
+    sorted_n = sorted(nlist)
+    # print('sorted_n=', sorted_n)
+    if sorted_n == list(range(1, 10)):
+        # print('True')
+        return True
+    else:
+        return False
 
 def brute_approach():
     while not found:
@@ -31,6 +41,8 @@ def brute_approach():
 
 
 def main_process():
+    print(is_pandigital(98991))
+    print(is_pandigital(934581267))
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
