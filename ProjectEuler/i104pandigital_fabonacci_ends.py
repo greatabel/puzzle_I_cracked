@@ -14,6 +14,21 @@ nine digits are 1-9 pandigital, find k.
 import time
 from termcolor import colored
 
+fn1 = 1
+fn2 = 1
+tailcut = 10 ** 9
+n = 2
+found = False
+
+def Is_pandigital(n):
+    ''
+
+def brute_approach():
+    while not found:
+        n += 1
+        fn = fn1 + fn2
+        tail = fn % tailcut
+
 
 def main_process():
     print(colored('mycount=', 'red'), 'results')
