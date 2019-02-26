@@ -21,14 +21,37 @@ NOTE: This problem is related to Problem 103 and Problem 105.
 import time
 from termcolor import colored
 
+# skip this problem by using solution https://github.com/hughdbrown/Project-Euler/blob/master/euler-106.py
 
-def main_process():
-    print(colored('mycount=', 'red'), 'results')
+def pairwiseCompare(x, y) :
+    return sum((1 if x1 > y1 else 0) for x1, y1 in zip(x,y))
+
+def choose(s, i) :
+    if not i :
+        yield []
+    else :
+        for j in range(int(len(s)) - i + 1) :
+            a, rest = [s[j]], s[j+1: ]
+            for ss in choose(rest, i-1) :
+                yield a + ss
+
+def main_process(hi) :
+    total = 0
+    s = range(1, hi + 1)
+    ss = set(s)
+    for i in range(2, 1 + int(hi/2)) :
+        for x in choose(s, i) :
+            diff = ss - set(x)
+            diff -= set(a for a in diff if a < x[0])
+            for y in choose(sorted(diff), i) :
+                total += (1 if pairwiseCompare(x, y) not in [0, i] else 0)
+    print(hi, total)
+
 
 if __name__ == "__main__":
     tic = time.clock()
     
-    main_process()
+    main_process(12)
 
     toc = time.clock()
     print("time=",toc - tic)
