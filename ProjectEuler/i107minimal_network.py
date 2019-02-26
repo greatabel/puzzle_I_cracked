@@ -26,9 +26,54 @@ redundant edges whilst ensuring that the network remains connected.
 import time
 from termcolor import colored
 
-
+# use https://github.com/LaurentMazare/ProjectEuler/blob/master/e107.py solution, not intrested in this problem
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    """Minimal network"""
+
+    # Constants
+    NETWORK_URL = 'i107network.txt'
+
+    edges = []
+    total_weight = 0
+    num_vertices = 0
+    for i, line in enumerate(open(NETWORK_URL)):
+        num_vertices += 1
+        for j, weight in enumerate(line.rstrip().split(',')):
+            if weight == '-':
+                continue
+            if i >= j:
+                continue
+            total_weight += int(weight)
+            edges.append([int(weight), i, j])
+    edges = sorted(edges)
+
+    graph = {}
+    minimum_weight = 0
+    for edge in edges:
+        weight, node1, node2 = edge
+
+        undiscovered = set(range(num_vertices))
+        s = [node1]
+        while len(s):
+            v = s.pop()
+            if v in undiscovered:
+                undiscovered.remove(v)
+                if v in graph:
+                    try:
+                        nodes = graph[v].iterkeys()
+                    except AttributeError:
+                        nodes = graph[v].keys()
+                    s.extend(nodes)
+        if node2 in undiscovered:
+            if node1 not in graph:
+                graph[node1] = {}
+            graph[node1][node2] = weight
+            if node2 not in graph:
+                graph[node2] = {}
+            graph[node2][node1] = weight
+            minimum_weight += weight
+
+    print(colored('mycount=', 'red'), total_weight - minimum_weight)
 
 if __name__ == "__main__":
     tic = time.clock()
