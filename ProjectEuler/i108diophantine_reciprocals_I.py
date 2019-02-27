@@ -40,11 +40,25 @@ What is the least value of n for which the number of distinct solutions exceeds 
 NOTE: This problem is an easier version of Problem 110; it is strongly advised that you solve this one first.
 '''
 
+import math
 import time
 from termcolor import colored
 
+def find_factor(n):
+    # print("the:",n)
+    factors = []
+    for i in range(1, int(math.sqrt(n))+1 ):
+        # print("i=",i)
+        if n % i == 0:
+            factors.append(i)
+            if i != n//i:
+                factors.append(n//i)
+            
+    return factors
 
 def main_process():
+    # factors = find_factor(16)
+    # print(factors)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
