@@ -57,14 +57,19 @@ def find_factor(n):
     return factors
 
 def main_process():
-    for i in range(1, 20):
+    estimate_bound = 32464832000 # 25878772920 pair_count= 1024
+    for i in range( estimate_bound - 10**3 ,  estimate_bound + 10 ** 3):
         factors = find_factor(i)
         pair_count = 0
         if len(factors) % 2 == 0:
             pair_count = len(factors) // 2
         else:
             pair_count = len(factors) // 2 + 1
-        print(i, ' factors=', factors, 'pair_count=', pair_count)
+        if pair_count > 100:
+            print(i, 'pair_count=', pair_count)
+        if pair_count > 1000:
+            print(math.sqrt(i), 'found !', 'pair_count=', pair_count)
+            break
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
