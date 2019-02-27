@@ -57,8 +57,14 @@ def find_factor(n):
     return factors
 
 def main_process():
-    # factors = find_factor(16)
-    # print(factors)
+    for i in range(1, 20):
+        factors = find_factor(i)
+        pair_count = 0
+        if len(factors) % 2 == 0:
+            pair_count = len(factors) // 2
+        else:
+            pair_count = len(factors) // 2 + 1
+        print(i, ' factors=', factors, 'pair_count=', pair_count)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
