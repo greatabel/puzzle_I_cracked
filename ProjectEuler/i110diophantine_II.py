@@ -21,8 +21,26 @@ NOTE: This problem is a much more difficult version of Problem 108 and as it is 
 import time
 from termcolor import colored
 
+def genprimes(limit): # derived from 
+                      # Code by David Eppstein, UC Irvine, 28 Feb 2002
+    D = {}            # http://code.activestate.com/recipes/117119/
+    q = 2
+
+    while q <= limit:
+        if q not in D:
+            yield q
+            D[q * q] = [q]
+        else:
+            for p in D[q]:
+                D.setdefault(p + q, []).append(p)
+            del D[q]
+        q += 1
 
 def main_process():
+    p = genprimes(45)
+    primes = [i for i in p]
+    print(len(primes), '<= len, is :', primes)
+
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
