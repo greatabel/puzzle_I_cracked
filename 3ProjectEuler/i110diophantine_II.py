@@ -85,8 +85,10 @@ def measure_dN_func(alist):
     return prod >= 2 * 4 * 10 ** 6
 
 def main_process():
-    p = genprimes(45)
-    primes = [i for i in p]
+    # get the first 14 primes ,as 'i110solve.jpeg' analyzed
+    primes = [i for i in genprimes(45)]
+    
+    t = [1] * 14
     t = [4, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0]
     t1 = [3, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0]
     measure_N_func(primes, [1] * 14 )
@@ -95,6 +97,7 @@ def main_process():
     measure_dN_func(t)
     measure_N_func(primes, t1)
     measure_dN_func(t1)
+
     prod = 1
     for index, p in enumerate(primes):
         prod *= p ** t[index]
