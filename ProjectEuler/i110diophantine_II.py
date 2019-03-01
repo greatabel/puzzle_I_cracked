@@ -36,6 +36,16 @@ def find_factor(n):
     return factors
 
 
+def factor(numberToFactor, arr=list()):
+    i = 2
+    maximum = numberToFactor / 2 + 1
+    while i < maximum:
+        if numberToFactor % i == 0:
+            return factor(numberToFactor/i,arr + [i])
+        i += 1
+    return sorted(list(set(arr + [numberToFactor])))
+
+
 def genprimes(limit): # derived from 
                       # Code by David Eppstein, UC Irvine, 28 Feb 2002
     D = {}            # http://code.activestate.com/recipes/117119/
@@ -51,14 +61,22 @@ def genprimes(limit): # derived from
             del D[q]
         q += 1
 
+def logN(plist, alist):
+    for index, item in enumerate(plist):
+        print(item, ' ^p=', alist[index])
+
 def main_process():
     p = genprimes(45)
     primes = [i for i in p]
+    logN(primes, [1] * 14 )
     print(len(primes), '<= len, is :', primes)
-    prod = 1
-    for i in primes:
-        prod *= i
+
+    # prod = 1
+    # for i in primes:
+    #     prod *= i
+    # print(factor(9350130049860600))
     # print(prod, math.sqrt(13082761331670030), (13082761331670030/9350130049860600))
+
     print(colored('mycount=', 'red'), 'results')
 
 # 9350130049860600
