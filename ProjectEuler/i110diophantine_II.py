@@ -20,6 +20,21 @@ NOTE: This problem is a much more difficult version of Problem 108 and as it is 
 
 import time
 from termcolor import colored
+import math
+
+
+def find_factor(n):
+    # print("the:",n)
+    factors = []
+    for i in range(1, int(math.sqrt(n))+1 ):
+        # print("i=",i)
+        if n % i == 0:
+            factors.append(i)
+            if i != n//i:
+                factors.append(n//i)
+            
+    return factors
+
 
 def genprimes(limit): # derived from 
                       # Code by David Eppstein, UC Irvine, 28 Feb 2002
@@ -40,9 +55,14 @@ def main_process():
     p = genprimes(45)
     primes = [i for i in p]
     print(len(primes), '<= len, is :', primes)
-
+    prod = 1
+    for i in primes:
+        prod *= i
+    # print(prod, math.sqrt(13082761331670030), (13082761331670030/9350130049860600))
     print(colored('mycount=', 'red'), 'results')
 
+# 9350130049860600
+# 13082761331670030
 if __name__ == "__main__":
     tic = time.clock()
     
