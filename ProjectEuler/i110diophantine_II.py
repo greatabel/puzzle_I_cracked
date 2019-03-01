@@ -23,17 +23,17 @@ from termcolor import colored
 import math
 
 
-def find_factor(n):
-    # print("the:",n)
-    factors = []
-    for i in range(1, int(math.sqrt(n))+1 ):
-        # print("i=",i)
-        if n % i == 0:
-            factors.append(i)
-            if i != n//i:
-                factors.append(n//i)
+# def find_factor(n):
+#     # print("the:",n)
+#     factors = []
+#     for i in range(1, int(math.sqrt(n))+1 ):
+#         # print("i=",i)
+#         if n % i == 0:
+#             factors.append(i)
+#             if i != n//i:
+#                 factors.append(n//i)
             
-    return factors
+#     return factors
 
 
 # def get_num_factors(num):
@@ -68,21 +68,33 @@ def genprimes(limit): # derived from
             del D[q]
         q += 1
 
-def logN(plist, alist):
+def measure_N_func(plist, alist):
     mysum = 0 
     for index, p in enumerate(plist):
+        print(' alist[index], p=>',  alist[index], p)
         mysum +=  alist[index] * math.log(p, 10)
         # print(p, ' ^p=', alist[index])
-    print('mysum =', mysum)
+    print('make N is smallest, now the mysum =>', mysum)
     return mysum
+
+def measure_dN_func(alist):
+    prod = 1
+    for p in alist:
+        prod *= (2 * p + 1)
+    print('prod=', prod, prod >=  2 * 4 * 10 ** 6)
+    return prod >= 2 * 4 * 10 ** 6
 
 def main_process():
     p = genprimes(45)
     primes = [i for i in p]
     t = [4, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0]
-    # t = [3, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0]
-    logN(primes, [1] * 14 )
-    logN(primes, t)
+    t1 = [3, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0]
+    measure_N_func(primes, [1] * 14 )
+    measure_dN_func([1] * 14)
+    measure_N_func(primes, t)
+    measure_dN_func(t)
+    measure_N_func(primes, t1)
+    measure_dN_func(t1)
     prod = 1
     for index, p in enumerate(primes):
         prod *= p ** t[index]
