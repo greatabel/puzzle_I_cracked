@@ -106,7 +106,7 @@ def main_process():
         t[1] += sub[1]
         t[2] += sub[2]
         t[3] += sub[3]
-        print(t)
+        # print(t)
         measue_N = measure_dN_func(t)
         if measue_N:
             N = measure_N_func(primes, t)
@@ -116,19 +116,13 @@ def main_process():
     print(mymin, target_N)
 
 
-
-
     prod = 1
     for index, p in enumerate(primes):
         prod *= p ** target_N[index]
-    print(prod, len(primes), '<= len, is :', primes)
+    print( 'len(primes) = ', len(primes), primes)
+    print(colored('mycount=', 'red'), prod)
 
 
-    print(colored('mycount=', 'red'), 'results')
-
-# 9350130049860600
-# 13082761331670030
-# 6233420033240400
 if __name__ == "__main__":
     tic = time.clock()
     
