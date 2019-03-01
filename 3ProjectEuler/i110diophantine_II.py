@@ -21,6 +21,7 @@ NOTE: This problem is a much more difficult version of Problem 108 and as it is 
 import time
 from termcolor import colored
 import math
+import itertools
 
 
 # def find_factor(n):
@@ -71,43 +72,57 @@ def genprimes(limit): # derived from
 def measure_N_func(plist, alist):
     mysum = 0 
     for index, p in enumerate(plist):
-        print(' alist[index], p=>',  alist[index], p)
+        # print(' alist[index], p=>',  alist[index], p)
         mysum +=  alist[index] * math.log(p, 10)
         # print(p, ' ^p=', alist[index])
-    print('make N is smallest, now the mysum =>', mysum)
+    # print('make N is smallest, now the mysum =>', mysum)
     return mysum
 
 def measure_dN_func(alist):
     prod = 1
     for p in alist:
         prod *= (2 * p + 1)
-    print('prod=', prod, prod >=  2 * 4 * 10 ** 6)
+    # print('prod=', prod, prod >=  2 * 4 * 10 ** 6)
     return prod >= 2 * 4 * 10 ** 6
 
 def main_process():
     # get the first 14 primes ,as 'i110solve.jpeg' analyzed
     primes = [i for i in genprimes(45)]
-    
-    t = [1] * 14
-    t = [4, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0]
-    t1 = [3, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0]
-    measure_N_func(primes, [1] * 14 )
-    measure_dN_func([1] * 14)
-    measure_N_func(primes, t)
-    measure_dN_func(t)
-    measure_N_func(primes, t1)
-    measure_dN_func(t1)
+
+
+
+
+    x = [1, 2, 3]
+    subs = [p for p in itertools.product(x, repeat=4)]
+    # mymin set a large value
+    mymin = 100
+    target_N = []
+    for sub in subs:
+        t = [1] * 14
+        # I tried , but [1] * 14 too large
+        t[12], t[13] =  0, 0
+
+        t[0] += sub[0]
+        t[1] += sub[1]
+        t[2] += sub[2]
+        t[3] += sub[3]
+        print(t)
+        measue_N = measure_dN_func(t)
+        if measue_N:
+            N = measure_N_func(primes, t)
+            if N < mymin:
+                mymin = N
+                target_N = t
+    print(mymin, target_N)
+
+
+
 
     prod = 1
     for index, p in enumerate(primes):
-        prod *= p ** t[index]
+        prod *= p ** target_N[index]
     print(prod, len(primes), '<= len, is :', primes)
 
-    # prod = 1
-    # for i in primes:
-    #     prod *= i
-    # print('real=', get_num_factors(9350130049860600))
-    # print(prod, math.sqrt(13082761331670030), (13082761331670030/9350130049860600))
 
     print(colored('mycount=', 'red'), 'results')
 
