@@ -36,14 +36,21 @@ def find_factor(n):
     return factors
 
 
-def factor(numberToFactor, arr=list()):
-    i = 2
-    maximum = numberToFactor / 2 + 1
-    while i < maximum:
-        if numberToFactor % i == 0:
-            return factor(numberToFactor/i,arr + [i])
-        i += 1
-    return sorted(list(set(arr + [numberToFactor])))
+# def get_num_factors(num):
+#     list0=[]
+#     tmp=2
+#     if num==tmp:
+#         return num
+#     else:
+#         while (num>=tmp):
+#             k=num%tmp
+#             if( k == 0):
+#                 list0.append(str(tmp))
+#                 num=num/tmp  #更新
+#             else:
+#                 tmp=tmp+1  #同时更新除数值，不必每次都从头开始
+#     return ' '.join(list0)+' '
+
 
 
 def genprimes(limit): # derived from 
@@ -62,25 +69,36 @@ def genprimes(limit): # derived from
         q += 1
 
 def logN(plist, alist):
-    for index, item in enumerate(plist):
-        print(item, ' ^p=', alist[index])
+    mysum = 0 
+    for index, p in enumerate(plist):
+        mysum +=  alist[index] * math.log(p, 10)
+        # print(p, ' ^p=', alist[index])
+    print('mysum =', mysum)
+    return mysum
 
 def main_process():
     p = genprimes(45)
     primes = [i for i in p]
+    t = [4, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0]
+    # t = [3, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0]
     logN(primes, [1] * 14 )
-    print(len(primes), '<= len, is :', primes)
+    logN(primes, t)
+    prod = 1
+    for index, p in enumerate(primes):
+        prod *= p ** t[index]
+    print(prod, len(primes), '<= len, is :', primes)
 
     # prod = 1
     # for i in primes:
     #     prod *= i
-    # print(factor(9350130049860600))
+    # print('real=', get_num_factors(9350130049860600))
     # print(prod, math.sqrt(13082761331670030), (13082761331670030/9350130049860600))
 
     print(colored('mycount=', 'red'), 'results')
 
 # 9350130049860600
 # 13082761331670030
+# 6233420033240400
 if __name__ == "__main__":
     tic = time.clock()
     
