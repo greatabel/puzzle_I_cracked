@@ -20,5 +20,5 @@ Q：实现红黑树、二叉搜索树相关算法：插入（红黑树涉及树�
         5). 在1)－4)的红黑树算法基础上修改完成P307 14.1-4算法 OS_Key_Rank(T,k). 输入 1,2,3,4,5,6,7,8 建树， k=6, 输出OS_Key_Rank的返回值。
 Answer：2008年我在网上找了半天，有用的资源太少了，作业只好自己做了，所以我就自己当时花了1天做这个作业，部分思路参考了google，代码在2Red-Black tree algorithm  experiment文件夹，java实现。
 
-<b>folder of ProjectEuler:</b>
+3. folder of 3ProjectEuler is: euler project, I am still working on it (not finished)
 https://projecteuler.net/archives
