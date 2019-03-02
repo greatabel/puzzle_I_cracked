@@ -33,12 +33,17 @@ Find the sum of all S(10, d).
 
 '''
 思路：欧拉工程套路都模式化了，暴力肯定不行的，在10**10范围内，除非能连上学校的超算
-得想其他捷径
+得想其他道道
 
 '''
 import time
 from termcolor import colored
+from math import sqrt
+from itertools import count, islice
 
+
+def isPrime(n):
+    return n > 1 and all(n%i for i in islice(count(2), int(sqrt(n)-1)))
 
 Limit_bits = 10
 
@@ -54,7 +59,11 @@ def generate_perfectlist(n):
 def main_process():
     perfectlist = generate_perfectlist(Limit_bits)
     print(perfectlist)
-    
+    for i in range(1, 10):
+        if isPrime(i):
+            print(i)
+
+
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
