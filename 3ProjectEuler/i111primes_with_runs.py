@@ -31,11 +31,24 @@ For d = 0 to 9, the sum of all S(4, d) is 273700.
 Find the sum of all S(10, d).
 '''
 
+'''
+思路：欧拉工程套路都模式化了，暴力肯定不行的，在10**10范围内，除非能连上学校的超算
+得想其他捷径
+
+'''
 import time
 from termcolor import colored
 
 
+limit = 10
+
 def main_process():
+    perfectlist = []
+    start = 1111111111
+    for i in range(1, 10):
+        perfectlist.append(i * start)
+
+    print(perfectlist)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
@@ -45,3 +58,6 @@ if __name__ == "__main__":
 
     toc = time.clock()
     print("time=",toc - tic)
+
+
+
