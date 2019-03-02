@@ -64,10 +64,11 @@ def main_process():
     #     if isPrime(i):
     #         print(i)
     for perfect in perfectlist:
-        print('perfect=', perfect)
+        print('\nperfect=', perfect)
         
         # i 代表改成 哪个数字
-        for i in range(0, 10):      
+        for i in range(0, 10):
+            print('\n')    
             # j 代表改 哪个位置
             for j in range(0, 10):
                 r = perfect
