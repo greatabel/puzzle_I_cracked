@@ -42,10 +42,11 @@ from math import sqrt
 from itertools import count, islice
 
 
+Limit_bits = 10
+
 def isPrime(n):
     return n > 1 and all(n%i for i in islice(count(2), int(sqrt(n)-1)))
 
-Limit_bits = 10
 
 def generate_perfectlist(n):
     perfectlist = []
@@ -59,9 +60,9 @@ def generate_perfectlist(n):
 def main_process():
     perfectlist = generate_perfectlist(Limit_bits)
     print(perfectlist)
-    for i in range(1, 10):
-        if isPrime(i):
-            print(i)
+    # for i in range(1, 10):
+    #     if isPrime(i):
+    #         print(i)
 
 
     print(colored('mycount=', 'red'), 'results')
