@@ -63,7 +63,16 @@ def main_process():
     # for i in range(1, 10):
     #     if isPrime(i):
     #         print(i)
-
+    for perfect in perfectlist:
+        print('perfect=', perfect)
+        
+        # i 代表改成 哪个数字
+        for i in range(0, 10):      
+            # j 代表改 哪个位置
+            for j in range(0, 10):
+                r = perfect
+                r = r[:j] + str(i) + r[j + 1:]
+                print('r=', r)
 
     print(colored('mycount=', 'red'), 'results')
 
