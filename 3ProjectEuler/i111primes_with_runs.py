@@ -63,18 +63,24 @@ def main_process():
     # for i in range(1, 10):
     #     if isPrime(i):
     #         print(i)
+    targetlist = perfectlist.copy()
+    print('targetlist=', targetlist)
     for perfect in perfectlist:
         print('\nperfect=', perfect)
-        
+        flag = False
         # i 代表改成 哪个数字
         for i in range(0, 10):
-            print('\n')    
+            print('i=', i, '\n')    
             # j 代表改 哪个位置
             for j in range(0, 10):
                 r = perfect
                 r = r[:j] + str(i) + r[j + 1:]
-                print('r=', r)
-
+                if isPrime(int(r)) and int(r) > 10 ** 9:
+                    flag = True
+                    print('r=', r)
+        if flag:
+            targetlist.remove(perfect)
+    print('targetlist=', targetlist)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
