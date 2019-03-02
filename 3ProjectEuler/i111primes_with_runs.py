@@ -40,15 +40,21 @@ import time
 from termcolor import colored
 
 
-limit = 10
+Limit_bits = 10
+
+def generate_perfectlist(n):
+    perfectlist = []
+    perfectlist.append('0000000000')
+    start = 1111111111
+    for i in range(1, n):
+        perfectlist.append(str(i * start))
+    return perfectlist
+
 
 def main_process():
-    perfectlist = []
-    start = 1111111111
-    for i in range(1, 10):
-        perfectlist.append(i * start)
-
+    perfectlist = generate_perfectlist(Limit_bits)
     print(perfectlist)
+    
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
