@@ -40,7 +40,7 @@ import time
 from termcolor import colored
 from math import sqrt
 from itertools import count, islice
-
+from itertools import permutations
 
 Limit_bits = 10
 
@@ -65,6 +65,7 @@ def main_process():
     #         print(i)
     targetlist = perfectlist.copy()
     print('targetlist=', targetlist)
+    # 替换其中一位，看看是否就是素数
     for perfect in perfectlist:
         print('\nperfect=', perfect)
         flag = False
@@ -81,6 +82,17 @@ def main_process():
         if flag:
             targetlist.remove(perfect)
     print('targetlist=', targetlist)
+
+    for i in permutations(list(range(0, 10)), 2):
+        print('i=', i)
+    # 没找到的数字，我们试着替换2位
+    # for remain in targetlist:
+    #     for i in range(0, 10):
+    #         for j in range(0, 10):
+    #             r = perfect
+    #             r = r[:j] + str(i) + r[j + 1:]
+    #             for k in range(0, 10):
+
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
