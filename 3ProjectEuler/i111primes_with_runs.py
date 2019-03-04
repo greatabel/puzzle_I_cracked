@@ -40,7 +40,7 @@ import time
 from termcolor import colored
 from math import sqrt
 from itertools import count, islice
-from itertools import permutations
+from itertools import product
 
 Limit_bits = 10
 
@@ -58,6 +58,8 @@ def generate_perfectlist(n):
 
 
 def main_process():
+    mysum = 0
+    myprimes = []
     perfectlist = generate_perfectlist(Limit_bits)
     print(perfectlist)
     # for i in range(1, 10):
@@ -78,23 +80,31 @@ def main_process():
                 r = r[:j] + str(i) + r[j + 1:]
                 if isPrime(int(r)) and int(r) > 10 ** 9:
                     flag = True
-                    print('r=', r)
+                    if int(r) not in myprimes:
+                        myprimes.append(int(r))
+                        mysum += int(r)
+                        print('r=', r)
         if flag:
             targetlist.remove(perfect)
     print('targetlist=', targetlist)
 
+    # for i in product(list(range(0, 10)), repeat=2):
+    #     print(p)
     for target in targetlist:
-        for i in permutations(list(range(0, 10)), 2):
+        for i in product(list(range(0, 10)), repeat=2):
             print('i=', i[0], '#', i[1])
-            for j in permutations(list(range(0, 10)), 2):
+            for j in product(list(range(0, 10)), repeat=2):
                 t = target
                 t = t[:j[0]] + str(i[0]) + t[j[0]+1:]
 
                 t = t[:j[1]] + str(i[1]) + t[j[1]+1:]
 
                 if isPrime(int(t)) and int(t) > 10 ** 9:
-                    flag = True
-                    print('t=', t)
+                    flag = True                    
+                    if int(t) not in myprimes:
+                        myprimes.append(int(t))
+                        mysum += int(t)
+                        print('t=', t)
 
     # 没找到的数字，我们试着替换2位
     # for remain in targetlist:
@@ -104,7 +114,9 @@ def main_process():
     #             r = r[:j] + str(i) + r[j + 1:]
     #             for k in range(0, 10):
 
-    print(colored('mycount=', 'red'), 'results')
+    print(colored('mycount=', 'red'), mysum)
+
+    # 612407567715
 
 if __name__ == "__main__":
     tic = time.clock()
