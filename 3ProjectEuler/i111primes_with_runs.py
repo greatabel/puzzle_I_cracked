@@ -83,8 +83,19 @@ def main_process():
             targetlist.remove(perfect)
     print('targetlist=', targetlist)
 
-    for i in permutations(list(range(0, 10)), 2):
-        print('i=', i)
+    for target in targetlist:
+        for i in permutations(list(range(0, 10)), 2):
+            print('i=', i[0], '#', i[1])
+            for j in permutations(list(range(0, 10)), 2):
+                t = target
+                t = t[:j[0]] + str(i[0]) + t[j[0]+1:]
+
+                t = t[:j[1]] + str(i[1]) + t[j[1]+1:]
+
+                if isPrime(int(t)) and int(t) > 10 ** 9:
+                    flag = True
+                    print('t=', t)
+
     # 没找到的数字，我们试着替换2位
     # for remain in targetlist:
     #     for i in range(0, 10):
