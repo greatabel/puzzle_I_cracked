@@ -29,6 +29,13 @@ def is_increase(n):
             return False
     return True
 
+def is_decrease(n):
+    n = str(n)
+    for i in range(len(n)-1):
+        if int(n[i+1]) > int(n[i]):
+            return False
+    return True
+
 def construct_increase(limit):
     return 0
 
@@ -39,9 +46,9 @@ def main_process():
     total = 100
     inc = construct_increase(total)
     dec = construct_decrease(total)
-    for i in range(190, 210):
-        print(i, 'is_increase=', is_increase(i))
-        
+    for i in range(190, 220):
+        print(i, 'is_increase=', is_increase(i), 'is_decrease=', is_decrease(i))
+
     print(colored('mycount=', 'red'), total - inc  - dec)
 
 if __name__ == "__main__":
