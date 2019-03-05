@@ -55,6 +55,9 @@ def main_process():
             bouncy_count += 1
         t = bouncy_count / i
 
+        if i % 10 ** 4 == 0:
+            print(i)
+
 
     # for i in range(190, 220):
     #     print(i, 'is_increase=', is_increase(i), 'is_decrease=', is_decrease(i))
