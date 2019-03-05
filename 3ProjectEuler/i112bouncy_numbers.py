@@ -21,6 +21,14 @@ Find the least number for which the proportion of bouncy numbers is exactly 99%.
 import time
 from termcolor import colored
 
+
+def is_increase(n):
+    n = str(n)
+    for i in range(len(n)-1):
+        if int(n[i+1]) < int(n[i]):
+            return False
+    return True
+
 def construct_increase(limit):
     return 0
 
@@ -31,6 +39,9 @@ def main_process():
     total = 100
     inc = construct_increase(total)
     dec = construct_decrease(total)
+    for i in range(190, 210):
+        print(i, 'is_increase=', is_increase(i))
+        
     print(colored('mycount=', 'red'), total - inc  - dec)
 
 if __name__ == "__main__":
