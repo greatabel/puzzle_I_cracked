@@ -36,20 +36,30 @@ def is_decrease(n):
             return False
     return True
 
-def construct_increase(limit):
-    return 0
+def is_bouncy(n):
+    increase = is_increase(n)
+    decrease = is_decrease(n)
+    if not increase and not decrease:
+        return True
+    else:
+        return False
 
-def construct_decrease(limit):
-    return 0
 
 def main_process():
-    total = 100
-    inc = construct_increase(total)
-    dec = construct_decrease(total)
-    for i in range(190, 220):
-        print(i, 'is_increase=', is_increase(i), 'is_decrease=', is_decrease(i))
+    i = 0 
+    t = 0
+    bouncy_count = 0
+    while t < 0.99:
+        i += 1
+        if is_bouncy(i):
+            bouncy_count += 1
+        t = bouncy_count / i
 
-    print(colored('mycount=', 'red'), total - inc  - dec)
+
+    # for i in range(190, 220):
+    #     print(i, 'is_increase=', is_increase(i), 'is_decrease=', is_decrease(i))
+
+    print(colored('mycount=', 'red'), i)
 
 if __name__ == "__main__":
     tic = time.clock()
