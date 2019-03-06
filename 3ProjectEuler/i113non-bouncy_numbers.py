@@ -20,7 +20,14 @@ import time
 from termcolor import colored
 
 
+def generate_increase(n):
+    if n < 10:
+        for i in range(1, n+1):
+            print(i)
+
+
 def main_process():
+    generate_increase(9)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
