@@ -21,9 +21,11 @@ from termcolor import colored
 
 
 def generate_increase(n):
+    nstr = ''
     if n < 10:
         for i in range(1, n+1):
-            print(i)
+            nstr.append(str(i))
+    print(nstr)
 
 
 def main_process():
