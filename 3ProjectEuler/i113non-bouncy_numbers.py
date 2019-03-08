@@ -72,6 +72,7 @@ def main_process():
     not_bouncy = increase_num + decrease_num - 9 * n
     # for i in range(1, 6):
     #     print('combination(6, ' + str(i) +')=', combination(6, i))
+    # ans is 51161058134250
     print(colored('mycount=', 'red'), not_bouncy)
 
 if __name__ == "__main__":
