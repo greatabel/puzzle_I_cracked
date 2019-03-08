@@ -20,7 +20,7 @@ import time
 from termcolor import colored
 
 
-def choose(n, k):
+def combination(n, k):
     if 0 <= k <= n:
         ntok = 1
         ktok = 1
@@ -33,8 +33,16 @@ def choose(n, k):
         return 0
 
 def increase_situation(n):
+    '''
+    # 影射二进制字符串算法：
+    https://mathschallenge.net/full/never_decreasing_digits
+    example: 1223 <-> + # + # # + #
+    里面+ 表示+1 （起始值为0），# 表示打印一个数字
+    于是，就有了n 个#， 9个 + ，我们可以选择怎么选择在n中插入9个+
+    变成 组合 n+9 中选择9个位置问题
 
-    return 0
+    '''
+    return combination(n+9, 9) - 1
 
 def decrease_situation(n):
 
@@ -44,9 +52,10 @@ def main_process():
     n = 100
     increase_num = increase_situation(n)
     decrease_num = decrease_situation(n)
+    not_bouncy = increase_num + decrease_num
     # for i in range(1, 6):
-    #     print('choose(6, ' + str(i) +')=', choose(6, i))
-    print(colored('mycount=', 'red'), 'results')
+    #     print('combination(6, ' + str(i) +')=', combination(6, i))
+    print(colored('mycount=', 'red'), not_bouncy)
 
 if __name__ == "__main__":
     tic = time.clock()
