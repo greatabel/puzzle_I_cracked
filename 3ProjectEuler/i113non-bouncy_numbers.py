@@ -20,9 +20,18 @@ import time
 from termcolor import colored
 
 
+def increase_situation(n):
+
+    return 0
+
+def decrease_situation(n):
+
+    return 0
 
 def main_process():
-
+    n = 100
+    increase_num = increase_situation(n)
+    decrease_num = decrease_situation(n)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
