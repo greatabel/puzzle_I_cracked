@@ -14,8 +14,7 @@ only 12951 numbers below one-million that are not bouncy and only 277032 non-bou
 How many numbers below a googol (10100) are not bouncy?
 '''
 
-# 很明显不能用i112思路了，而是要在 < 10**10 有277032 个不是bouncy 数的基础上，
-# 构造出其他的 升序数和 降序数，然后 277032 + 这些构造出来的数的数目
+
 import time
 from termcolor import colored
 
@@ -67,6 +66,7 @@ def main_process():
     2， 22， 222， ……, 222···2 共有n个
     ……
     9， 99 ……， 999····9 共有n个
+
     总共9n个
     '''
     not_bouncy = increase_num + decrease_num - 9 * n
