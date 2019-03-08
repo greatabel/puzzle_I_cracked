@@ -20,6 +20,18 @@ import time
 from termcolor import colored
 
 
+def choose(n, k):
+    if 0 <= k <= n:
+        ntok = 1
+        ktok = 1
+        for t in range(1, min(k, n - k) + 1):
+            ntok *= n
+            ktok *= t
+            n -= 1
+        return ntok // ktok
+    else:
+        return 0
+
 def increase_situation(n):
 
     return 0
@@ -32,6 +44,8 @@ def main_process():
     n = 100
     increase_num = increase_situation(n)
     decrease_num = decrease_situation(n)
+    # for i in range(1, 6):
+    #     print('choose(6, ' + str(i) +')=', choose(6, i))
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
