@@ -41,18 +41,35 @@ def increase_situation(n):
     于是，就有了n 个#， 9个 + ，我们可以选择怎么选择在n中插入9个+
     变成从 n+9 中选择9个位置的组合问题
 
+    需要注意的是：减去为0的情况
     '''
     return combination(n+9, 9) - 1
 
 def decrease_situation(n):
+    '''
+    和升序类似，只不过起始值从0变成9，然后操作符是减法 -
+    exmaple： 9887 <-->  # - # # - #
+    与增加不同的是 我们可以插入0，因为不是在开头了
+    于是问题变成了 n个#，10个-，我们于是有了 n+10 中选择 10个插入位置
 
-    return 0
+    但是参考 i113decrease_situation.jpeg 的右下角可知
+    都为0的情况，可以有n+1种
+    '''
+    return combination(n+10, 10) - (n+1)
 
 def main_process():
     n = 100
     increase_num = increase_situation(n)
     decrease_num = decrease_situation(n)
-    not_bouncy = increase_num + decrease_num
+    '''
+    但是increase_num 和 decrease_num 有重复的部分：
+    1， 11， 111， …… 111···1 共有n个
+    2， 22， 222， ……, 222···2 共有n个
+    ……
+    9， 99 ……， 999····9 共有n个
+    总共9n个
+    '''
+    not_bouncy = increase_num + decrease_num - 9 * n
     # for i in range(1, 6):
     #     print('combination(6, ' + str(i) +')=', combination(6, i))
     print(colored('mycount=', 'red'), not_bouncy)
