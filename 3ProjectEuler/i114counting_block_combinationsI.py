@@ -24,7 +24,7 @@ def f(x, y):
     if x in len_count_dic and len_count_dic[x]!= 0:
         return len_count_dic[x]
 
-        
+
     # 一行有x个单元， 我们用y个连续红色单元填充到里面， x >= y
     # 第一种就是没有用红色划分，全黑的情况
     ways_count = 1
@@ -55,6 +55,7 @@ def main_process():
     # x = 7
     mycount = f(x, y)
     print(colored('mycount=', 'red'), mycount)
+    # mycount= 16475640049
 
 if __name__ == "__main__":
     tic = time.clock()
