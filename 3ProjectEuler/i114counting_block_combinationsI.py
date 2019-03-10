@@ -27,13 +27,14 @@ def f(x, y):
         return ways_count
 
     for start_index in range(0, x-y+1):
-        print(colored("开始的index=", "red"), start_index)
+        # print(colored("开始的index=", "red"), start_index)
         for red_len in range(y, x-start_index+1):
-            print(' 红单元长度=', red_len)
-            print('#' * start_index, colored('#', 'red') * red_len, '#' * (x - start_index - red_len))
+            # print(' 红单元长度=', red_len, '总长度=', x)
+            # print('#' * start_index, colored('#', 'red') * red_len, '#' * (x - start_index - red_len))
 
             # ways_count += 1 这种粗暴的方法miss了情况：就是其中不止一个连续红色单元的情况
             # print(' x-start_index-red_len=', x-start_index-red_len)
+            ways_count += f(x-start_index-red_len-1, y)
     return ways_count
 
 
@@ -41,7 +42,7 @@ def main_process():
     x = 50
     y = 3
     # 测试用小数据
-    x = 7
+    # x = 7
     mycount = f(x, y)
     print(colored('mycount=', 'red'), mycount)
 
