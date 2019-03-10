@@ -61,7 +61,7 @@ def main_process():
     y = 50
     # 测试用小数据
     # x = 7
-    for x in range(50, 100):
+    for x in range(50, 200):
         mycount = f(x, y)
         if mycount >= limit:
             print(colored('mycount=', 'red'), mycount, 'x=', x)
