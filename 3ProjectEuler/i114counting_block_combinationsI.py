@@ -17,8 +17,20 @@ import time
 from termcolor import colored
 
 
+def f(x, y):
+    # 一行有x个单元， 我们用y个连续红色单元填充到里面， x >= y
+    ways_count = 0
+
+    return ways_count
+
+
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    x = 50
+    y = 3
+    # 测试用小数据
+    x = 7
+    mycount = f(x, y)
+    print(colored('mycount=', 'red'), mycount)
 
 if __name__ == "__main__":
     tic = time.clock()
