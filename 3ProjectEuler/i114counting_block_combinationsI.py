@@ -27,9 +27,10 @@ def f(x, y):
         return ways_count
 
     for start_index in range(0, x-y+1):
-        print(colored("start_index=", "red"), start_index)
+        print(colored("开始的index=", "red"), start_index)
         for red_len in range(y, x-start_index+1):
-            print(' red_len=', red_len)
+            print(' 红单元长度=', red_len)
+            print(' x-start_index-red_len=', x-start_index-red_len)
     return ways_count
 
 
