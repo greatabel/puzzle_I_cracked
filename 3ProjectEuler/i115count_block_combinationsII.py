@@ -61,12 +61,13 @@ def main_process():
     y = 50
     # 测试用小数据
     # x = 7
+    # 直接先不停测试上限，先试验了100不行，再200就可以了
     for x in range(50, 200):
         mycount = f(x, y)
         if mycount >= limit:
             print(colored('mycount=', 'red'), mycount, 'x=', x)
             break
-    # mycount= 16475640049
+    # mycount= 1053389 x= 168
 
 if __name__ == "__main__":
     tic = time.clock()
