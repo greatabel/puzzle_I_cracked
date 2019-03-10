@@ -65,6 +65,7 @@ def main_process():
         mycount = f(x, y)
         if mycount >= limit:
             print(colored('mycount=', 'red'), mycount, 'x=', x)
+            break
     # mycount= 16475640049
 
 if __name__ == "__main__":
