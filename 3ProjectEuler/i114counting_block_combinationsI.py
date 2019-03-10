@@ -19,8 +19,17 @@ from termcolor import colored
 
 def f(x, y):
     # 一行有x个单元， 我们用y个连续红色单元填充到里面， x >= y
-    ways_count = 0
+    # 第一种就是没有用红色划分，全黑的情况
+    ways_count = 1
 
+    # 当红色单元以及超过需要填充的行单元数，应该终止程序
+    if x < y:
+        return ways_count
+
+    for start_index in range(0, x-y+1):
+        print(colored("start_index=", "red"), start_index)
+        for red_len in range(y, x-start_index+1):
+            print(' red_len=', red_len)
     return ways_count
 
 
