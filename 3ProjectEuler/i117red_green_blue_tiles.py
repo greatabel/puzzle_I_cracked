@@ -13,6 +13,8 @@ from termcolor import colored
 
 
 len_count_dic = dict()
+
+
 def f(x, y_min, y_max):
 
     #添加缓存逻辑
@@ -20,7 +22,6 @@ def f(x, y_min, y_max):
         return len_count_dic[x]
 
     ways_count = 1
-
 
     if x < y_min:
         return ways_count
@@ -45,7 +46,7 @@ def main_process():
     # x = 5
     mycount = f(x, ymin, ymax)
     print(colored('mycount=', 'red'), mycount)
-    # mycount= 16475640049
+
 
 if __name__ == "__main__":
     tic = time.clock()
