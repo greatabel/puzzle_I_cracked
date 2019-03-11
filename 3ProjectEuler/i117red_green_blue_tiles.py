@@ -25,10 +25,11 @@ def f(x, y_min, y_max):
     if x < y_min:
         return ways_count
 
+    # 填充块的大小是 blocklen
     for blocklen in range(y_min, y_max+1):
-
+        # 在特定填充块大小blocklen之下
         for start_index in range(0, x-blocklen+1):
-
+                          # 需要填充的行减去起始位置和填充块长度后迭代
             ways_count += f(x-start_index-blocklen, y_min, y_max)
 
     # 添加缓存
