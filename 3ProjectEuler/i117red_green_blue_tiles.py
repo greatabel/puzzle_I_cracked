@@ -25,7 +25,7 @@ def f(x, y_min, y_max):
     if x < y_min:
         return ways_count
 
-    for blocklen in range(y_min, y_min+1):
+    for blocklen in range(y_min, y_max+1):
 
         for start_index in range(0, x-blocklen+1):
 
@@ -41,7 +41,7 @@ def main_process():
     ymin = 2
     ymax = 4
     # 测试用小数据
-    x = 5
+    # x = 5
     mycount = f(x, ymin, ymax)
     print(colored('mycount=', 'red'), mycount)
     # mycount= 16475640049
