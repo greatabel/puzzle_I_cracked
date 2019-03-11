@@ -39,11 +39,11 @@ def f(x, y):
 
     for start_index in range(0, x-y+1):
         # print(colored("开始的index=", "red"), start_index)
-        for red_len in range(y, x-start_index+1):
-            # 可以填充1个
-            ways_count += 1
+        
+        # 可以填充1个
+        ways_count += 1
 
-            ways_count += f(x-start_index-red_len, y)
+        ways_count += f(x-start_index-y, y)
 
     # 添加缓存
     len_count_dic[x] = ways_count
