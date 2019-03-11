@@ -24,8 +24,44 @@ import time
 from termcolor import colored
 
 
+len_count_dic = dict()
+def f(x, y):
+
+    #添加缓存逻辑
+    if x in len_count_dic and len_count_dic[x]!= 0:
+        return len_count_dic[x]
+
+
+    ways_count = 0
+
+    if x < y:
+        return ways_count
+
+    for start_index in range(0, x-y+1):
+        # print(colored("开始的index=", "red"), start_index)
+        for red_len in range(y, x-start_index+1):
+            # 可以填充1个
+            ways_count += 1
+
+            ways_count += f(x-start_index-red_len, y)
+
+    # 添加缓存
+    len_count_dic[x] = ways_count
+    return ways_count
+
+
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    
+    x = 50
+    mycount = 0
+    # 直接先不停测试上限，先试验了100不行，再200就可以了
+    for y in range(2, 5):
+        print('y=', y)
+        mycount += f(x, y)
+
+    print(colored('mycount=', 'red'), mycount)
+      
+    # mycount= 1053389 x= 168
 
 if __name__ == "__main__":
     tic = time.clock()
