@@ -18,6 +18,7 @@ so n = 57 is the least value for which the fill-count function first exceeds one
 For m = 50, find the least value of n for which the fill-count function first exceeds one million.
 '''
 
+
 '''
 基本上 我们可以照搬 i114的解法
 '''
