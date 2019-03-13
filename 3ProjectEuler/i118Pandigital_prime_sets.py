@@ -72,15 +72,19 @@ def main_process():
     digits = list(range(1, 10))
     digits = [1, 2, 3, 4]
     permutations = itertools.permutations(digits)
-    for item in permutations:
-        print(item)
+    for permutation in permutations:
+        print('permutation=', permutation)
+        for partition in partitions(len(digits)):
+            print('partition=', partition)
+            for index, val in enumerate(partition):
+                print(index,'#', val )
 
-    for i in range(1, 50):
-        if isprime(i):
-            print('# ', i)
+    # for i in range(1, 50):
+    #     if isprime(i):
+    #         print('# ', i)
 
-    for p in partitions(10):
-        print('@ ', p)
+    # for p in partitions(10):
+    #     print('@ ', p)
 
     print(colored('mycount=', 'red'), 'results')
 
