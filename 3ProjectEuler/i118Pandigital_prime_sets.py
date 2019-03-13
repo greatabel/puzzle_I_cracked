@@ -25,11 +25,15 @@ How many distinct sets containing each of the digits one through nine exactly on
 
 '''
 
+import itertools
 import time
 from termcolor import colored
 
 
 def main_process():
+    permutations = itertools.permutations(list(range(1, 4)))
+    for item in permutations:
+        print(item)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
@@ -39,3 +43,11 @@ if __name__ == "__main__":
 
     toc = time.clock()
     print("time=",toc - tic)
+
+
+
+
+
+
+
+
