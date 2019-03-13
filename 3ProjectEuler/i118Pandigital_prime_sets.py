@@ -68,16 +68,26 @@ def partitions(n):
             yield [p[0] + 1] + p[1:]
 
 
+def digits_to_int(digits):
+    myint = 0
+    for digit in digits:
+        myint = myint * 10 + digit
+    return myint
+
+
+
 def main_process():
+    # print(digits_to_int((3,1,2)))
     digits = list(range(1, 10))
-    digits = [1, 2, 3, 4]
+    digits = [1, 2, 3]
     permutations = itertools.permutations(digits)
     for permutation in permutations:
         print(colored('排列:', 'red'), permutation)
         for partition in partitions(len(digits)):
             print(' 划分=', partition)
             start_idx = 0
-            for val in partition:                
+            for val in partition:
+
                 print('  permutation[',start_idx,':',start_idx+val, ']=',
                       permutation[start_idx: start_idx+val])
                 start_idx += val
