@@ -54,6 +54,20 @@ def isprime(n):
     return True
 
 
+# 不需要考虑 [3, 2, 1] 这类划分，因为不是降序
+def partitions(n):
+    # base case of recursion: zero is the sum of the empty list
+    if n == 0:
+        yield []
+        return
+        
+    # modify partitions of n-1 to form partitions of n
+    for p in partitions(n-1):
+        yield [1] + p
+        if p and (len(p) < 2 or p[1] > p[0]):
+            yield [p[0] + 1] + p[1:]
+
+
 def main_process():
     digits = list(range(1, 10))
     digits = [1, 2, 3, 4]
@@ -64,6 +78,10 @@ def main_process():
     for i in range(1, 50):
         if isprime(i):
             print('# ', i)
+
+    for p in partitions(10):
+        print('@ ', p)
+
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
