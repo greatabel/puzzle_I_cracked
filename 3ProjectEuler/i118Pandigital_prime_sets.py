@@ -28,30 +28,12 @@ How many distinct sets containing each of the digits one through nine exactly on
 import itertools
 import time
 from termcolor import colored
-
+from math import sqrt
+from itertools import count, islice
 
 def isprime(n):
-    """Returns True if n is prime."""
-    if n == 2:
-        return True
-    if n == 3:
-        return True
-    if n % 2 == 0:
-        return False
-    if n % 3 == 0:
-        return False
+    return n > 1 and all(n%i for i in islice(count(2), int(sqrt(n)-1)))
 
-    i = 5
-    w = 2
-
-    while i * i <= n:
-        if n % i == 0:
-            return False
-
-        i += w
-        w = 6 - w
-
-    return True
 
 
 # 不需要考虑 [3, 2, 1] 这类划分，因为不是降序
@@ -79,9 +61,10 @@ def digits_to_int(digits):
 def main_process():
     # print(digits_to_int((3,1,2)))
     digits = list(range(1, 10))
-    # digits = [1, 2, 3, 4]
+    # digits = [1, 2, 3, 4, 5]
 
     mycount = 0
+    primes = []
     permutations = itertools.permutations(digits)
     for permutation in permutations:
         # print(colored('排列:', 'red'), permutation)
@@ -89,19 +72,25 @@ def main_process():
             # print(' 划分=', partition)
             start_idx = 0
             prev_item = 0
+            temp_primes = []
             for val in partition:
                 item = digits_to_int(permutation[start_idx: start_idx+val])
                 if item < prev_item:
                     break
                 if not isprime(item):
                     break
+                else:
+                    temp_primes.append(item)
                 # print('  permutation[',start_idx,':',start_idx+val, ']=', item)
                 start_idx += val
                 prev_item = item
             if start_idx == len(digits):
                 mycount += 1
+                temp_primes.sort()
+                if temp_primes not in primes:
+                    primes.append(temp_primes)
                 # print('    start_idx = ', start_idx)
-
+    print(primes, len(primes))
     # for i in range(1, 50):
     #     if isprime(i):
     #         print('# ', i)
