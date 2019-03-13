@@ -56,7 +56,8 @@ def isprime(n):
 
 def main_process():
     digits = list(range(1, 10))
-    permutations = itertools.permutations(list(range(1, 4)))
+    digits = [1, 2, 3, 4]
+    permutations = itertools.permutations(digits)
     for item in permutations:
         print(item)
 
