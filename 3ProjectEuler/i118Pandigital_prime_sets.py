@@ -30,10 +30,39 @@ import time
 from termcolor import colored
 
 
+def isprime(n):
+    """Returns True if n is prime."""
+    if n == 2:
+        return True
+    if n == 3:
+        return True
+    if n % 2 == 0:
+        return False
+    if n % 3 == 0:
+        return False
+
+    i = 5
+    w = 2
+
+    while i * i <= n:
+        if n % i == 0:
+            return False
+
+        i += w
+        w = 6 - w
+
+    return True
+
+
 def main_process():
+    digits = list(range(1, 10))
     permutations = itertools.permutations(list(range(1, 4)))
     for item in permutations:
         print(item)
+
+    for i in range(1, 50):
+        if isprime(i):
+            print('# ', i)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
