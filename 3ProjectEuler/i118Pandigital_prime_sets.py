@@ -87,9 +87,8 @@ def main_process():
             print(' 划分=', partition)
             start_idx = 0
             for val in partition:
-
-                print('  permutation[',start_idx,':',start_idx+val, ']=',
-                      permutation[start_idx: start_idx+val])
+                item = digits_to_int(permutation[start_idx: start_idx+val])
+                print('  permutation[',start_idx,':',start_idx+val, ']=', item)
                 start_idx += val
 
     # for i in range(1, 50):
