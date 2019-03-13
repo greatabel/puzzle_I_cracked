@@ -79,17 +79,28 @@ def digits_to_int(digits):
 def main_process():
     # print(digits_to_int((3,1,2)))
     digits = list(range(1, 10))
-    digits = [1, 2, 3]
+    # digits = [1, 2, 3, 4]
+
+    mycount = 0
     permutations = itertools.permutations(digits)
     for permutation in permutations:
-        print(colored('排列:', 'red'), permutation)
+        # print(colored('排列:', 'red'), permutation)
         for partition in partitions(len(digits)):
-            print(' 划分=', partition)
+            # print(' 划分=', partition)
             start_idx = 0
+            prev_item = 0
             for val in partition:
                 item = digits_to_int(permutation[start_idx: start_idx+val])
-                print('  permutation[',start_idx,':',start_idx+val, ']=', item)
+                if item < prev_item:
+                    break
+                if not isprime(item):
+                    break
+                # print('  permutation[',start_idx,':',start_idx+val, ']=', item)
                 start_idx += val
+                prev_item = item
+            if start_idx == len(digits):
+                mycount += 1
+                # print('    start_idx = ', start_idx)
 
     # for i in range(1, 50):
     #     if isprime(i):
@@ -98,7 +109,9 @@ def main_process():
     # for p in partitions(10):
     #     print('@ ', p)
 
-    print(colored('mycount=', 'red'), 'results')
+    print(colored('mycount=', 'red'), mycount)
+    # mycount= 50223
+    #          44680
 
 if __name__ == "__main__":
     tic = time.clock()
