@@ -17,8 +17,11 @@ How many distinct sets containing each of the digits one through nine exactly on
 思路：
 对于 123456789 进行全排列 A
 
-遍历 A 中每一种情况，对于 a ∈ A， 产生所有关于a的划分
+遍历 A 中每一种情况，对于 a ∈ A， 产生所有关于a的划分 P
 
+对于任何一种 划分 p ∈ P, 我们只考虑增序排列的集合（因为非增序的集合 必定和 某一种A中其他增序的 p 是同一个集合）
+
+然后判断 p 是否所有元素都是质数，如果是，计数，如果不是，跳过
 
 '''
 
