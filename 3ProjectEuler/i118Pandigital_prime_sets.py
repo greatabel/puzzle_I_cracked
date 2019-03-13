@@ -70,14 +70,14 @@ def partitions(n):
 
 def main_process():
     digits = list(range(1, 10))
-    digits = [1, 2, 3, 4]
+    digits = [1, 2, 3]
     permutations = itertools.permutations(digits)
     for permutation in permutations:
         print('permutation=', permutation)
         for partition in partitions(len(digits)):
-            print('partition=', partition)
+            print(' partition=', partition)
             for index, val in enumerate(partition):
-                print(index,'#', val )
+                print('  ', index,'#', val )
 
     # for i in range(1, 50):
     #     if isprime(i):
