@@ -64,7 +64,7 @@ def main_process():
     # digits = [1, 2, 3, 4, 5]
 
     mycount = 0
-    primes = []
+    # primes = []
     permutations = itertools.permutations(digits)
     for permutation in permutations:
         # print(colored('排列:', 'red'), permutation)
@@ -79,18 +79,18 @@ def main_process():
                     break
                 if not isprime(item):
                     break
-                else:
-                    temp_primes.append(item)
+                # else:
+                #     temp_primes.append(item)
                 # print('  permutation[',start_idx,':',start_idx+val, ']=', item)
                 start_idx += val
                 prev_item = item
             if start_idx == len(digits):
                 mycount += 1
-                temp_primes.sort()
-                if temp_primes not in primes:
-                    primes.append(temp_primes)
+                # temp_primes.sort()
+                # if temp_primes not in primes:
+                #     primes.append(temp_primes)
                 # print('    start_idx = ', start_idx)
-    print(primes, len(primes))
+    # print(primes, len(primes))
     # for i in range(1, 50):
     #     if isprime(i):
     #         print('# ', i)
@@ -99,7 +99,7 @@ def main_process():
     #     print('@ ', p)
 
     print(colored('mycount=', 'red'), mycount)
-    # mycount= 50223
+
     #          44680
 
 if __name__ == "__main__":
