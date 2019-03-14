@@ -28,21 +28,26 @@ def digit_sum(n):
 
 def interesting(n):
     x = digit_sum(n)
-
     if x < 2:
         return False
     y = math.log(n, x)
-    return y.is_integer()
+    decimal_y = y % 1
+    # python log bug
+    # print(' ', n, 'decimal_y=', decimal_y)
+    if decimal_y < 0.0000001 or decimal_y > 0.9999999:
+        return True
     
 
 def main_process():
+
     mycount = 0
-    i = 10
-    while mycount <= 30:
+    i = 50
+    while mycount < 30:
         i += 1
         if interesting(i):
             mycount += 1
             print('mycount:',mycount, i)
+
 
     print(colored('mycount=', 'red'), 'results')
 
