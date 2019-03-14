@@ -13,18 +13,37 @@ You are given that a2 = 512 and a10 = 614656.
 Find a30.
 '''
 
+import math
 import time
 from termcolor import colored
 
 
-def check(n):
-    x = sum(int(digit) for digit in str(n))
-    for i in range(0, 5):
-        print(i, x ** i)
+def digit_sum(n):
+    num_str = str(n)
+    sum = 0
+    for i in range(0, len(num_str)):
+        sum += int(num_str[i])
+    return sum
+
+
+def interesting(n):
+    x = digit_sum(n)
+
+    if x < 2:
+        return False
+    y = math.log(n, x)
+    return y.is_integer()
     
 
 def main_process():
-    check(512)
+    mycount = 0
+    i = 10
+    while mycount <= 30:
+        i += 1
+        if interesting(i):
+            mycount += 1
+            print('mycount:',mycount, i)
+
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
