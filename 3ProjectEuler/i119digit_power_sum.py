@@ -55,10 +55,24 @@ def main_process():
     #     if interesting(i):
     #         mycount += 1
     #         print('mycount:',mycount, i)
+    mylist = []
+    for i in range(2, 500):
+        
+        for j in range(2, 50):
+            e = i ** j
+            if digit_sum(e) == i:
+                print(i, j, 'e=', e)
+                mylist.append(e)
 
+            if len(mylist) == 50:
+                break
+        if len(mylist) == 50:
+            break
 
-
-    print(colored('mycount=', 'red'), 'results')
+    mylist.sort()
+    for idx, item in enumerate(mylist):
+        print(idx, item)
+    print(colored('mycount=', 'red'), mylist[29])
 
 if __name__ == "__main__":
     tic = time.clock()
@@ -67,3 +81,5 @@ if __name__ == "__main__":
 
     toc = time.clock()
     print("time=",toc - tic)
+
+
