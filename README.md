@@ -23,4 +23,5 @@ Answer：2008年我在网上找了半天，有用的资源太少了，作业只�
 3.folder of 3ProjectEuler: 
 
 All is about euler project, I am still working on it (not finished)
+3ProjectEuler 这个文件夹都是关于我解决的欧拉工程的，还在进行中……
 https://projecteuler.net/archives
