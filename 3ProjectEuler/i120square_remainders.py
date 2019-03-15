@@ -11,8 +11,21 @@ import time
 from termcolor import colored
 
 
+def calculateR(a):
+    r = 0
+    if a % 2 == 0:
+        # 偶数
+        r = a ** 2 - 2 * a
+    else:
+        # 奇数
+        r = a ** 2 - a
+    return r
+
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    isum = 0
+    for i in range(3, 1000+1):
+        isum += calculateR(i)
+    print(colored('mycount=', 'red'), isum)
 
 if __name__ == "__main__":
     tic = time.clock()
