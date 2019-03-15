@@ -7,6 +7,11 @@ And as n varies, so too will r, but for a = 7 it turns out that rmax = 42.
 For 3 ≤ a ≤ 1000, find ∑ rmax.
 '''
 
+'''
+欧拉工程项目第120
+这个可以是个纯数学题目，具体分析思路见：i120.jpg
+'''
+
 import time
 from termcolor import colored
 
