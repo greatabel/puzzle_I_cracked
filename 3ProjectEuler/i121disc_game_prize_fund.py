@@ -28,7 +28,15 @@ Find the maximum prize fund that should be allocated to a single game in which f
 
 '''
 
+'''
+思路分析：
+if   第1轮，拿出来是蓝色的概率就是1/2
+if   第2轮，拿出来是蓝色的概率就是1/3
+if   第3轮，拿出来是蓝色的概率就是1/4
+if   第4轮，拿出来是蓝色的概率就是1/5
+if   第n轮，拿出来是蓝色的概率就是1/n+1
 
+'''
 
 import time
 from termcolor import colored
