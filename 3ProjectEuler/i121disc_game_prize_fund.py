@@ -53,6 +53,8 @@ if   第n轮，拿出来是蓝色的概率就是1/n+1
 1 / (11/ 120) 约= 10.909
 由于只能是整数，如果设置成11，庄家长期看是亏本，为了不亏本，设置成10英镑
 
+由分析可以看出15轮的概率应该是：
+(1 + 2 + ... + 15  + 1)/ 2 * 3 * 4 * 5 ··· * 16
 '''
 
 import time
@@ -60,7 +62,15 @@ from termcolor import colored
 
 
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    numerator = 1
+    denominator = 1
+    for i in range(1, 15+1):
+        print(i)
+        numerator += i
+        denominator *= (i + 1)
+    r = numerator / denominator
+    p = 1 / r
+    print(colored('mycount=', 'red'), r, p)
 
 if __name__ == "__main__":
     tic = time.clock()
