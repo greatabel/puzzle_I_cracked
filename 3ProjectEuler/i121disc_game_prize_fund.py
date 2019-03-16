@@ -53,24 +53,45 @@ if   第n轮，拿出来是蓝色的概率就是1/n+1
 1 / (11/ 120) 约= 10.909
 由于只能是整数，如果设置成11，庄家长期看是亏本，为了不亏本，设置成10英镑
 
-由分析可以看出15轮的概率应该是：
-(1 + 2 + ... + 15  + 1)/ 2 * 3 * 4 * 5 ··· * 16
+
+对于k轮之后， 我们假设j 个蓝色的个数 为 f(k, j)
+初始状态下 f(1轮， 0个蓝色) = 1  f(1轮， 1个蓝色) = 1
+f(k+1, j+1) 我们第 k+1个盘子 要么是红色  要么是蓝色，于是：
+k+1 是蓝色的话，还是只有从包中唯一的1个蓝色，1个蓝色, 只有1个选法，这种情况有：1 * f(k,j)
+k+1 是红色的话，这个红色可以在包里面的(k+1)个红盘中选择，有 (k + 1)个选法 ，这种情况有 (k+1) * f(k, j+1)
+f(k+1, j+1) = f(k, j) + f(k, j+1) * (k + 1)
 '''
 
+from math import factorial
 import time
 from termcolor import colored
 
 
 def main_process():
-    numerator = 1
-    denominator = 1
-    for i in range(1, 15+1):
-        print(i)
-        numerator += i
-        denominator *= (i + 1)
-    r = numerator / denominator
-    p = 1 / r
-    print(colored('mycount=', 'red'), r, p)
+    n = 15
+
+    f = {}
+    for k in range(1, n + 1):
+        for j in range(k + 1):
+            if j == 0:
+                f[(j, k)] = factorial(k)
+            elif j == k:
+                f[(j, k)] = 1
+            else:
+                f[(j, k)] = (f[(j - 1, k - 1)] +
+                                      k * f[(j, k - 1)])
+
+    # 计算满足获胜的要求的情况
+    blue_len = int((n / 2)) + 1
+    count = 0
+    for blue in range(blue_len, n + 1):
+        count += f[(blue, n)]
+
+    # 计算获胜概率
+    r = count / factorial(n+1)
+    print(colored('奖金设置为=', 'red'), int(1/r))
+    # wrong : 172915618909
+    #         20922789888000
 
 if __name__ == "__main__":
     tic = time.clock()
