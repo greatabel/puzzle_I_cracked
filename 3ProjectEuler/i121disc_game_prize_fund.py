@@ -91,7 +91,7 @@ def main_process():
     r = count / factorial(n+1)
     print(colored('奖金设置为=', 'red'), int(1/r))
     # wrong : 172915618909
-    #         20922789888000
+    # right:  2269
 
 if __name__ == "__main__":
     tic = time.clock()
