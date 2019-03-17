@@ -55,11 +55,19 @@ n12 × n3 = n^15
 对于1 ≤ k ≤ 200，求∑m(k)。
 '''
 
+#----------------------------#
+'''
+稍微想一下，euler project的套路就应该明白：肯定不能通过纯直接方案: k很大时候，肯定划分方案搜索量太大
+
+
+'''
+
 import time
 from termcolor import colored
 
 
 def main_process():
+
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
