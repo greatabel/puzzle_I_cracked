@@ -14,12 +14,15 @@ from termcolor import colored
 
 
 def addtion_chain_demo():
+    dic = {}
     V = (1,2,3,6,12,24,30,31) 
     for vi in V:
         for a in V:
             for b in V:
-                if vi == a + b:
+                if (vi not in dic) and vi == a + b:
                     print(vi, ' = ', a, '+', b)
+                    dic[vi] = (a, b)
+
 
 def main_process():
     addtion_chain_demo()
