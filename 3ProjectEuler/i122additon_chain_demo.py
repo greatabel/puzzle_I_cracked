@@ -13,8 +13,16 @@ import time
 from termcolor import colored
 
 
-def main_process():
+def addtion_chain_demo():
+    V = (1,2,3,6,12,24,30,31) 
+    for vi in V:
+        for a in V:
+            for b in V:
+                if vi == a + b:
+                    print(vi, ' = ', a, '+', b)
 
+def main_process():
+    addtion_chain_demo()
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
