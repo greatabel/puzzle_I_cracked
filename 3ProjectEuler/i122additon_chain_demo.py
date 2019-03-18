@@ -6,6 +6,9 @@
 V =(V0,...,Vs), with V0 = 1 and Vs = n
 for each 0< i ≤ s holds: Vi = Vj + Vk, with wi=(j,k) and 0 ≤ j,k ≤ i − 1
 
+
+加法链阶乘: https://en.wikipedia.org/wiki/Addition-chain_exponentiation
+
 '''
 
 
@@ -13,19 +16,25 @@ import time
 from termcolor import colored
 
 
-def addtion_chain_demo():
+def addtion_chain_demo(V):
     dic = {}
-    V = (1,2,3,6,12,24,30,31) 
+    
     for vi in V:
         for a in V:
             for b in V:
                 if (vi not in dic) and vi == a + b:
                     print(vi, ' = ', a, '+', b)
                     dic[vi] = (a, b)
+    return dic
 
+def addition_chain_exponentiation(base, exp_num, d):
+    for key, value in d.items():
+        print('5^' , key, '=', '5^', value[0], ' X ', '5^', value[1])
 
 def main_process():
-    addtion_chain_demo()
+    V = (1,2,3,6,12,24,30,31) 
+    addition_dic = addtion_chain_demo(V)
+    addition_chain_exponentiation(5, 31, addition_dic)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
