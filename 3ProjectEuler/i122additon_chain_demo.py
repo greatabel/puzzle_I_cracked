@@ -29,27 +29,29 @@ def all_chains(x):
     while (1):
         print(colored('当前路径集合arr:', 'blue', attrs=['reverse', 'bold']), arr)
         temp = []
+        print(colored('♻️ '*10, 'yellow', attrs=['reverse', 'bold']), 'temp 清空')
         if arr == []:
-            print('没有路可以走了，返回res')
+            print('         🚩没有路可以走了，返回所有可以达到目标的路径集合res')
             return res
         
         for i in arr:
-            print('i=', i)
+            print(colored('路径集合arr中的其中一个路径i =>', 'red'), i)
             for j in i:
                 print(colored(' 路径中其中一项的j=', 'green', attrs=['reverse', 'blink', 'bold']), j)
                 p = i[:]
-                print(' p=', p, 'i[最后一项]=', i[-1], 'i[最后一项]+路径中其中一项的j =', i[-1]+j)
+                print('这个路径的拷贝p=', p, '将添加  路径i[最后一项]的', i[-1], '与路径中其中一项j的'
+                    , j, '的和:', i[-1]+j)
                 p.append(i[-1]+j)
-                print(colored('新的路径p=','red'), p, 'p[最后一项]=', p[-1], '目标x=', x)
+                print(colored('新的路径p=','cyan'), p, 'p[最后一项]=', p[-1], '目标x=', x)
                 if p[-1] == x:
-                    print('中奖了', '一条达到目标的路径集合res=',res, ' 添加路径 ', p)
+                    print('🏆中奖了', '一条达到目标的路径集合res=',res, ' 添加路径 ', p)
                     res.append(p)
                 elif p[-1] < x:
                     print(' 新的路径p[最后一项]=', p[-1], '小于目标x=', x,'临时路径temp:', temp, '添加新路径p:', p)
                     temp.append(p)
                     print('之后的temp:', temp)
         arr = temp[:]
-        print(colored('重置arr为temp[:] 当前路径集合arr 变成=>', 'blue', attrs=['reverse', 'bold']), arr, '\n\n')
+        print(colored('重置路径集合arr为temp[:] 当前路径集合arr 变成=>', 'blue', attrs=['reverse', 'bold']), arr, '\n\n')
 
 # def addtion_chain_demo(V):
 #     dic = {}
