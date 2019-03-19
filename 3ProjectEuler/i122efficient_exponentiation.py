@@ -66,9 +66,42 @@ import time
 from termcolor import colored
 
 
-def main_process():
+def first_chain(x):
+    if x <= 0:
+        return []
+    if x == 1:
+        return [1]
+    if x == 2:
+        return [1, 2]
 
-    print(colored('mycount=', 'red'), 'results')
+    res = []
+    arr = [[1, 2]]
+    while (1):
+        temp = []
+        for i in arr:
+            for j in i:
+                p = i[:]
+                p.append(i[-1]+j)
+                if p[-1] == x:
+                    return p
+                elif p[-1] < x:
+                    temp.append(p)
+        arr = temp[:]
+
+
+def shortest_chain_len(x):
+    return len(first_chain(x))
+
+def main_process():
+    isum = 0
+    limit = 200
+    for i in range(1, limit+1):        
+        i_len = shortest_chain_len(i) - 1
+        # r = first_chain(i)
+        # 读题目 相乘次数永远比加法链 要少1次
+        print('processing ', i, i_len)
+        isum += i_len
+    print(colored('mycount=', 'red'), isum)
 
 if __name__ == "__main__":
     tic = time.clock()
