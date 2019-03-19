@@ -50,7 +50,10 @@ def all_chains(x):
                     print(' 新的路径p[最后一项]=', p[-1], '小于目标x=', x,'临时路径temp:', temp, '添加新路径p:', p)
                     temp.append(p)
                     print('之后的temp:', temp)
-                    
+                else:
+                    print(colored('不<目标 也不=目标，说明 > 目标' + 
+                        '可以达到目标的路径集合res 临时路径temp 都不做任何改变', 'magenta'))
+
         arr = temp[:]
         print(colored('重置路径集合arr为temp[:] 当前路径集合arr 变成=>', 'blue', attrs=['reverse', 'bold']), 
                 arr, '\n\n\n')
