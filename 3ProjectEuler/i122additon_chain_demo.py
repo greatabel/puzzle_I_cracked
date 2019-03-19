@@ -30,23 +30,24 @@ def all_chains(x):
         temp = []
         if arr == []:
             return res
+        print('arr=', arr)
         for i in arr:
-            print('\ni=', i)
+            print('i=', i)
             for j in i:
-                print(colored(' j=', 'green', attrs=['reverse', 'blink', 'bold']), j)
+                print(colored(' 路径中其中一项的j=', 'green', attrs=['reverse', 'blink', 'bold']), j)
                 p = i[:]
-                print(' p=', p, 'i[-1]=', i[-1], 'i[-1]+j =', i[-1]+j)
+                print(' p=', p, 'i[最后一项]=', i[-1], 'i[最后一项]+路径中其中一项的j =', i[-1]+j)
                 p.append(i[-1]+j)
-                print(colored('#','red'),'     p=', p, 'p[-1]=', p[-1], 'x=', x)
+                print(colored('新的路径p=','red'), p, 'p[最后一项]=', p[-1], '目标x=', x)
                 if p[-1] == x:
-                    print('中奖了', 'res=',res, '添加', p)
+                    print('中奖了', '一条达到目标的路径集合res=',res, ' 添加路径 ', p)
                     res.append(p)
                 elif p[-1] < x:
-                    print(' p[-1]=', p[-1], '<  x=', x,' temp', temp)
+                    print(' 新的路径p[最后一项]=', p[-1], '小于目标x=', x,'临时路径temp:', temp, '添加新路径p:', p)
                     temp.append(p)
-                    print(' p=',p, 'temp=', temp)
+                    print('之后的temp:', temp)
         arr = temp[:]
-        print('设置 arr = temp[:] ==>', arr, temp[:])
+        print(colored('设置 arr 替换为 temp[:] arr变成=>', 'blue'), arr, '\n\n')
 
 # def addtion_chain_demo(V):
 #     dic = {}
@@ -69,7 +70,7 @@ def main_process():
     # addition_chain_exponentiation(5, 31, addition_dic)
     print(colored('mycount=', 'red'), 'results')
 
-    t = all_chains(4)
+    t = all_chains(5)
     print(t)
 
 if __name__ == "__main__":
