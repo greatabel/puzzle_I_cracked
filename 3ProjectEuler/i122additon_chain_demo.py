@@ -27,10 +27,12 @@ def all_chains(x):
     res = []
     arr = [[1, 2]]
     while (1):
+        print(colored('当前路径集合arr:', 'blue', attrs=['reverse', 'bold']), arr)
         temp = []
         if arr == []:
+            print('没有路可以走了，返回res')
             return res
-        print('arr=', arr)
+        
         for i in arr:
             print('i=', i)
             for j in i:
@@ -47,7 +49,7 @@ def all_chains(x):
                     temp.append(p)
                     print('之后的temp:', temp)
         arr = temp[:]
-        print(colored('设置 arr 替换为 temp[:] arr变成=>', 'blue'), arr, '\n\n')
+        print(colored('重置arr为temp[:] 当前路径集合arr 变成=>', 'blue', attrs=['reverse', 'bold']), arr, '\n\n')
 
 # def addtion_chain_demo(V):
 #     dic = {}
