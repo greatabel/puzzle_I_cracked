@@ -31,7 +31,7 @@ def all_chains(x):
         temp = []
         print(colored('♻️ '*10, 'yellow', attrs=['reverse', 'bold']), 'temp 清空')
         if arr == []:
-            print('         🚩没有路可以走了，返回所有可以达到目标的路径集合res')
+            print('     🚩没有路可以走了，返回所有可以达到目标的路径集合res:' , res)
             return res
         
         for i in arr:
@@ -50,8 +50,10 @@ def all_chains(x):
                     print(' 新的路径p[最后一项]=', p[-1], '小于目标x=', x,'临时路径temp:', temp, '添加新路径p:', p)
                     temp.append(p)
                     print('之后的temp:', temp)
+                    
         arr = temp[:]
-        print(colored('重置路径集合arr为temp[:] 当前路径集合arr 变成=>', 'blue', attrs=['reverse', 'bold']), arr, '\n\n')
+        print(colored('重置路径集合arr为temp[:] 当前路径集合arr 变成=>', 'blue', attrs=['reverse', 'bold']), 
+                arr, '\n\n\n')
 
 # def addtion_chain_demo(V):
 #     dic = {}
