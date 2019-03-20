@@ -1,5 +1,6 @@
 '''
-The radical of n, rad(n), is the product of the distinct prime factors of n. For example, 
+The radical of n, rad(n), is the product of the distinct prime factors of n.
+For example, 
 504 = 23 × 32 × 7, so rad(504) = 2 × 3 × 7 = 42.
 
 If we calculate rad(n) for 1 ≤ n ≤ 10, then sort them on rad(n), and sorting on n 
@@ -91,7 +92,4 @@ if __name__ == "__main__":
     main_process()
 
     toc = time.clock()
-    print("time=",toc - tic)
-
-
-
+    print("time=", toc - tic)
