@@ -61,9 +61,15 @@ def primeSieve(sieveSize):
 
 limit = 10 ** 10
 def main_process():
-    ps = primeSieve(45000)
-    print(len(ps), ps[:10])
-    print(colored('mycount=', 'red'), 'results')
+    ps = primeSieve(450000)
+    n = 7037
+    r = 0
+    while r < limit:
+        n += 2
+        p = ps[n-1]
+        # print('p=', p)
+        r = 2 * p * n
+    print(colored('mycount=', 'red'), n)
 
 if __name__ == "__main__":
     tic = time.clock()
