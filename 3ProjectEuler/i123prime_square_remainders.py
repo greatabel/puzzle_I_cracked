@@ -20,6 +20,8 @@ Find the least value of n for which the remainder first exceeds 10^10.
 
 求使余数首次超过10^10的最小n值。
 
+#----------------------------#
+思路分析：肯定不可能暴力破解了，看看10^10就知道了，得先数学上分析下有没有trick
 '''
 
 
