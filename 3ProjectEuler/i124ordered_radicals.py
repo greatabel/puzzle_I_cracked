@@ -62,8 +62,6 @@ n   rad(n)      n   rad(n)  k
 
 
 
-
-
 import time
 from termcolor import colored
 from i123primeSieve_demo import primeSieve
@@ -78,13 +76,14 @@ def main_process():
     print(rads)
 
     for p in primes:
-        print('\n', colored(p, 'red', attrs=['blink', 'bold']))
+        # print('\n', colored(p, 'red', attrs=['blink', 'bold']))
         for i in range(p, limit+1, p):
             # print(i, ' ', end='')
             rads[i][0] *= p
             # print('\n', rads)
     print(sorted(rads)[10000][1])
     print(colored('mycount=', 'red'), 'results')
+    # 21417
 
 if __name__ == "__main__":
     tic = time.clock()
