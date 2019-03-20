@@ -22,20 +22,54 @@ Find the least value of n for which the remainder first exceeds 10^10.
 
 #----------------------------#
 思路分析：肯定不可能暴力破解了，看看10^10就知道了，得先数学上分析下有没有trick
+
+欧拉工程项目第120
+这个可以是个纯数学题目，具体分析思路见：i120.jpg
+
+根据分析可知当n 为 偶数， 余数是2 
+而          n 为 奇数， 余数是2an = 2* Pn * n
 '''
 
-
+import math
 import time
 from termcolor import colored
 
 
+def primeSieve(sieveSize):
+    # Returns a list of prime numbers calculated using
+    # the Sieve of Eratosthenes algorithm.
+    sieve = [True] * sieveSize
+
+    sieve[0] = False # zero and one are not prime numbers
+    sieve[1] = False
+
+    # create the sieve
+    for i in range(2, int(math.sqrt(sieveSize)) + 1):
+        pointer = i * 2
+        while pointer < sieveSize:
+            sieve[pointer] = False
+            pointer += i
+
+
+    # compile the list of primes
+    primes = []
+    for i in range(sieveSize):
+        if sieve[i] == True:
+            primes.append(i)
+    return primes
+
+
+limit = 10 ** 10
 def main_process():
+    ps = primeSieve(45000)
+    print(len(ps), ps[:10])
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
     tic = time.clock()
     
     main_process()
+
 
     toc = time.clock()
     print("time=",toc - tic)
