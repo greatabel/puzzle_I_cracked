@@ -34,7 +34,7 @@ n^2 + (n-1)^2 + ... + 1^2 = n* (n+1)*(2n+1)/6
 
 
 
-
+import math
 import time
 from termcolor import colored
 
@@ -48,16 +48,42 @@ def palindromic(num):
         num = round((num-num%10 )/10)
     # print("results=", results)
     flag = (results == list(reversed(results)))
-    if flag:
-        print("flag:",list(reversed(results)))
+    # if flag:
+    #     print("flag:",list(reversed(results)))
 
     return flag
 
 
+total_limit = 10**8
+# total_limit = 1000
+limit = int(math.sqrt(total_limit))
+
+def square_sum(n):
+    return n * (n+1) * (2*n + 1)/6
+
+
+def slice_square_sum(start, end):
+    return square_sum(end) - square_sum(start) + start ** 2
+
+
 def main_process():
-    for i in range(100, 135):
-        palindromic(i)
-    print(colored('mycount=', 'red'), 'results')
+    # for i in range(100, 135):
+    #     palindromic(i)
+    pset = set()
+    flag = False
+    for i in range(1, limit):
+        for j in range(i+1, limit):
+            p = slice_square_sum(i, j)
+            if p < total_limit:
+                if palindromic(p) and (p!=0) and (p!=1):                
+                        pset.add(p)
+                # if i % 100 == 0:
+                #     print(i, j, 'palindromic sum:', p)
+            else:
+                break
+              
+
+    print(colored('mycount=', 'red'), int(sum(pset)))
 
 if __name__ == "__main__":
     tic = time.clock()
