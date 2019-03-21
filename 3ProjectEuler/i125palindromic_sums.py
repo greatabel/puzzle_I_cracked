@@ -22,17 +22,13 @@ can be written as the sum of consecutive squares.
 解题思路:
 平方和计算公式：
 n^2 + (n-1)^2 + ... + 1^2 = n* (n+1)*(2n+1)/6
+然后可以看到 这些数的上限在 更号（limit）之类
+然后我们在这个范围里面遍历所有可能的平方和，通过我们的公式（其实
+通过数学方法肯定可以 化简 slice_square_sum，但是算了）
+
+检验是否是回文就行了，是的就加上
 
 '''
-
-
-
-
-
-
-
-
-
 
 import math
 import time
