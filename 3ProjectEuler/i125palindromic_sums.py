@@ -84,6 +84,7 @@ def main_process():
               
 
     print(colored('mycount=', 'red'), int(sum(pset)))
+    # mycount= 2906969179
 
 if __name__ == "__main__":
     tic = time.clock()
