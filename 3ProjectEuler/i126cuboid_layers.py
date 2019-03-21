@@ -34,8 +34,33 @@ import time
 from termcolor import colored
 
 
+def cube(x, y, z, n):
+    return 2 * (x * y + x * z + y * z) + 4 * (x + y + z + n - 2) * (n - 1)
+
+
+limit = 30000
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    
+    count = [0] * (limit + 1)
+    for z in range(1, limit):
+        if cube(z, z, z, 1) > limit:
+            break
+        for y in range(z, limit):
+            if cube(y, y, z, 1) > limit:
+                break
+            for x in range(y, limit):
+                if cube(x, y, z, 1) > limit:
+                    break
+                for n in range(1, limit):
+                    c = cube(x, y, z, n)
+                    if c > limit:
+                        break
+                    count[c] += 1
+    for i in range(1, limit):
+        if count[i] == 1000:
+            print(colored('mycount=', 'red'), i)
+            break
+    
 
 if __name__ == "__main__":
     tic = time.clock()
