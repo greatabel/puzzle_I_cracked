@@ -9,7 +9,7 @@ Find the sum of all the numbers less than 10^8 that are both palindromic and
 can be written as the sum of consecutive squares.
 
 #----------------------------#
-翻译：回文和
+翻译：欧拉工程/欧拉项目 125 : 回文和
 
 回文数595很有趣，因为它可以写成连续平方数的和：
 6^2 + 7^2 + 8^2 + 9^2 + 10^2 + 11^2 + 12^2
@@ -19,7 +19,9 @@ can be written as the sum of consecutive squares.
 在小于10^8的数中，找出所有可以写成连续平方数的和的回文数，并求它们的和。
 
 #----------------------------#
-
+解题思路:
+平方和计算公式：
+n^2 + (n-1)^2 + ... + 1^2 = n* (n+1)*(2n+1)/6
 
 '''
 
