@@ -42,6 +42,10 @@ rad(4320) = 30 < 32
 
 对于c < 120000，求∑c。
 
+#----------------------------#
+思路：
+rad(a * b * c) = rad (a) * rad(b) * rad(c)
+
 '''
 
 
@@ -61,3 +65,4 @@ if __name__ == "__main__":
 
     toc = time.clock()
     print("time=",toc - tic)
+
