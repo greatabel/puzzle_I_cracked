@@ -53,9 +53,13 @@ rad(a * b * c) = rad (a) * rad(b) * rad(c)
 
 import time
 from termcolor import colored
+from fractions import gcd
 
+
+limit = 120000
 
 def main_process():
+    print(gcd(100, 40))
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
