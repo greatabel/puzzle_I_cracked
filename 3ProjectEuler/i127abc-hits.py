@@ -68,11 +68,13 @@ def main_process():
     for i in range(2, limit):
         if radicals[i] == 1:
             radicals[i] = i
+            print(colored('i=', 'red'), i)
             for j in range(i + i, limit, i):
                 radicals[j] *= i
+                print(' i=', i,'j=', j,  'radicals[' , j , ']=', radicals[j])
     index = 0
     for item in radicals:
-        print(index, item)
+        print(index, '=>', item)
         index += 1
     print(colored('mycount=', 'red'), 'results')
 
