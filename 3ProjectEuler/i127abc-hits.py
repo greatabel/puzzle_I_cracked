@@ -93,8 +93,10 @@ def main_process():
     #         # print('c=', a+b)
     #         if a % 100 == 0:
     #             print(a)
+
+    # 加速的方法
     sortedrads = sorted((rad, n) for (n, rad) in enumerate(radicals))
-    print(sortedrads)
+    # print(sortedrads)
     for c in range(2, limit):
         for (rad, a) in sortedrads:
             rad *= radicals[c]
@@ -105,6 +107,7 @@ def main_process():
                 ans += c
 
     print(colored('mycount=', 'red'), ans)
+    # 18407904
 
 if __name__ == "__main__":
     tic = time.process_time()
