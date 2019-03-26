@@ -57,7 +57,10 @@ from math import gcd
 
 
 limit = 120000
+
+# 测试小范围数据
 # limit = 1000
+# limit = 20
 
 def main_process():
     radicals = []
@@ -77,18 +80,31 @@ def main_process():
         # print(index, '=>', item)
         index += 1
 
-    result = 0
-    for a in range(1, limit):
-        for b in range(a+1, limit-a):
-            if radicals[a] * radicals[b] * radicals[a+b] >= (a+b):
-                continue
-            if gcd(a, b) != 1:
-                continue
-            result += (a+b)
-            # print('c=', a+b)
-            if a % 100 == 0:
-                print(a)
-    print(colored('mycount=', 'red'), result)
+    ans = 0
+    # 太慢了
+
+    # for a in range(1, limit):
+    #     for b in range(a+1, limit-a):
+    #         if radicals[a] * radicals[b] * radicals[a+b] >= (a+b):
+    #             continue
+    #         if gcd(a, b) != 1:
+    #             continue
+    #         result += (a+b)
+    #         # print('c=', a+b)
+    #         if a % 100 == 0:
+    #             print(a)
+    sortedrads = sorted((rad, n) for (n, rad) in enumerate(radicals))
+    print(sortedrads)
+    for c in range(2, limit):
+        for (rad, a) in sortedrads:
+            rad *= radicals[c]
+            if rad >= c:
+                break
+            b = c - a
+            if a < b and rad * radicals[b] < c and gcd(a, b) == 1:
+                ans += c
+
+    print(colored('mycount=', 'red'), ans)
 
 if __name__ == "__main__":
     tic = time.process_time()
