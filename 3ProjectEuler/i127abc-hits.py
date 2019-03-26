@@ -53,36 +53,48 @@ rad(a * b * c) = rad (a) * rad(b) * rad(c)
 
 import time
 from termcolor import colored
-from fractions import gcd
+from math import gcd
 
 
 limit = 120000
-limit = 12
+# limit = 1000
 
 def main_process():
     radicals = []
     for i in range(0, limit):
         radicals.append(1)
-    print(radicals)
+    # print(radicals)
 
     for i in range(2, limit):
         if radicals[i] == 1:
             radicals[i] = i
-            print(colored('i=', 'red'), i)
-            for j in range(i + i, limit, i):
+            # print(colored('i=', 'red'), i)
+            for j in range(i * 2, limit, i):
                 radicals[j] *= i
-                print(' i=', i,'j=', j,  'radicals[' , j , ']=', radicals[j])
+                # print(' i=', i,'j=', j,  'radicals[' , j , ']=', radicals[j])
     index = 0
     for item in radicals:
-        print(index, '=>', item)
+        # print(index, '=>', item)
         index += 1
-    print(colored('mycount=', 'red'), 'results')
+
+    result = 0
+    for a in range(1, limit):
+        for b in range(a+1, limit-a):
+            if radicals[a] * radicals[b] * radicals[a+b] >= (a+b):
+                continue
+            if gcd(a, b) != 1:
+                continue
+            result += (a+b)
+            # print('c=', a+b)
+            if a % 100 == 0:
+                print(a)
+    print(colored('mycount=', 'red'), result)
 
 if __name__ == "__main__":
-    tic = time.clock()
+    tic = time.process_time()
     
     main_process()
 
-    toc = time.clock()
+    toc = time.process_time()
     print("time=",toc - tic)
 
