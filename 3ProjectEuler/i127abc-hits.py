@@ -57,9 +57,23 @@ from fractions import gcd
 
 
 limit = 120000
+limit = 12
 
 def main_process():
-    print(gcd(100, 40))
+    radicals = []
+    for i in range(0, limit):
+        radicals.append(1)
+    print(radicals)
+
+    for i in range(2, limit):
+        if radicals[i] == 1:
+            radicals[i] = i
+            for j in range(i + i, limit, i):
+                radicals[j] *= i
+    index = 0
+    for item in radicals:
+        print(index, item)
+        index += 1
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
