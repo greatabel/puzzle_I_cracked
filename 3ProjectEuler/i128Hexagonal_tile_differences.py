@@ -46,13 +46,38 @@ Find the 2000th tile in this sequence.
 
 
 
-
+import itertools
+from itertools import count, islice
+from math import sqrt
 import time
 from termcolor import colored
 
 
+def isprime(n):
+    return n > 1 and all(n%i for i in islice(count(2), int(sqrt(n)-1)))
+
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    count = 1
+    limit = 2000
+    # limit = 10
+    n = 0
+    number = 0
+
+    while (count < limit):
+        n+=1
+        if (isprime(6 * n - 1) and isprime(6 * n + 1) and isprime(12 * n + 5)):
+            count += 1
+            number = (3 * n * n - 3*n + 2)
+            if (count >= limit):
+                break
+        
+        if (isprime(6 * n + 5) and isprime(6 * n - 1) and isprime(12 * n - 7) and n != 1):
+            count += 1
+            number = (3 * n * n + 3*n + 1)                                    
+        
+    
+
+    print(colored('mycount=', 'red'), number)
 
 if __name__ == "__main__":
     tic = time.process_time()
