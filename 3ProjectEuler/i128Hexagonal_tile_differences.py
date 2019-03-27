@@ -42,6 +42,9 @@ Find the 2000th tile in this sequence.
 如果所有PD(n) = 3的地砖构成从小到大排列的序列，那么第10块将是标有271的地砖。
 
 找出这个序列中的第2000块地砖所标的数。
+
+#----------------------------#
+这题完全是数学分析题目，跳过此题，不想解这道题
 '''
 
 
@@ -78,6 +81,7 @@ def main_process():
     
 
     print(colored('mycount=', 'red'), number)
+    # 14516824220
 
 if __name__ == "__main__":
     tic = time.process_time()
