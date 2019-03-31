@@ -57,6 +57,7 @@ def main_process():
     while A(n) < Limit: 
         n += 2
     print(colored('mycount=', 'red'), n)
+    # mycount= 1000023
 
 if __name__ == "__main__":
     tic = time.process_time()
