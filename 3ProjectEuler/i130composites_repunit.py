@@ -16,6 +16,8 @@ the first five examples being 91, 259, 451, 481, and 703.
 Find the sum of the first twenty-five composite values of n for which
 GCD(n, 10) = 1 and n − 1 is divisible by A(n).
 
+#----------------------------#
+
 欧拉工程130: 满足素数循环单位数性质的合数
 
 只包含数字1的数被称为循环单位数，我们定义R(k)是长为k的循环单位数，例如，R(6) = 111111。
