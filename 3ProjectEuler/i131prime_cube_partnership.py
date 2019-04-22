@@ -1,6 +1,6 @@
 '''
 There are some prime values, p, for which there exists a positive integer, n, 
-such that the expression n3 + n2p is a perfect cube.
+such that the expression n3 + n^2p is a perfect cube.
 
 For example, when p = 19, 8^3 + 8^2×19 = 12^3.
 
@@ -13,7 +13,7 @@ How many primes below one million have this remarkable property?
 
 欧拉工程/欧拉项目131: 素数立方数组合
 
-对于某些素数p，存在正整数n，使得表达式n3 + n2p是立方数。
+对于某些素数p，存在正整数n，使得表达式n3 + n^2p是立方数。
 
 例如，对于p = 19，8^3 + 8^2×19 = 12^3
 
