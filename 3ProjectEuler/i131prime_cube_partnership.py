@@ -26,18 +26,12 @@ How many primes below one million have this remarkable property?
 
 
 
-
-
-
-
-
-
-
 import time
 from termcolor import colored
 
 
 def main_process():
+
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
