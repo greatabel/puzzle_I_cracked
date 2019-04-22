@@ -26,13 +26,26 @@ How many primes below one million have this remarkable property?
 
 
 
+import itertools
+from itertools import count, islice
+from math import sqrt, gcd
 import time
 from termcolor import colored
 
 
-def main_process():
+def isprime(n):
+    return n > 1 and all(n%i for i in islice(count(2), int(sqrt(n)-1)))
 
-    print(colored('mycount=', 'red'), 'results')
+def p(i):
+    return 3 * i * i + 3 * i + 1
+
+# 3 * 577 * 577 + 3 * 577 + 1 = 1000519
+def main_process():
+    r = 0 
+    for i in range(1, 577):
+        if isprime(p(i)):
+            r += 1
+    print(colored('mycount=', 'red'), r)
 
 if __name__ == "__main__":
     tic = time.process_time()
