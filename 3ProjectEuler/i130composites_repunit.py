@@ -34,14 +34,45 @@ GCD(n, 10) = 1且n − 1能够被A(n)整除，并求它们的和。
 
 '''
 
-
-
+import itertools
+from itertools import count, islice
+from math import sqrt, gcd
 import time
 from termcolor import colored
 
 
+def isprime(n):
+    return n > 1 and all(n%i for i in islice(count(2), int(sqrt(n)-1)))
+
+
+def A(n):
+    if isprime(n) or gcd(n, 10)!= 1:
+        return 0
+    x, k = 1, 1
+    while x != 0:
+        x = (x * 10 + 1) % n
+        k += 1
+        # print('x=', x)
+    return k
+
+limit = 25
+counter = 0
+
+n = 1
+result = 0
+
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    global counter, n, result
+    while ( counter < limit):
+        n += 1
+        if isprime(n):
+            continue
+        a = A(n)
+        if a != 0 and (n-1) % a == 0:
+            result += n
+            counter += 1
+
+    print(colored('mycount=', 'red'), result)
 
 if __name__ == "__main__":
     tic = time.process_time()
