@@ -52,7 +52,6 @@ def A(n):
     while x != 0:
         x = (x * 10 + 1) % n
         k += 1
-        # print('x=', x)
     return k
 
 limit = 25
