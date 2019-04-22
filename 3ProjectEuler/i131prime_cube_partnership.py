@@ -39,13 +39,14 @@ def isprime(n):
 def p(i):
     return 3 * i * i + 3 * i + 1
 
-# 3 * 577 * 577 + 3 * 577 + 1 = 1000519
+#  from gogole-circulator we know 3 * 577 * 577 + 3 * 577 + 1 = 1000519
 def main_process():
     r = 0 
     for i in range(1, 577):
         if isprime(p(i)):
             r += 1
     print(colored('mycount=', 'red'), r)
+    # mycount= 173
 
 if __name__ == "__main__":
     tic = time.process_time()
