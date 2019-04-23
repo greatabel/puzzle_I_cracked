@@ -52,13 +52,13 @@ def main_process():
     print('primes ', len(primes), primes[0])
     mysum = 0
     counter = 0
-    # k = 10 ** 10
-    k = 10 ** (10 ** 9)
+    # k = 10 
+    k = pow(10, 9)
     i = 0
     limit = 40
     while counter < limit:
 
-        if i < len(primes) and (k-1) % (9 * primes[i]) == 0 :
+        if i < len(primes) and pow(10, k, 9*primes[i]) == 1 :
             print(primes[i])
             mysum += primes[i]
             counter += 1
