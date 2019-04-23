@@ -19,7 +19,6 @@ Find the sum of the first forty prime factors of R(10^9).
 
 '''
 
-
 import math
 import time
 from termcolor import colored
@@ -50,10 +49,18 @@ def primeSieve(sieveSize):
 
 def main_process():
     primes = primeSieve(10000)
+    print('#'*10, len(primes), primes[0])
     mysum = 0
     counter = 0
     k = 10 ** 10
     i = 0
+    limit = 40
+    while counter < limit:
+
+        if i < len(primes) and (k-1) % (9 * primes[i]) == 0 :
+            print(primes[i])
+            counter += 1
+        i += 1
 
 
     print(colored('mycount=', 'red'), 'results')
