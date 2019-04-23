@@ -48,22 +48,24 @@ def primeSieve(sieveSize):
     return primes
 
 def main_process():
-    primes = primeSieve(10000)
-    print('#'*10, len(primes), primes[0])
+    primes = primeSieve(200000)
+    print('primes ', len(primes), primes[0])
     mysum = 0
     counter = 0
-    k = 10 ** 10
+    # k = 10 ** 10
+    k = 10 ** (10 ** 9)
     i = 0
     limit = 40
     while counter < limit:
 
         if i < len(primes) and (k-1) % (9 * primes[i]) == 0 :
             print(primes[i])
+            mysum += primes[i]
             counter += 1
         i += 1
 
 
-    print(colored('mycount=', 'red'), 'results')
+    print(colored('mycount=', 'red'), mysum)
 
 if __name__ == "__main__":
     tic = time.process_time()
