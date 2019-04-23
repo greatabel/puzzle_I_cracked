@@ -57,15 +57,14 @@ def main_process():
     i = 0
     limit = 40
     while counter < limit:
-
         if i < len(primes) and pow(10, k, 9*primes[i]) == 1 :
-            print(primes[i])
+            # print(primes[i])
             mysum += primes[i]
             counter += 1
         i += 1
 
-
     print(colored('mycount=', 'red'), mysum)
+    # mycount= 843296
 
 if __name__ == "__main__":
     tic = time.process_time()
