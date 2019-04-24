@@ -27,9 +27,10 @@ Find the sum of all the primes below one-hundred thousand that will never be a f
 
 然而，不存在n使得R(10n)能被19整除。
 
-事实上，在小于100的质数中，只有11，17，41和73能够成为R(10n)的质因数。
+事实上，在小于100的质数中，只有11，17，41和73能够成为R(10^n)的质因数。
 
-找出所有小于十万且永远不会成为R(10n)的质因数的质数之和。
+找出所有小于十万且永远不会成为R(10^n)的质因数的质数之和。
+
 '''
 
 
@@ -47,3 +48,4 @@ if __name__ == "__main__":
 
     toc = time.process_time()
     print("time=",toc - tic)
+
