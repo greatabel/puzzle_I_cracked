@@ -25,7 +25,7 @@ Find the sum of all the primes below one-hundred thousand that will never be a f
 
 尽管R(10)，R(100)和R(1000)都不能被17整除，R(10000)却能够被17整除。
 
-然而，不存在n使得R(10n)能被19整除。
+然而，不存在n使得R(10^n)能被19整除。
 
 事实上，在小于100的质数中，只有11，17，41和73能够成为R(10^n)的质因数。
 
