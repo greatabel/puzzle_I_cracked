@@ -77,6 +77,7 @@ def main_process():
         if pow(10, assuming_k, 9*prime) != 1:
             mysum += prime
     print(colored('mycount=', 'red'), mysum)
+    # mycount= 453647705
 
 if __name__ == "__main__":
     tic = time.process_time()
@@ -85,4 +86,3 @@ if __name__ == "__main__":
 
     toc = time.process_time()
     print("time=",toc - tic)
-
