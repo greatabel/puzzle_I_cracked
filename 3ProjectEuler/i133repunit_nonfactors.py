@@ -71,7 +71,12 @@ def main_process():
     mysum = 0
     primes = primeSieve(100000)
     print('primes ', len(primes), primes[0:10],primes[-10:])
-    print(colored('mycount=', 'red'), 'results')
+    assuming_k = pow(10, 16)
+    for prime in primes:
+        # 根据 i132 关于整除的分析
+        if pow(10, assuming_k, 9*prime) != 1:
+            mysum += prime
+    print(colored('mycount=', 'red'), mysum)
 
 if __name__ == "__main__":
     tic = time.process_time()
