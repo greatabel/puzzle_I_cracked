@@ -73,7 +73,8 @@ def main_process():
     print('primes ', len(primes), primes[0:10],primes[-10:])
     assuming_k = pow(10, 16)
     for prime in primes:
-        # 根据 i132 关于整除的分析
+        # 根据 i132.jpg 关于整除的分析， 我们可以简化检查
+        # prime 是否是 assuming_k 因子的过程
         if pow(10, assuming_k, 9*prime) != 1:
             mysum += prime
     print(colored('mycount=', 'red'), mysum)
