@@ -68,8 +68,9 @@ def primeSieve(sieveSize):
 
 
 def main_process():
+    mysum = 0
     primes = primeSieve(100000)
-    print('primes ', len(primes), primes[0:10])
+    print('primes ', len(primes), primes[0:10],primes[-10:])
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
