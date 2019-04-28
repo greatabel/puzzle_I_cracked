@@ -30,6 +30,10 @@ Find ∑ S for every pair of consecutive primes with 5 ≤ p1 ≤ 1000000.
 
 对于5 ≤ p1 ≤ 1000000内的所有连续质数对，求∑ S。
 
+#----------------------------#
+思路分析：肯定不可能硬解决，速度不行。不许数学化问题：
+
+
 '''
 
 import time
