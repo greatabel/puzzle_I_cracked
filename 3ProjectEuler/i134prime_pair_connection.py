@@ -65,8 +65,13 @@ def primeSieve(sieveSize):
             primes.append(i)
     return primes
 
-
+limit = 100
 def main_process():
+    primes = primeSieve(limit)
+    print(primes, len(primes))
+    for k, v in enumerate(primes):
+        print(k, v)
+
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
