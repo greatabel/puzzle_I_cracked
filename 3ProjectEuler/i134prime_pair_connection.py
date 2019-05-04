@@ -70,7 +70,8 @@ def main_process():
     primes = primeSieve(limit)
     print(primes, len(primes))
     for k, v in enumerate(primes):
-        print(k, v)
+        if v!= 3 and k < len(primes)-1:
+            print('index=', k, 'value=', v, primes[k], primes[k+1])
 
     print(colored('mycount=', 'red'), 'results')
 
