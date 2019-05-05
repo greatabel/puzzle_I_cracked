@@ -36,7 +36,6 @@ Find ∑ S for every pair of consecutive primes with 5 ≤ p1 ≤ 1000000.
 
 '''
 
-
 import math
 import time
 from termcolor import colored
@@ -72,6 +71,12 @@ def main_process():
     for k, v in enumerate(primes):
         if v!= 3 and k < len(primes)-1:
             print('index=', k, 'value=', v, primes[k], primes[k+1])
+            i = len(str(primes[k+1]))
+            s = 10 ** i + primes[k+1]
+            # while int(s / primes[k]) != 0:
+            #     i += 1
+            #     s = 10 ** i + primes[k+1]
+            # print('s=', s)
 
     print(colored('mycount=', 'red'), 'results')
 
