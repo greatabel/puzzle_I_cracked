@@ -72,11 +72,7 @@ def main_process():
         if v!= 3 and k < len(primes)-1:
             print('index=', k, 'value=', v, primes[k], primes[k+1])
             i = len(str(primes[k+1]))
-            s = 10 ** i + primes[k+1]
-            # while int(s / primes[k]) != 0:
-            #     i += 1
-            #     s = 10 ** i + primes[k+1]
-            # print('s=', s)
+
 
     print(colored('mycount=', 'red'), 'results')
 
