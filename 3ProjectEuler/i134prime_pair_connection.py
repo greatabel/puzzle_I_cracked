@@ -70,8 +70,14 @@ def main_process():
     print(primes, len(primes))
     for k, v in enumerate(primes):
         if v!= 3 and k < len(primes)-1:
-            print('index=', k, 'value=', v, primes[k], primes[k+1])
             i = len(str(primes[k+1]))
+            print('index=', k, 'value=', v, primes[k], primes[k+1], 'i=', i, 10**i)
+            j = 1
+            combine = j * (10**i) + primes[k]            
+            while combine % primes[k+1] != 0:
+                j += 1
+                combine = j * (10**i) + primes[k]
+            print('combine=', combine)
 
 
     print(colored('mycount=', 'red'), 'results')
