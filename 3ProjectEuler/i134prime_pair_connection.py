@@ -87,8 +87,10 @@ def main_process():
     # 对于5 ≤ p1
     primes.remove(2)
     primes.remove(3)
-    # 因为 p2 是可以在limit之外的
+
+    # 因为 p2 是可以在limit之外的, 先算出范围外之后第一个质数
     primes.append(1000003)
+
     mysum = 0
     print(primes, len(primes))
     for key, v in enumerate(primes):
@@ -102,7 +104,6 @@ def main_process():
             while k < p:
                 k *= 10
             m = (q - p) * reciprocal_mod(k % q, q) % q
-
             combine =  m * k + p
             if key % 100 == 0:
                 print(p, q, combine, 'progress≈', key * 100 / len(primes), '%')
