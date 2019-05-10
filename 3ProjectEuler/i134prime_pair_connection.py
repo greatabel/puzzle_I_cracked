@@ -79,7 +79,7 @@ def reciprocal_mod(t, b):
         return a % b
 
 limit = 10**6
-limit = 100
+# limit = 100
 
 def main_process():
     primes = primeSieve(limit)
@@ -98,7 +98,8 @@ def main_process():
             a = (primes[k+1] - primes[k]) * reciprocal_mod(t % primes[k+1], primes[k+1]) % primes[k+1]
             combine = a * k + primes[k]
             mysum += combine
-            print(primes[k], primes[k+1], 'combine=', combine, k/limit)
+            if k % 100 == 0:
+                print(primes[k], primes[k+1], 'combine=', combine, k/len(primes))
 
 
     print(colored('mycount=', 'red'), mysum)
