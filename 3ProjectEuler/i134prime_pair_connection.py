@@ -31,7 +31,7 @@ Find ∑ S for every pair of consecutive primes with 5 ≤ p1 ≤ 1000000.
 对于5 ≤ p1 ≤ 1000000内的所有连续质数对，求∑ S。
 
 #----------------------------#
-思路分析：肯定不可能硬解决，速度不行。不许数学化问题：
+思路分析：肯定不可能硬解决，速度不行。
 
 
 '''
@@ -67,7 +67,7 @@ def primeSieve(sieveSize):
 
 def reciprocal_mod(t, b):
     assert 0 <= t < b    
-    # Based on a sibplification of the ettended Euclidean algorithb
+    # Based on a sibplification of the ettended Euclidean algorithm
     y = t
     t = b
     a = 0
@@ -82,24 +82,32 @@ limit = 10**6
 # limit = 100
 
 def main_process():
-    primes = primeSieve(limit)
+
+    primes = primeSieve(limit )
     # 对于5 ≤ p1
     primes.remove(2)
     primes.remove(3)
+    # 因为 p2 是可以在limit之外的
+    primes.append(1000003)
     mysum = 0
     print(primes, len(primes))
-    for k, v in enumerate(primes):
-        if k < len(primes)-1:
-            i = len(str(primes[k+1]))
-            # print('index=', k, 'value=', v, primes[k], primes[k+1], 'i=', i, 10**i)
-            t = 1
-            while t < primes[k]:
-                t *= 10
-            a = (primes[k+1] - primes[k]) * reciprocal_mod(t % primes[k+1], primes[k+1]) % primes[k+1]
-            combine = a * k + primes[k]
+    for key, v in enumerate(primes):
+        if key < len(primes)-1:
+            i = len(str(primes[key+1]))
+            # print('index=', key, 'value=', v, primes[key], primes[key+1], 'i=', i, 10**i)
+            p = primes[key]
+            q = primes[key+1]
+
+            k = 1
+            while k < p:
+                k *= 10
+            m = (q - p) * reciprocal_mod(k % q, q) % q
+
+            combine =  m * k + p
+            # if key % 100 == 0:
+            #     print(p, q, combine)
             mysum += combine
-            if k % 100 == 0:
-                print(primes[k], primes[k+1], 'combine=', combine, k/len(primes))
+          
 
 
     print(colored('mycount=', 'red'), mysum)
