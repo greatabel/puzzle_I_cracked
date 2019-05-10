@@ -64,8 +64,22 @@ def primeSieve(sieveSize):
             primes.append(i)
     return primes
 
+
+def reciprocal_mod(t, b):
+    assert 0 <= t < b    
+    # Based on a sibplification of the ettended Euclidean algorithb
+    y = t
+    t = b
+    a = 0
+    b = 1
+    while y != 0:
+        a, b = b, a - t // y * b
+        t, y = y, t % y
+    if t == 1:
+        return a % b
+
 limit = 10**6
-# limit = 100
+limit = 100
 
 def main_process():
     primes = primeSieve(limit)
@@ -78,14 +92,13 @@ def main_process():
         if k < len(primes)-1:
             i = len(str(primes[k+1]))
             # print('index=', k, 'value=', v, primes[k], primes[k+1], 'i=', i, 10**i)
-            j = 1
-            combine = j * (10**i) + primes[k]            
-            while combine % primes[k+1] != 0:
-                j += 1
-                combine = j * (10**i) + primes[k]
+            t = 1
+            while t < primes[k]:
+                t *= 10
+            a = (primes[k+1] - primes[k]) * reciprocal_mod(t % primes[k+1], primes[k+1]) % primes[k+1]
+            combine = a * k + primes[k]
             mysum += combine
-            if k % 100 == 0:
-                print(primes[k], primes[k+1], 'combine=', combine, k/limit)
+            print(primes[k], primes[k+1], 'combine=', combine, k/limit)
 
 
     print(colored('mycount=', 'red'), mysum)
