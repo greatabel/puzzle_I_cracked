@@ -64,23 +64,31 @@ def primeSieve(sieveSize):
             primes.append(i)
     return primes
 
-limit = 100
+limit = 10**6
+# limit = 100
+
 def main_process():
     primes = primeSieve(limit)
+    # 对于5 ≤ p1
+    primes.remove(2)
+    primes.remove(3)
+    mysum = 0
     print(primes, len(primes))
     for k, v in enumerate(primes):
-        if v!= 3 and k < len(primes)-1:
+        if k < len(primes)-1:
             i = len(str(primes[k+1]))
-            print('index=', k, 'value=', v, primes[k], primes[k+1], 'i=', i, 10**i)
+            # print('index=', k, 'value=', v, primes[k], primes[k+1], 'i=', i, 10**i)
             j = 1
             combine = j * (10**i) + primes[k]            
             while combine % primes[k+1] != 0:
                 j += 1
                 combine = j * (10**i) + primes[k]
-            print('combine=', combine)
+            mysum += combine
+            if k % 100 == 0:
+                print(primes[k], primes[k+1], 'combine=', combine, k/limit)
 
 
-    print(colored('mycount=', 'red'), 'results')
+    print(colored('mycount=', 'red'), mysum)
 
 if __name__ == "__main__":
     tic = time.process_time()
