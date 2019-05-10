@@ -104,13 +104,13 @@ def main_process():
             m = (q - p) * reciprocal_mod(k % q, q) % q
 
             combine =  m * k + p
-            # if key % 100 == 0:
-            #     print(p, q, combine)
+            if key % 100 == 0:
+                print(p, q, combine, 'progress≈', key * 100 / len(primes), '%')
             mysum += combine
           
 
-
     print(colored('mycount=', 'red'), mysum)
+    # mycount= 18613426663617118
 
 if __name__ == "__main__":
     tic = time.process_time()
