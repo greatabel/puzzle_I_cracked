@@ -29,8 +29,18 @@ import time
 from termcolor import colored
 
 
+limit = 10 ** 6
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    # 根据 i135.jpg 分析可知:
+    results = [0] * limit
+    for m in range(1,2 * limit):
+        for k in range(m//5 +1, (m+1)//2):
+            n = (m - k) * (5 * k - m)
+            if n >= limit:
+                break
+            results[n] += 1
+    result = results.count(10)
+    print(colored('mycount=', 'red'), result)
 
 if __name__ == "__main__":
     tic = time.process_time()
