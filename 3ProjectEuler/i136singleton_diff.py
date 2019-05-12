@@ -39,7 +39,8 @@ def main_process():
             results[n] += 1
     result = results.count(1)
     print(colored('mycount=', 'red'), result)
-    # mycount= 4989
+    # mycount= 2544559
+    # time= 121.343906
 
 if __name__ == "__main__":
     tic = time.process_time()
