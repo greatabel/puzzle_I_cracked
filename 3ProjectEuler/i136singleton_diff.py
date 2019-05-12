@@ -20,6 +20,8 @@ How many values of n less than fifty million have exactly one solution?
 
 在小于五千万的数中，有多少个n的取值使得方程有唯一解？
 
+#----------------------------#
+简单：直接使用135的方案，只需要改一些参数 ，😄
 '''
 
 import time
