@@ -96,12 +96,20 @@ def n_assumption_from_observe(i):
     return F(2*i) * F(2*i+1)
 
 
+def x_assumption(n):
+    s = 5 * n**2 + 2*n + 1
+    item = math.sqrt(s)
+    x =( - (n+1) + item ) / 2*n
+    return x
+
 def main_process():
     # observe_phase_of_square()
     # observe_F()
     # 从 上面的探索和 i137.png 分析可知
     for i in range(15):
-        print(i, n_assumption_from_observe(i))
+        n = n_assumption_from_observe(i)
+
+        print(i, 'n=', n, 'x=', x_assumption(n))
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
