@@ -55,7 +55,9 @@ x   AF(x)
 
 求第15个斐波那契金块。
 
+#----------------------------#
 
+感觉这种题目，应该拉马努金这种喜欢连分数的人来一下搞定
 
 '''
 
@@ -63,9 +65,19 @@ x   AF(x)
 
 import time
 from termcolor import colored
+import math
+
+
+def mytry():
+    for n in range(0, 10**5):
+        s = 5 * n**2 + 2*n + 1
+        root = math.sqrt(s)
+        if root.is_integer():
+            print(n, 'sum=', s, root)
 
 
 def main_process():
+    mytry()
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
