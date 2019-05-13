@@ -78,11 +78,13 @@ def F(n):
 
 
 def observe_phase_of_square():
+    i = 0
     for n in range(0, 10**5):
         s = 5 * n**2 + 2*n + 1
         root = math.sqrt(s)
         if root.is_integer():
-            print(n, 'sum=', s, root)
+            print('i=', i, n, 'sum=', s, root)
+            i += 1
 
 def observe_F():
     for i in range(20):
