@@ -68,16 +68,29 @@ from termcolor import colored
 import math
 
 
-def mytry():
+def F(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return F(n-1) + F(n-2)
+
+
+def observe_phase_of_square():
     for n in range(0, 10**5):
         s = 5 * n**2 + 2*n + 1
         root = math.sqrt(s)
         if root.is_integer():
             print(n, 'sum=', s, root)
 
+def observe_F():
+    for i in range(20):
+        print('F(', i, ')=', F(i))
 
 def main_process():
-    mytry()
+    observe_phase_of_square()
+    observe_F()
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
