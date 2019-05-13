@@ -121,6 +121,7 @@ def main_process():
                 break
 
     print(colored('mycount=', 'red'), 'results')
+    # 15 n= 1120149658760 x= 7.754690363390088e+23
 
 if __name__ == "__main__":
     tic = time.process_time()
