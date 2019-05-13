@@ -66,8 +66,11 @@ x   AF(x)
 import time
 from termcolor import colored
 import math
+import functools
 
+# too slow version, need to speed up
 
+@functools.lru_cache(None)
 def F(n):
     if n == 0:
         return 0
@@ -106,10 +109,17 @@ def main_process():
     # observe_phase_of_square()
     # observe_F()
     # 从 上面的探索和 i137.png 分析可知
-    for i in range(15):
+    index = 0
+    for i in range(100):
         n = n_assumption_from_observe(i)
+        x = x_assumption(n)
+        if x.is_integer():
+            index += 1
+            print(i, 'n=', n, 'x=', x, 'index=', index)
+            if index >= 16:
+                # 0 要排除，因为x 需要是正整数
+                break
 
-        print(i, 'n=', n, 'x=', x_assumption(n))
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
