@@ -86,13 +86,22 @@ def observe_phase_of_square():
             print('i=', i, n, 'sum=', s, root)
             i += 1
 
+
 def observe_F():
     for i in range(20):
         print('F(', i, ')=', F(i))
 
+
+def n_assumption_from_observe(i):
+    return F(2*i) * F(2*i+1)
+
+
 def main_process():
-    observe_phase_of_square()
-    observe_F()
+    # observe_phase_of_square()
+    # observe_F()
+    # 从 上面的探索和 i137.png 分析可知
+    for i in range(15):
+        print(i, n_assumption_from_observe(i))
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
