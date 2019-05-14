@@ -32,20 +32,34 @@ Find ∑ L for the twelve smallest isosceles triangles for which h = b ± 1 and 
 
 
 
-
-
-
-
-
-
-
 import time
 from termcolor import colored
+import functools
 
+
+@functools.lru_cache(None)
+def F(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return F(n-1) + F(n-2)
 
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    index = 0
+    mysum = 0
+    for i in range(1, 13):
+        i = 6 * i + 3
+        index += 1
+        print(index, F(i)/2)
+        mysum += F(i)/2
 
+
+
+    print(colored('mycount=', 'red'), mysum)
+    # mycount= 1118049290473932
+    
 if __name__ == "__main__":
     tic = time.process_time()
     
