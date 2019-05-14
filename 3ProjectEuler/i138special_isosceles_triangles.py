@@ -55,11 +55,9 @@ def main_process():
         print(index, F(i)/2)
         mysum += F(i)/2
 
-
-
     print(colored('mycount=', 'red'), mysum)
     # mycount= 1118049290473932
-    
+
 if __name__ == "__main__":
     tic = time.process_time()
     
