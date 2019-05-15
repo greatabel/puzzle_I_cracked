@@ -41,10 +41,26 @@ how many Pythagorean triangles would allow such a tiling to take place?
 
 import time
 from termcolor import colored
+from math import gcd, sqrt
 
 
+limit = 10 ** 8
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    mysum = 0
+    for x in range(3, int(sqrt(limit * 2))+1, 2):
+        for y in range(1, x, 2):
+            a = x * y
+            b = (x * x - y * y) // 2
+            c = (x * x + y * y) // 2
+            p = a + b + c
+            if p >= limit:
+                break
+            if c % (a - b) == 0 and gcd(x, y) == 1:
+                mysum += (limit - 1) // p
+
+
+    print(colored('mycount=', 'red'), mysum)
+    # mycount= 10057761
 
 if __name__ == "__main__":
     tic = time.process_time()
