@@ -39,11 +39,6 @@ how many Pythagorean triangles would allow such a tiling to take place?
 
 
 
-
-
-
-
-
 import time
 from termcolor import colored
 
