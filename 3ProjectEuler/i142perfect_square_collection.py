@@ -9,7 +9,11 @@ such that x + y, x - y, x + z, x - z, y + z, y - z are all perfect squares.
 
 #----------------------------#
 
+欧拉工程142: 完全平方数收集
 
+找出最小的x + y + z的值，其中正整数x > y > z > 0
+
+满足x + y, x - y, x + z, x - z, y + z, y - z 均为完全平方数。
 
 '''
 
