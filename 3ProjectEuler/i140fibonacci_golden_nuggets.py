@@ -46,13 +46,12 @@ x   AG(x)
 
 求前30个修正斐波那契金块的和。
 
+#----------------------------#
+
+思路分析
+
+
 '''
-
-
-
-
-
-
 
 
 
@@ -62,7 +61,13 @@ from termcolor import colored
 
 
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    Limit, sqrt_5, f = 30, 5**0.5, [7, 14, 50, 97]
+
+    for i in range(Limit-4):
+      f.append(7*f[-2] - f[-4])
+
+    r = sum(int(x/sqrt_5)-1 for x in f)
+    print(colored('mycount=', 'red'), r)
 
 if __name__ == "__main__":
     tic = time.process_time()
@@ -71,3 +76,4 @@ if __name__ == "__main__":
 
     toc = time.process_time()
     print("time=",toc - tic)
+
