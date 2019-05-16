@@ -37,6 +37,8 @@ Find the sum of all progressive perfect squares below one trillion (1012).
 
 求所有小于一万亿（1012）的累进平方数之和。
 
+#----------------------------#
+思路分析见 141.jpg
 '''
 
 
@@ -50,10 +52,41 @@ Find the sum of all progressive perfect squares below one trillion (1012).
 
 import time
 from termcolor import colored
+import math
+
+
+limit = 10 ** 12
+
+def is_square(apositiveint):
+  x = apositiveint // 2
+  seen = set([x])
+  while x * x != apositiveint:
+    x = (x + (apositiveint // x)) // 2
+    if x in seen: return False
+    seen.add(x)
+  return True
 
 
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    p_squares = []
+    for a in range(2, 10000):
+        for b  in range(1, a):
+            item = a ** 3 * b ** 2 + b ** 2
+            if item >= limit:
+                break
+            if math.gcd(a, b) > 1:
+                continue
+            c = 1
+            while True:                
+                n = a ** 3 * b * c**2 + c * b**2
+                c += 1
+                if n >= limit:
+                    break
+                if is_square(n) and (n not in p_squares):
+                    p_squares.append(n)
+    r = sum(p_squares)
+    print(colored('mycount=', 'red'), r)
+    # mycount= 878454337159
 
 if __name__ == "__main__":
     tic = time.process_time()
