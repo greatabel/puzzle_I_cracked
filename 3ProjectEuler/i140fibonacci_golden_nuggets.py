@@ -68,6 +68,7 @@ def main_process():
 
     r = sum(int(x/sqrt_5)-1 for x in f)
     print(colored('mycount=', 'red'), r)
+    # mycount= 5673835352990
 
 if __name__ == "__main__":
     tic = time.process_time()
