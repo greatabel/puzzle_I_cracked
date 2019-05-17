@@ -38,9 +38,12 @@ from termcolor import colored
 
 
 limit = 10 ** 3
+limit = 10 ** 9
 def main_process():
     numbers = []
     for i in range(12, limit):
+        if i % 10 ** 6 ==  0:
+            print(i * 100 // limit)
         rev_i = str(i)[::-1]
         if rev_i[0] != '0':
             mysum = i + int(rev_i)
@@ -49,9 +52,9 @@ def main_process():
                 if digit not in  ['1', '3', '5', '7', '9']:
                     flag = False
             if flag:
-                print(mysum)
+                # print(mysum)
                 numbers.append(i)
-    print(numbers)
+    # print(numbers)
     print(colored('mycount=', 'red'), len(numbers))
 
 if __name__ == "__main__":
