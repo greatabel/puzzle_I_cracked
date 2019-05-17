@@ -85,7 +85,7 @@ def main_process():
                 pairs.append((k*a, k*b))
                 pairs.append((k*b, k*a))
     pairs.sort()
-    print(pairs[:10])
+    # print(pairs[:10])
     index = [-1] * limit
     for i in range(0, len(pairs)):
         if index[pairs[i][0]] == -1:
@@ -114,7 +114,7 @@ def main_process():
             if va[ja] in vb and vb.index(va[ja]) != -1 and a + b + va[ja] < limit:
                 sums[a+b+va[ja]] = True
 
-    print('sums=', sums[:10])
+    # print('sums=', sums[:10])
     results = 0
     for i in range(0, limit):
         if sums[i]:
