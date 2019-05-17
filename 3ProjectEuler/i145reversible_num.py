@@ -37,14 +37,17 @@ How many reversible numbers are there below one-billion (109)?
 
 
 
-
-
-
 import time
 from termcolor import colored
 
 
+limit = 10 ** 2
 def main_process():
+    for i in range(12, limit):
+        rev_i = str(i)[::-1]
+        if rev_i[0] == '0':
+            print('@'*10, rev_i) 
+        print(i, '#'*5, rev_i)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
@@ -54,3 +57,6 @@ if __name__ == "__main__":
 
     toc = time.process_time()
     print("time=",toc - tic)
+
+
+
