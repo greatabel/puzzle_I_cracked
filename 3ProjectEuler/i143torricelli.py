@@ -130,12 +130,3 @@ if __name__ == "__main__":
 
     toc = time.process_time()
     print("time=",toc - tic)
-
-
-
-
-
-
-
-
-
