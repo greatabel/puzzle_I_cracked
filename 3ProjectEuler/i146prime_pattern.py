@@ -38,7 +38,35 @@ limit = 15 * 10 ** 7
 limit = 10 ** 6
 
 
+def primeSieve(sieveSize):
+    # Returns a list of prime numbers calculated using
+    # the Sieve of Eratosthenes algorithm.
+    sieve = [True] * sieveSize
+
+    sieve[0] = False # zero and one are not prime numbers
+    sieve[1] = False
+
+    # create the sieve
+    for i in range(2, int(math.sqrt(sieveSize)) + 1):
+        pointer = i * 2
+        while pointer < sieveSize:
+            sieve[pointer] = False
+            pointer += i
+
+
+    # compile the list of primes
+    primes = []
+    for i in range(sieveSize):
+        if sieve[i] == True:
+            primes.append(i)
+    return primes
+
+    
 def isprime(n):
+    # 小素数加速
+    if n % 2 == 0 or n % 3 == 0 or n % 5 == 0 or n % 7 == 0\
+        or n % 11 == 0 or n % 13 == 0 or n % 17 == 0 or n % 23 == 0:
+        return False
     return n > 1 and all(n%i for i in islice(count(2), int(sqrt(n)-1)))
 
 def check(sq):
@@ -52,11 +80,17 @@ def check(sq):
 def main_process():
     results = 0
     for i in range(10, limit + 1, 10):
+        if i % 10000 == 0:
+            print(i * 100 // limit, ' percentage')
         sq = i ** 2
-        if sq % 3 != 1:
+        if ( sq % 3 != 1):
             continue
-        if check(sq):
-            results += sq
+        if (sq % 7 != 2 and sq % 7 != 3 ):
+            continue
+        if (sq % 9 != 0 ) and (sq % 13 != 0) and (sq % 27 != 0):
+            # print('sq=', sq)
+            if check(sq):
+                results += i
     print(colored('mycount=', 'red'), results)
 
 if __name__ == "__main__":
