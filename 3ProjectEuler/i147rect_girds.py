@@ -36,8 +36,17 @@ import time
 from termcolor import colored
 
 
+def nrect(m, n):
+    if m < n: m, n = n, m
+    hvr = m*(m + 1) * n*(n + 1) // 4
+    dr = n*((2*m - n) * (4*n*n - 1) - 3) // 6
+    return hvr + dr
+
+
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    w, h = 47, 43
+    result = sum(nrect(m, n) for m in range(1, w+1) for n in range(1, h+1))
+    print(colored('mycount=', 'red'), result)
 
 if __name__ == "__main__":
     tic = time.process_time()
