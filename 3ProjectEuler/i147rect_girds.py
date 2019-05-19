@@ -25,17 +25,10 @@ How many different rectangles could be situated within 47x43 and smaller grids?
 
 
 
-
-
-
-
-
-
-
 import time
 from termcolor import colored
 
-
+# 不想解决这种类型题目，跳过，使用其他人方案：
 def nrect(m, n):
     if m < n: m, n = n, m
     hvr = m*(m + 1) * n*(n + 1) // 4
@@ -55,3 +48,4 @@ if __name__ == "__main__":
 
     toc = time.process_time()
     print("time=",toc - tic)
+    # mycount= 846910284
