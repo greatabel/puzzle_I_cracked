@@ -29,14 +29,15 @@ What is the sum of all such integers n below 150 million?
 
 from itertools import count, islice
 from math import sqrt, gcd
+import math
 import time
 from termcolor import colored
 
 
 limit = 15 * 10 ** 7
 # test
-limit = 10 ** 6
-
+# limit = 10 ** 6
+myprimes = []
 
 def primeSieve(sieveSize):
     # Returns a list of prime numbers calculated using
@@ -61,13 +62,23 @@ def primeSieve(sieveSize):
             primes.append(i)
     return primes
 
-    
+
 def isprime(n):
     # 小素数加速
+    global myprimes
     if n % 2 == 0 or n % 3 == 0 or n % 5 == 0 or n % 7 == 0\
         or n % 11 == 0 or n % 13 == 0 or n % 17 == 0 or n % 23 == 0:
         return False
+    for p in myprimes:
+        if n % p == 0:
+            return False
+
     return n > 1 and all(n%i for i in islice(count(2), int(sqrt(n)-1)))
+    # 计算小范围就花脸快5分钟
+    # mycount= 1242490
+    # time= 285.630024
+    # 懒得看多久，懒得优化了，除非并行化下，也算了，疲倦了，跑好久后：
+    # mycount= 676333270
 
 def check(sq):
     if isprime(sq + 1) and isprime(sq + 3) and \
@@ -78,10 +89,17 @@ def check(sq):
         return False
 
 def main_process():
+    # 找到上限包括 最大数+27
+    myprimes = primeSieve(int(math.sqrt(limit**2 + 27)))
+    print('len(primes)=', len(myprimes))
     results = 0
     for i in range(10, limit + 1, 10):
         if i % 10000 == 0:
             print(i * 100 // limit, ' percentage')
+        if (i % 3 == 0) or (i % 7 !=3 and i % 7 != 4) or \
+           (i % 13 == 0 or i % 13 == 5 or i % 13 == 6 or i % 13 == 7 or i % 13 == 8):
+           continue
+
         sq = i ** 2
         if ( sq % 3 != 1):
             continue
