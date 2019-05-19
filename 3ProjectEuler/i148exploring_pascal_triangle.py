@@ -18,7 +18,7 @@ However, if we check the first one hundred rows, we will find that only 2361 of 
 Find the number of entries which are not divisible by 7 in the first one billion (109) rows of Pascal's triangle.
 
 #----------------------------#
-欧拉工程148 探索帕斯卡三角
+欧拉工程148： 探索帕斯卡三角
 
 可以验证，帕斯卡三角的前7行是，没有一个整数能够被7整除：
 
@@ -38,6 +38,8 @@ Find the number of entries which are not divisible by 7 in the first one billion
 
 找出帕斯卡三角前十亿（109）行中不能被7整除的数的数目。
 
+#----------------------------#
+思路分析：暴力破解肯定是没戏
 
 
 '''
