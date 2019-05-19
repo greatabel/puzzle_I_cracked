@@ -27,19 +27,37 @@ What is the sum of all such integers n below 150 million?
 
 
 
-
-
-
-
-
-
-
+from itertools import count, islice
+from math import sqrt, gcd
 import time
 from termcolor import colored
 
 
+limit = 15 * 10 ** 7
+# test
+limit = 10 ** 6
+
+
+def isprime(n):
+    return n > 1 and all(n%i for i in islice(count(2), int(sqrt(n)-1)))
+
+def check(sq):
+    if isprime(sq + 1) and isprime(sq + 3) and \
+       isprime(sq + 7) and isprime(sq + 9) and \
+       isprime(sq + 13) and isprime(sq + 27):
+        return True
+    else:
+        return False
+
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    results = 0
+    for i in range(10, limit + 1, 10):
+        sq = i ** 2
+        if sq % 3 != 1:
+            continue
+        if check(sq):
+            results += sq
+    print(colored('mycount=', 'red'), results)
 
 if __name__ == "__main__":
     tic = time.process_time()
@@ -48,3 +66,11 @@ if __name__ == "__main__":
 
     toc = time.process_time()
     print("time=",toc - tic)
+
+
+
+
+
+
+
+
