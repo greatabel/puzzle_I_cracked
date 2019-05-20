@@ -11,12 +11,6 @@
 
 
 
-
-
-
-
-
-
 import time
 from termcolor import colored
 
@@ -31,3 +25,8 @@ if __name__ == "__main__":
 
     toc = time.process_time()
     print("time=",toc - tic)
+
+
+
+
+
