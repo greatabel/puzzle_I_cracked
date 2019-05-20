@@ -109,6 +109,8 @@ def main_process():
     except ImportError:
         ans = compute_plain(triangle)
     print(colored('mycount=', 'red'), ans)
+    # mycount= -271248680
+    # time= 17.273143 
 
 if __name__ == "__main__":
     tic = time.process_time()
