@@ -36,11 +36,13 @@ Find the number of entries which are not divisible by 7 in the first one billion
 
 只有2361个不能被7整除。
 
-找出帕斯卡三角前十亿（109）行中不能被7整除的数的数目。
+找出帕斯卡三角前十亿（10^9）行中不能被7整除的数的数目。
 
 #----------------------------#
 思路分析：暴力破解肯定是没戏
 
+带7   的总数是28
+带7^2 的总数是28^2
 
 '''
 
@@ -51,8 +53,22 @@ import time
 from termcolor import colored
 
 
+def row(row_num):
+    if row_num < 7:
+        return int(row_num+1)
+    else:
+        r =  (int(row_num % 7) + 1) * row(row_num/7)
+        return r
+
+limit = 10 ** 9
+# limit = 10 ** 2
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    results = 0
+    for i in range(0, limit):
+        if i % 10**6 == 0:
+            print(i * 100 / limit, ' percentage')
+        results += row(i)
+    print(colored('mycount=', 'red'), results)
 
 if __name__ == "__main__":
     tic = time.process_time()
