@@ -45,20 +45,35 @@ What is ∑n=1108s(n)?
 
 
 
-
+import math
 import time
 from termcolor import colored
 
 
-Limit = 10 ** 8
+n = 10 ** 8
+# n = 10 ** 5
+
+
 def main_process():
-    mysum = 0
-    for i in range(1, limit+1):
-        mysum += (Limit/i) * i
-    a = 1
-    while a ** 2 < limit:
-        
-    print(colored('mycount=', 'red'), 'results')
+    #sum of rational integer divisors:
+    result = sum(i*(n//i) for i in range(1, n+1))
+    print(result)
+    #Gaussian integers:
+    for x in range(1, int(math.sqrt(n))+1):
+        if x % 1000 == 0:
+            print(x*100//n, ' percentage')
+        for y in range(1, int(math.sqrt(n))+1):
+            #We try each pair of divisors x + iy, x - iy. The sum of these
+            #will be 2x. Then we check how many times this pair
+            #appears + how often multiples appear using a clever summation.
+            #This is why we only do this for gcd(x, y) = 1.
+            if math.gcd(x, y) == 1:
+                a = x**2+y**2
+                result += 2*x*sum((n//(a*j))*j for j in range(1, (n//a) + 1))
+
+
+    print(colored('mycount=', 'red'), result)
+    # 17971254122360635
 
 if __name__ == "__main__":
     tic = time.process_time()
@@ -67,6 +82,8 @@ if __name__ == "__main__":
 
     toc = time.process_time()
     print("time=",toc - tic)
+
+
 
 
 
