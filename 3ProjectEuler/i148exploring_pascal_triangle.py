@@ -69,6 +69,8 @@ def main_process():
             print(i * 100 / limit, ' percentage')
         results += row(i)
     print(colored('mycount=', 'red'), results)
+    # mycount= 2129970655314432
+    # time= 4988.852441999999
 
 if __name__ == "__main__":
     tic = time.process_time()
