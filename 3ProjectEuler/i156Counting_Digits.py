@@ -81,8 +81,16 @@ n   f(n,1)
 import time
 from termcolor import colored
 
-
+def guessI(d):
+    d_count = 0
+    for i in range(30):
+        for digit in str(i):
+            if int(digit) == d:
+                d_count += 1
+            print(i, 'd_count', d_count)
+    print(d_count)
 def main_process():
+    guessI(1)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
