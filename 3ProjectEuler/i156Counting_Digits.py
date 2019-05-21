@@ -81,16 +81,24 @@ n   f(n,1)
 import time
 from termcolor import colored
 
-def guessI(d):
+def f_guessI(n, d):
     d_count = 0
-    for i in range(30):
+    for i in range(n+1):
         for digit in str(i):
             if int(digit) == d:
                 d_count += 1
-            print(i, 'd_count', d_count)
-    print(d_count)
+    #         print(i, 'd_count', d_count)
+    # print(d_count)
+    return d_count
+
+
 def main_process():
-    guessI(1)
+    # f_guessI(0, 1)
+    for i in range(200000):
+        if i % 1000 == 0:
+            print('loop', i)
+        if f_guessI(i, 1) == i:
+            print('got', i)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
@@ -100,6 +108,8 @@ if __name__ == "__main__":
 
     toc = time.process_time()
     print("time=",toc - tic)
+
+
 
 
 
