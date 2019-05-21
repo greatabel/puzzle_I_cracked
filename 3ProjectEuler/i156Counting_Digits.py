@@ -90,25 +90,25 @@ step 1:
 详细分析在：i156_f(n,d)_step1.png
 先根据10， 100， 1000，1000的规律找出每个数字出现频率，
 '''
-def guess_patternI():
-    # f_guessI(0, 1)
-    dic = {}
-    for i in range(1, 10):
-        dic[i] = 0
-    print(dic)
+# def guess_patternI():
+#     # f_guessI(0, 1)
+#     dic = {}
+#     for i in range(1, 10):
+#         dic[i] = 0
+#     print(dic)
 
-    for limit in (10, 100, 1000, 10000, 100000):
-        for i in range(limit):
-            digits = [int(x) for x in str(i)]
-            for digit in digits:
-                if digit in dic:
-                    dic[digit] += 1
-            # print(digits)
+#     for limit in (10, 100, 1000, 10000, 100000):
+#         for i in range(limit):
+#             digits = [int(x) for x in str(i)]
+#             for digit in digits:
+#                 if digit in dic:
+#                     dic[digit] += 1
+#             # print(digits)
 
-        print('limit=', limit, dic)
-        dic = {}
-        for i in range(1, 10):
-            dic[i] = 0
+#         print('limit=', limit, dic)
+#         dic = {}
+#         for i in range(1, 10):
+#             dic[i] = 0
 
 
 '''
@@ -177,7 +177,7 @@ n= 10000000000 指数i: 10
 
 可知基本大于 10**10 范围，不用考虑，不会有相等的情况发生 =>
 '''
-limit = 10**11
+limit = 9*10**10
 finals = []
 
 def bsearch(lower, upper, digit):
