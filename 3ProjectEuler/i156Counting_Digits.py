@@ -106,16 +106,16 @@ def guess_patternI():
             dic[i] = 0
 
 
-def f(n, digit):
+def f(n, d):
     count = 0
     t = 1
     while n // t != 0:
         lower_number = n - (n // t) * t
         curr_number = (n // t) % 10
         higher_number = n // (t * 10)
-        if curr_number < digit:
+        if curr_number < d:
             count += higher_number * t
-        elif curr_number == digit:
+        elif curr_number == d:
             count += higher_number * t + lower_number + 1
         else:
             count += (higher_number + 1) * t
