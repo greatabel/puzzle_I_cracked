@@ -105,7 +105,16 @@ def guess_patternI():
         for i in range(1, 10):
             dic[i] = 0
 
-# https://math.stackexchange.com/questions/47477/number-of-occurrences-of-the-digit-1-in-the-numbers-from-0-to-n
+
+'''
+详细分析在：i156_f(n,d)_step1.png
+先根据10， 100， 1000，1000的规律找出每个数字出现频率，
+然后结合下面分析 👇：
+ https://math.stackexchange.com/questions/47477/number-of-occurrences-of
+ -the-digit-1-in-the-numbers-from-0-to-n
+
+实现出f(n, d)
+'''
 def f(n, d):
     count = 0
     t = 1
