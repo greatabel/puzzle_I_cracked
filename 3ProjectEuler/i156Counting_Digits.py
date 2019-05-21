@@ -105,7 +105,7 @@ def guess_patternI():
         for i in range(1, 10):
             dic[i] = 0
 
-
+# https://math.stackexchange.com/questions/47477/number-of-occurrences-of-the-digit-1-in-the-numbers-from-0-to-n
 def f(n, d):
     count = 0
     t = 1
