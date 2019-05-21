@@ -83,8 +83,13 @@ from termcolor import colored
 
 
 
-limit = 100
 
+
+'''
+step 1:
+详细分析在：i156_f(n,d)_step1.png
+先根据10， 100， 1000，1000的规律找出每个数字出现频率，
+'''
 def guess_patternI():
     # f_guessI(0, 1)
     dic = {}
@@ -107,8 +112,8 @@ def guess_patternI():
 
 
 '''
+step 2: 
 详细分析在：i156_f(n,d)_step1.png
-先根据10， 100， 1000，1000的规律找出每个数字出现频率，
 然后结合下面分析 👇：
  https://math.stackexchange.com/questions/47477/number-of-occurrences-of
  -the-digit-1-in-the-numbers-from-0-to-n
@@ -119,23 +124,105 @@ def f(n, d):
     count = 0
     t = 1
     while n // t != 0:
-        lower_number = n - (n // t) * t
-        curr_number = (n // t) % 10
-        higher_number = n // (t * 10)
-        if curr_number < d:
-            count += higher_number * t
-        elif curr_number == d:
-            count += higher_number * t + lower_number + 1
+        lower = n - (n // t) * t
+        num = (n // t) % 10
+        higher = n // (t * 10)
+        if num < d:
+            count += higher * t
+        elif num == d:
+            count += higher * t + lower + 1
         else:
-            count += (higher_number + 1) * t
+            count += (higher + 1) * t
         t *= 10
     return count
 
+'''
+step 3:
+既然0，1，2，……9 这些数字的频率是一样的，我们在考察s(d)的时候我们可以
+忽略具体的数字。选1吧，然后我们跑不同范围的1000，10000，10000……
+可以看到f(n,d) 的增长趋势是超过n的：
+f( 100000000 , 1 )= 0.80000001
+f( 200000000 , 1 )= 1.3
+f( 300000000 , 1 )= 1.1333333333333333
+f( 400000000 , 1 )= 1.05
+f( 500000000 , 1 )= 1.0
+f( 600000000 , 1 )= 0.9666666666666667
+f( 700000000 , 1 )= 0.9428571428571428
+f( 800000000 , 1 )= 0.925
+f( 900000000 , 1 )= 0.9111111111111111
+time= 78.168046
+
+然后我们找出这个点的大致范围：
+
+n= 10000 指数i: 4
+0.4001  0.4  0.4  0.4  0.4  0.4  0.4  0.4  0.4  
+
+n= 100000 指数i: 5
+0.50001  0.5  0.5  0.5  0.5  0.5  0.5  0.5  0.5  
+
+n= 1000000 指数i: 6
+0.600001  0.6  0.6  0.6  0.6  0.6  0.6  0.6  0.6  
+
+n= 10000000 指数i: 7
+0.7000001  0.7  0.7  0.7  0.7  0.7  0.7  0.7  0.7  
+
+n= 100000000 指数i: 8
+0.80000001  0.8  0.8  0.8  0.8  0.8  0.8  0.8  0.8  
+
+n= 1000000000 指数i: 9
+0.900000001  0.9  0.9  0.9  0.9  0.9  0.9  0.9  0.9  
+
+n= 10000000000 指数i: 10
+1.0000000001  1.0  1.0  1.0  1.0  1.0  1.0  1.0  1.0 
+
+可知基本大于 10**10 范围，不用考虑，不会有相等的情况发生 =>
+'''
+limit = 10**11
+finals = []
+
+def bsearch(lower, upper, digit):
+    global finals
+    if lower + 1 == upper:
+        if f(lower, digit) == lower:
+            finals.append(lower)
+            # print('@',len(finals))
+        return
+    middle = (lower + upper) // 2
+    lower_value = f(lower, digit)
+    upper_value = f(upper, digit)
+    middle_value = f(middle, digit)
+    if middle_value >= lower and middle >= lower_value:
+        bsearch(lower, middle, digit)
+    if upper_value >= middle and upper >= middle_value:     
+        bsearch(middle, upper, digit)
+
+
 def main_process():
+    global finals
+    # step 1 ---->
     # guess_patternI()
-    for i in range(100):
-        for d in range(1, 10):
-            print("f(",i, ',', d, ')=', f(i, d))
+
+    # for i in range(1, 10**9):
+    #     # for d in range(1, 10):
+    #     if i % 10**8 == 0:
+    #         print("f(",i, ',', 1, ')=', f(i, 1)/i)
+    
+    # step 2 ---->
+    # for i in range(11):
+    #     n = 10 ** i
+    #     print('\n\nn=', n, '指数i:', i)
+    #     for d in range(1, 10):
+    #         print(f(n, d)/n, ' ', end='')
+    total = 0
+    for d in range(1, 10):
+        finals = []
+        bsearch(1, limit, d)
+        # print(d, '#'*5, sum(finals))
+        total += sum(finals)
+
+    print(colored('mycount=', 'red'), total)
+    # mycount= 21295121502550
+
 
 if __name__ == "__main__":
     tic = time.process_time()
@@ -144,10 +231,3 @@ if __name__ == "__main__":
 
     toc = time.process_time()
     print("time=",toc - tic)
-
-
-
-
-
-
-
