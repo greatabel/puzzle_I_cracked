@@ -124,8 +124,9 @@ def f(n, d):
 
 def main_process():
     # guess_patternI()
-    for i in range(25):
-        print(i, f(i, 1))
+    for i in range(100):
+        for d in range(1, 10):
+            print("f(",i, ',', d, ')=', f(i, d))
 
 if __name__ == "__main__":
     tic = time.process_time()
