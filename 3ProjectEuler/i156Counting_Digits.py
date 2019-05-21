@@ -81,25 +81,51 @@ n   f(n,1)
 import time
 from termcolor import colored
 
-def f_guessI(n, d):
-    d_count = 0
-    for i in range(n+1):
-        for digit in str(i):
-            if int(digit) == d:
-                d_count += 1
-    #         print(i, 'd_count', d_count)
-    # print(d_count)
-    return d_count
 
+
+limit = 100
+
+def guess_patternI():
+    # f_guessI(0, 1)
+    dic = {}
+    for i in range(1, 10):
+        dic[i] = 0
+    print(dic)
+
+    for limit in (10, 100, 1000, 10000, 100000):
+        for i in range(limit):
+            digits = [int(x) for x in str(i)]
+            for digit in digits:
+                if digit in dic:
+                    dic[digit] += 1
+            # print(digits)
+
+        print('limit=', limit, dic)
+        dic = {}
+        for i in range(1, 10):
+            dic[i] = 0
+
+
+def f(n, digit):
+    count = 0
+    t = 1
+    while n // t != 0:
+        lower_number = n - (n // t) * t
+        curr_number = (n // t) % 10
+        higher_number = n // (t * 10)
+        if curr_number < digit:
+            count += higher_number * t
+        elif curr_number == digit:
+            count += higher_number * t + lower_number + 1
+        else:
+            count += (higher_number + 1) * t
+        t *= 10
+    return count
 
 def main_process():
-    # f_guessI(0, 1)
-    for i in range(200000):
-        if i % 1000 == 0:
-            print('loop', i)
-        if f_guessI(i, 1) == i:
-            print('got', i)
-    print(colored('mycount=', 'red'), 'results')
+    # guess_patternI()
+    for i in range(25):
+        print(i, f(i, 1))
 
 if __name__ == "__main__":
     tic = time.process_time()
