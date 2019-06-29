@@ -38,9 +38,11 @@ p(n)的最大值是多少？
 
 import time
 from termcolor import colored
-
+import string
 
 def main_process():
+    strlist = list(string.ascii_lowercase)
+    print(strlist)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
