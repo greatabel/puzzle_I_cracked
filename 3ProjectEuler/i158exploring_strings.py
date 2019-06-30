@@ -38,12 +38,24 @@ p(n)的最大值是多少？
 
 import time
 from termcolor import colored
-import string
+import math
+
+def C(n, m):
+    r = math.factorial(n) / (math.factorial(m) * math.factorial(n-m))
+    return int(r) * (-1 + 2**m - m)
+
 
 def main_process():
-    strlist = list(string.ascii_lowercase)
-    print(strlist)
-    print(colored('mycount=', 'red'), 'results')
+    result = -1
+    for i in range(1, 26):        
+        item = C(26, i)
+        if item > result:
+            result = item
+            print('i=', i, result)
+        else:
+            continue
+    print(colored('mycount=', 'red'), result)
+    # mycount= 409511334375
 
 if __name__ == "__main__":
     tic = time.process_time()
