@@ -74,12 +74,35 @@ Find ∑mdrs(n) for 1 < n < 1,000,000.
 
 
 
-
+from functools import reduce
 import time
 from termcolor import colored
 
 
+def factors(n):    
+    return set(reduce(list.__add__, 
+                ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))
+
+ds = {}
+
+def digital_root(n):
+    if n in ds:
+        return ds[n]
+    else:
+        out_n = n
+        while n >= 10:
+            sn = str(n)
+            n = sum(int(d) for d in sn)
+        ds[out_n] = n
+        return n
+
+    
+
+
 def main_process():
+    fs = factors(24)
+    ds = digital_root(24)
+    print(fs, ds)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
