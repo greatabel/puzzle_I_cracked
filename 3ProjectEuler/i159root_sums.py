@@ -73,7 +73,7 @@ Find ∑mdrs(n) for 1 < n < 1,000,000.
 '''
 
 
-
+import math
 import time
 from termcolor import colored
 
@@ -91,14 +91,24 @@ def digital_root(n):
         ds[out_n] = n
         return n
 
+def f(val):
+    return [(i, int(val / i)) for i in range(2, int(val**0.5)+1) if val % i == 0]
+
+
 def digital_root_sum(n):
-    ''
+    imax = digital_root(n)
+    print('start imax:', imax)
+    for i,j in f(n):
+        imax = max(imax, digital_root(i) + digital_root(j))
+    print('end imax:', imax)
+    return imax
+
 
 def main_process():
 
     ds = digital_root(24)
-    print(ds)
-    # digital_root_sum(24)
+    print(ds, f(24))
+    digital_root_sum(24)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
