@@ -97,19 +97,27 @@ def f(val):
 
 def digital_root_sum(n):
     imax = digital_root(n)
-    print('start imax:', imax)
+    # print('start imax:', imax)
     for i,j in f(n):
         imax = max(imax, digital_root(i) + digital_root(j))
-    print('end imax:', imax)
+    # print('end imax:', imax)
     return imax
 
 
 def main_process():
 
-    ds = digital_root(24)
-    print(ds, f(24))
-    digital_root_sum(24)
-    print(colored('mycount=', 'red'), 'results')
+    # ds = digital_root(24)
+    # print(ds, f(24))
+    # digital_root_sum(24)
+    limit = 10 ** 6
+    isum = 0 
+    for i in range(2, limit):
+        mdrs =  digital_root_sum(i)
+        isum += mdrs
+        if i % 100000 == 0:
+            print(i*100/limit)
+    print(colored('mycount=', 'red'), isum)
+    # mycount= 11098805 is wrong
 
 if __name__ == "__main__":
     tic = time.process_time()
