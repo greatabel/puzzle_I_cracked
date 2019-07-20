@@ -94,13 +94,17 @@ def digital_root(n):
 def f(val):
     return [(i, int(val / i)) for i in range(2, int(val**0.5)+1) if val % i == 0]
 
-
+mdrs = {}
 def digital_root_sum(n):
-    m = digital_root(n)
-    fs = f(n)
-    for i,j in fs:
-        m = max(digital_root_sum(i) + digital_root_sum(j), m)
-    return m
+    if n in mdrs:
+        return mdrs[n]
+    else:
+        m = digital_root(n)
+        fs = f(n)
+        for i,j in fs:
+            m = max(digital_root_sum(i) + digital_root_sum(j), m)
+        mdrs[n] = m
+        return m
 
 
 def main_process():
@@ -109,6 +113,7 @@ def main_process():
     # print(ds, f(24))
     # d = digital_root_sum(24)
     # print(d)
+    
     limit = 10 ** 6
     isum = 0 
     for i in range(2, limit):
