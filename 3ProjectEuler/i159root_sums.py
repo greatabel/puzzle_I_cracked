@@ -96,12 +96,11 @@ def f(val):
 
 
 def digital_root_sum(n):
-    imax = digital_root(n)
-    # print('start imax:', imax)
-    for i,j in f(n):
-        imax = max(imax, digital_root(i) + digital_root(j))
-    # print('end imax:', imax)
-    return imax
+    m = digital_root(n)
+    fs = f(n)
+    for i,j in fs:
+        m = max(digital_root_sum(i) + digital_root_sum(j), m)
+    return m
 
 
 def main_process():
@@ -115,7 +114,7 @@ def main_process():
     for i in range(2, limit):
         mdrs =  digital_root_sum(i)
         isum += mdrs
-        if i % 100000 == 0:
+        if i % 10000 == 0:
             print(i*100/limit, ' % ')
     print(colored('mycount=', 'red'), isum)
     # mycount= 11098805 is wrong
