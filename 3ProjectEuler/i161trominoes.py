@@ -41,6 +41,8 @@ from termcolor import colored
 
 
 def main_process():
+    for i in range(2, 9):
+        print(i)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
