@@ -34,8 +34,6 @@ In how many ways can a 9 by 12 grid be tiled in this way by triominoes?
 '''
 
 
-
-
 import time
 from termcolor import colored
 
