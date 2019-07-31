@@ -34,12 +34,13 @@ In how many ways can a 9 by 12 grid be tiled in this way by triominoes?
 '''
 
 
+
 import time
 from termcolor import colored
 
 
 def main_process():
-    for i in range(2, 9):
+    for i in range(2, 3):
         print(i)
     print(colored('mycount=', 'red'), 'results')
 
