@@ -46,7 +46,7 @@ e.g. 1A3F and not: 1a3f and not 0x1a3f and not $1A3F and not #1A3F and not 00000
 
 假设位数为n的所有16进制数：
 
-（1）所有满足条件的该位数组合为（除去0开头）：15*16^n
+（1）所有满足条件的该位数组合为（除去0开头）：15*16^n-1
  
  (2)缺1个的情况
      缺 0  15*15^n-1
@@ -67,13 +67,15 @@ e.g. 1A3F and not: 1a3f and not 0x1a3f and not $1A3F and not #1A3F and not 00000
 至少缺1个字符 = (2)的并集 - (3)的并集
 （3）并集 = （3） - （4）
 所以
-sum = 15 * 16^n - (43 * 15^n-1 - (41*14^n-1 - 13^n))
+    sum = 15 * 16^n-1 - (43 * 15^n-1 - 41*14^n-1 + 13^n)
+    sum = 15 * 16 ** (n-1) + 41 * 14 ** (n-1) - 43 * 15**(n-1) - 13**n
 '''
 
 
 from itertools import permutations
 import time
 from termcolor import colored
+
 
 def observe_pattern():
     perms = [''.join(p) for p in permutations('0123456789ABCDEF', 3)]
@@ -91,9 +93,18 @@ def observe_pattern():
             print(p, end=" ")
 
 
+def mysum_per_nth(n):
+    isum = 15 * 16 ** (n-1) + 41 * 14 ** (n-1) - 43 * 15**(n-1) - 13**n
+    return isum
+
 def main_process():
     # observe_pattern()
-    print(colored('mycount=', 'red'), 'results')
+    s = 0
+    for n in range(3, 17):
+        print('n=', n)
+        s += mysum_per_nth(n)
+
+    print(colored('mycount= %X', 'red') %s)
 
 if __name__ == "__main__":
     tic = time.process_time()
