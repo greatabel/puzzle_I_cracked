@@ -42,6 +42,21 @@ e.g. 1A3F and not: 1a3f and not 0x1a3f and not $1A3F and not #1A3F and not 00000
 
 #----------------------------#
 
+思路：根据 i162.jpg 可知
+
+假设位数为n的所有16进制数：
+
+所有满足条件的该位数组合为（除去0开头）：15*16^n
+
+缺2个之1的，情况，比如
+    缺0，1  14 * 14^n-1
+    缺0，A， 14 * 14^n-1
+    缺1，A   13 * 14^n-1 
+    总共为41*14^n-1
+
+缺0，1，A 三个的情况：13^n
+
+接下来我们分析可知，包含3个字符0，1，A的情况应该为：
 
 '''
 
@@ -65,7 +80,7 @@ def observe_pattern():
         if ('1' not in p) and ('A' not in p) and ('0' in p):
             print(p, end=" ")
 
-            
+
 def main_process():
     # observe_pattern()
     print(colored('mycount=', 'red'), 'results')
