@@ -40,16 +40,22 @@ e.g. 1A3F and not: 1a3f and not 0x1a3f and not $1A3F and not #1A3F and not 00000
 
 例如，1A3F不能写成:1a3f或0x1a3f或$1A3F或#1A3F或0000001A3F）
 
+#----------------------------#
+
+
 '''
 
 
-
-
+from itertools import permutations
 import time
 from termcolor import colored
 
+def observe_pattern():
+    perms = [''.join(p) for p in permutations('0123456789ABCDEF', 3)]
+    print(len(perms), '###', perms[:50])
 
 def main_process():
+    observe_pattern()
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
