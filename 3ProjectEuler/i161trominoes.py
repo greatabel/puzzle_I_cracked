@@ -117,6 +117,7 @@ def main_process():
     for n in [2, 12]:
         print(n, '=>', Grid().get(n))
     print(colored('mycount=', 'red'), 'results')
+    # 20574308184277971
 
 if __name__ == "__main__":
     tic = time.process_time()
