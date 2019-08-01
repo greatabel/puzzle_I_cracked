@@ -53,9 +53,21 @@ from termcolor import colored
 def observe_pattern():
     perms = [''.join(p) for p in permutations('0123456789ABCDEF', 3)]
     print(len(perms), '###', perms[:50])
+    for p in perms:
+        if ('0' not in p) and ('A' not in p) and ('1' in p):
+            print(p, end=" ")
+    print('\n')
+    for p in perms:
+        if ('0' not in p) and ('1' not in p) and ('A' in p):
+            print(p, end=" ")
+    print('\n')
+    for p in perms:
+        if ('1' not in p) and ('A' not in p) and ('0' in p):
+            print(p, end=" ")
 
+            
 def main_process():
-    observe_pattern()
+    # observe_pattern()
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
