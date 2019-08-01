@@ -105,6 +105,7 @@ def main_process():
         s += mysum_per_nth(n)
 
     print(colored('mycount= %X', 'red') %s)
+    # mycount= 3D58725572C62302
 
 if __name__ == "__main__":
     tic = time.process_time()
