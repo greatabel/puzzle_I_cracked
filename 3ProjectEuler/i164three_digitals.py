@@ -18,10 +18,31 @@ that no three consecutive digits of n have a sum greater than 9?
 
 import time
 from termcolor import colored
+import numpy as np
+
+
+MaxNum = 9
+NumDigitals = 20
+counts = np.zeros((10,10, NumDigitals)) 
+
+def count_per_len(d1, d2, remain):
+    if remain == 0:
+        return 1
+    else:
+        # print('d1,d2=', d1, d2, remain)
+        if counts[d1][d2][remain] == 0:
+            for i in range(0, MaxNum-d1-d2+1):
+                counts[d1][d2][remain] += count_per_len(d2, i, remain-1)
+        return counts[d1][d2][remain]
 
 
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+    results = 0
+    for i in range(1, 9+1):
+        results += count_per_len(0, i, NumDigitals-1)
+    print(colored('mycount=', 'red'), int(results))
+    # 378158756814587
+
 
 if __name__ == "__main__":
     tic = time.process_time()
