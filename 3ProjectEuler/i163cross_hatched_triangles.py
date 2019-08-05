@@ -45,9 +45,15 @@ T(2) = 104
 import time
 from termcolor import colored
 
+def T(n):
+   return (1678*n**3 + 3117*n**2 + 88*n - n%2*345 - n%3*320 - n%4*90 - 
+          (n**3 - n**2 + n)%5 * 288) // 240 
+
 
 def main_process():
-    print(colored('mycount=', 'red'), 'results')
+
+    print(colored('mycount=', 'red'), T(1), T(2),'#', T(36))
+    # mycount= 16 104 # 343047
 
 if __name__ == "__main__":
     tic = time.process_time()
