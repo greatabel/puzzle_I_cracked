@@ -42,6 +42,7 @@ from termcolor import colored
 
 def main_process():
     print(colored('mycount=', 'red'), 'results')
+    # 3916160068885
 
 if __name__ == "__main__":
     tic = time.process_time()
