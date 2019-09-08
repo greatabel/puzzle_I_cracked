@@ -41,7 +41,8 @@ def main_process():
     DELETE  删除数据 Delete 404 (Not Found)一般直接返回404 除非你真的想删除全部集合可返回200 200 (OK)
     404 (Not Found) 如果id格式不正确或者没有找到
 
-    2. 
+    2. python3.5新的关键字
+    Python 3.5，我们现在可以通过新的 await 和 async 功能很轻松的执行协程
 
     '''
     print(colored('-'*20, 'red'), t)
