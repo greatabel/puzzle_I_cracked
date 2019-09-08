@@ -43,7 +43,8 @@ def main_process():
 
     2. python3.5新的关键字
     Python 3.5，我们现在可以通过新的 await 和 async 功能很轻松的执行协程
-
+    Python3.7中 async和await 成为了关键字，这也意味着async和await不能成为变量名字了
+    
     '''
     print(colored('-'*20, 'red'), t)
 
