@@ -4,7 +4,7 @@
 
 #----------------------------#
 
-
+https://zhuanlan.zhihu.com/p/28738634
 
 '''
 
@@ -36,6 +36,14 @@ def main_process():
     }
     r = data.get(arg, "nothing")
     print(r)
+
+    print('推导式是个绝妙的东西，列表推导式一出，map、filter等函数黯然失色，\
+        自 Python2.7以后的版本，此特性扩展到了字典和集合身上，构建字典对象无需调用 dict 方法')
+    numbers = [1, 2, 3]
+    d = {number: number * 10 for number in numbers}
+
+    for k,v in d.items():
+        print(k, v)
 
 if __name__ == "__main__":
     tic = time.process_time()
