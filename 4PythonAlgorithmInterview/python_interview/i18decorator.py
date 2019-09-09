@@ -24,6 +24,20 @@ def use_logging(func):
     func()
 
 
+def use_logging_decorator(func):
+
+    def wrapper(*args, **kwargs):
+        logging.warning("%s is running" % func.__name__)
+        return func(*args, **kwargs)
+
+    return wrapper
+
+
+@use_logging_decorator
+def bar_b():
+    print('bar_b')
+
+
 def main_process():
     t = '''
     q:  Python中的装饰器是什么？
@@ -37,8 +51,21 @@ def main_process():
     '''
 
     print(colored('-'*20, 'red'), t)
+
     use_logging(foo)
     use_logging(bar)
+
+    print(colored('='*30, 'blue'))
+
+    def bar_a():
+        print('bar_a')
+
+    bar_a = use_logging_decorator(bar_a)
+    bar_a()
+
+
+    print('@符号是装饰器的语法糖，在定义函数的时候使用，避免再一次赋值操作')
+    bar_b()
 
 if __name__ == "__main__":
     tic = time.process_time()
