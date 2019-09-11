@@ -73,7 +73,9 @@ def get_unique_island_size(status_mx, i, j):
     # 非环绕岛屿节点为0
     return 0
 
-
+# 从满足条件的岛元素上遍历，找出一个岛，然后从状态矩阵中去除掉整个岛
+# 遍历需要计算的周边岛元素越来越少，防止堆栈溢出
+# 求得的面积列表，进行大小逆序排列
 def get_island_sizes(status_mx):
     island_sizes = []
     for i in range(1, row_len):
@@ -81,6 +83,8 @@ def get_island_sizes(status_mx):
             if status_mx[i][j] == flag_value:
                 island_size = get_unique_island_size(status_mx, i, j)
                 island_sizes.append(island_size)
+    # 倒序排列所有的岛面积
+    island_sizes.sort(reverse=True)
     return island_sizes
 
 
@@ -89,7 +93,8 @@ def main_process():
     transfer_to_status(island_matrix)
     # print(island_matrix)
     size_list = get_island_sizes(island_matrix)
-    print(size_list)
+
+    print('面积列表', size_list)
     if len(size_list) == 1:
         print('最大岛面积：', size_list[0])
     else:
