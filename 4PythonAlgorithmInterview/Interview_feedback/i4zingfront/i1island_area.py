@@ -30,6 +30,10 @@ island_matrix = [  [1, 1, 1, 1, 1, 1],
 row_len = len(island_matrix)
 col_len = len(island_matrix[0])
 
+#标示经过计算满足条件的岛屿0
+flag_value = -1
+
+
 def transfer_to_status(source_mx):
     # 第i = 0位置不需要考虑，肯定不符合要求，左边肯定不是0
     # 最i = len 位置也不需要，右边肯定不符合要求
@@ -44,7 +48,7 @@ def transfer_to_status(source_mx):
                1 in rights and \
                1 in tops and \
                1 in bottoms:
-               source_mx[i][j] = -1
+               source_mx[i][j] = flag_value
 
     
 def main_process():
