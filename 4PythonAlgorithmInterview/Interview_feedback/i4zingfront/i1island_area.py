@@ -13,22 +13,31 @@
 
 #----------------------------#
 
-
+分析：
 
 '''
 
 import time
 
-island = [  [1, 1, 1, 1, 1, 1],
+island_matrix = [  [1, 1, 1, 1, 1, 1],
             [1, 1, 0, 0, 0, 1],
             [1, 0, 0, 0, 1, 0],
             [1, 1, 0, 1, 1, 1],
             [0, 1, 0, 1, 0, 0],
             [1, 1, 1, 1, 1, 1]
-        ]
+         ]
+
+
+def transfer_to_status(original_matrix):
+    row_len = len(original_matrix)
+    col_len = len(original_matrix[0])
+    print(row_len, col_len)
+
 
 def main_process():
+    transfer_to_status(island_matrix)
     print('results')
+
 
 if __name__ == "__main__":
     tic = time.process_time()
@@ -37,8 +46,3 @@ if __name__ == "__main__":
 
     toc = time.process_time()
     print("time=",  toc - tic)
-
-
-
-
-
