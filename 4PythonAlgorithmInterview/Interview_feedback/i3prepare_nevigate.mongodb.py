@@ -20,6 +20,41 @@
 而事务的终极大boss 一致性是通过原子性，持久性，隔离性来实现的！！
 https://juejin.im/post/5cb2e3b46fb9a0686e40c5cb
 
+2.http请求的完整过程
+https://www.cnblogs.com/konghui/p/10574945.html
+
+
+3. redis TTL key?
+返回key剩余的过期时间。 这种反射能力允许Redis客户端检查指定key在数据集里面剩余的有效期。
+redis> SET mykey "Hello"
+OK
+redis> EXPIRE mykey 10 # 设置mykey 10秒后过期
+(integer) 1
+redis> TTL mykey # 查看mykey剩余的过期时间
+(integer) 10
+ TTL怎么实现的
+redis针对TTL时间有专门的dict进行存储，就是redisDb当中的dict *expires字段，
+dict顾名思义就是一个hashtable，key为对应的rediskey，value为对应的TTL时间。
+
+4 线程的生命周期，线程有几个状态？
+当线程被创建并启动后，并不会直接进入执行状态，也不会一直处于执行状态，线程的生命周期中，
+它会经历新建（new）、就绪（Ready）、运行（Running）、阻塞（Blocked）和死亡（Dead）5 种状态
+
+5 grep 命令：grep 命令用于查找文件里符合条件的字符串
+
+根据文件内容递归查找目录
+
+# grep ‘energywise’ *           #在当前目录搜索带'energywise'行的文件
+
+# grep -r ‘energywise’ *        #在当前目录及其子目录下搜索'energywise'行的文件
+# grep -l -r ‘energywise’ *     #在当前目录及其子目录下搜索'energywise'行的文件，
+                            但是不显示匹配的行，只显示匹配的文件
+
+6. yield生成器及其作用？
+生成器内部的代码执行到yield会返回，返回的内容为yield后的表达式。
+下次再执行生成器的内部代码时将从上次的状态继续开始。
+通过yield关键字，我们可以很方便的将一个函数修改为生成器。
+
 '''
 
 import time
