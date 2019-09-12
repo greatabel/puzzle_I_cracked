@@ -59,7 +59,15 @@ def main_process():
     
     -----------------------
     https://cloud.tencent.com/developer/article/1061741
-    
+
+    6. 例举几个常用的python分析数据包及其作用?
+　　可视化：数据处理和分析：NumPy, SciPy, Pandas
+
+　　机器学习：sklearn
+
+　　可视化： Matplotlib, Seaborn
+
+
     -----------------------
     41道 Machine Learning 高频面试题
     https://www.dataapplab.com/machine-learning-interview-questions/
