@@ -23,7 +23,7 @@ keras
 import time
 from termcolor import colored
 import numpy as np
-
+import pandas as pd
 
 
 def main_process():
@@ -88,6 +88,12 @@ def main_process():
         而array中储存的是单一变量（比如单精度浮点数为4个字节，双精度为8）
     b. array可以直接使用vector和matrix类型的处理函数，非常方便
 
+    12. 如何检验numpy的array为空
+    使用size函数
+
+    13 如何检验pandas dataframe为空？
+    使用empty函数
+
     -----------------------
     41道 Machine Learning 高频面试题
     https://www.dataapplab.com/machine-learning-interview-questions/
@@ -101,6 +107,23 @@ def main_process():
     n = 5
     print(x[x [: n].argsort ()])
 
+
+    a = np.array([])
+    print('a.size= ', a.size)
+
+    # Creating the DataFrame 
+    df = pd.DataFrame({'Weight':[45, 88, 56, 15, 71], 
+                       'Name':['Sam', 'Andrea', 'Alex', 'Robin', 'Kia'], 
+                       'Age':[14, 25, 55, 8, 21]})       
+    # Create the index 
+    index_ = ['Row_1', 'Row_2', 'Row_3', 'Row_4', 'Row_5']      
+    # Set the index 
+    df.index = index_       
+    # Print the DataFrame 
+    print(df) 
+    result = df.empty
+    print('df.empty=', result)
+    
 
 if __name__ == "__main__":
     tic = time.process_time()
