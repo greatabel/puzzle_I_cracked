@@ -56,6 +56,11 @@ def main_process():
     K-Means 是非监督学习，也就是不需要事先给出分类标签，而 KNN 是有监督学习，
     需要我们给出训练数据的分类标识。最后，K 值的含义不同。
     K-Means 中的 K 值代表 K 类。KNN 中的 K 值代表 K 个最接近的邻居
+    
+    -----------------------
+    41道 Machine Learning 高频面试题
+    https://www.dataapplab.com/machine-learning-interview-questions/
+
 
     '''
     print(res)
