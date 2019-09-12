@@ -22,7 +22,7 @@ keras
 
 import time
 from termcolor import colored
-
+import numpy as np
 
 
 
@@ -61,12 +61,32 @@ def main_process():
     https://cloud.tencent.com/developer/article/1061741
 
     6. 例举几个常用的python分析数据包及其作用?
+
 　　可视化：数据处理和分析：NumPy, SciPy, Pandas
-
 　　机器学习：sklearn
-
 　　可视化： Matplotlib, Seaborn
+    
+    7.  如何利用Numpy对数列的前n项进行排序
+    使用argsort()函数：x[x [: n-1].argsort ()]
 
+    8. 如何检验一个数据集或者时间序列是随机分布的
+    画lag plot（Correlogram：相关图），如果图上的点呈散乱分布，则为随机
+
+    9. 在python中如何创建包含不同类型数据的dataframe
+    利用pandas包的DataFrame函数的serias创建列然后用dtype定义类型：
+    df = pd.DataFrame({'x': pd.Series(['1.0', '2.0', '3.0'], dtype=float), 
+        'y': pd.Series(['1', '2', '3'], dtype=int)})
+    
+    10 Pandas中使用的标准数据缺失标志是什么
+    NaN 
+
+    11 描述numpy array比python list的优势
+
+    a. numpy array比python list更紧凑，存储数据占的空间小，读写速度快。
+    (这是由于python  
+        list储存的是指向对象（至少需要16个字节）的指针（至少4个字节）；
+        而array中储存的是单一变量（比如单精度浮点数为4个字节，双精度为8）
+    b. array可以直接使用vector和matrix类型的处理函数，非常方便
 
     -----------------------
     41道 Machine Learning 高频面试题
@@ -75,6 +95,12 @@ def main_process():
 
     '''
     print(res)
+
+    x = np.random.rand(10)
+    print(x)
+    n = 5
+    print(x[x [: n].argsort ()])
+
 
 if __name__ == "__main__":
     tic = time.process_time()
