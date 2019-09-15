@@ -25,6 +25,13 @@ def main_process():
         模拟ajax请求，返回json形式的数据
         selenium / webdriver 模拟浏览器加载 （chromedriver安装）
 
+    4 如何提高爬取效率？
+        爬虫下载慢主要原因是阻塞等待发往网站的请求和网站返回
+
+        采用异步与多线程，扩大电脑的cpu利用率；
+        采用消息队列模式
+        提高带宽
+        
     '''
     print(colored('-'*20, 'red'), t)
 
