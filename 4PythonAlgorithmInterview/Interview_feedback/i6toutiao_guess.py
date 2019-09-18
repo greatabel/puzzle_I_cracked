@@ -25,7 +25,7 @@ import time
 from termcolor import colored
 
 
-def solve_2sum(nums, target):
+def naive_solve_2sum(nums, target):
     i = 0
     j = 0
     for i in range(len(nums)):
@@ -34,11 +34,22 @@ def solve_2sum(nums, target):
             if nums[i] + nums[j] == target:
                 print(i, j)
 
+def hash_2sum(nums, target):
+    ht = {}
+    i = 0
+    for i in range(len(nums)):
+        remain = target - nums[i]
+        if remain not in ht:
+            ht[nums[i]] = i
+        else:
+            print(i, ht[remain])
+
+
 def main_process():
     nums = [2, 7, 11, 15]
     target = 9
-    solve_2sum(nums, target)
-
+    naive_solve_2sum(nums, target)
+    hash_2sum(nums, target)
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
