@@ -25,7 +25,20 @@ import time
 from termcolor import colored
 
 
+def solve_2sum(nums, target):
+    i = 0
+    j = 0
+    for i in range(len(nums)):
+        for j in range(i+1, len(nums)):
+            # print(i, j, 'value=', nums[i], nums[j])
+            if nums[i] + nums[j] == target:
+                print(i, j)
+
 def main_process():
+    nums = [2, 7, 11, 15]
+    target = 9
+    solve_2sum(nums, target)
+
     print(colored('mycount=', 'red'), 'results')
 
 if __name__ == "__main__":
