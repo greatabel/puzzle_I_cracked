@@ -17,7 +17,7 @@
 
 #----------------------------#
 
-
+hash方法：https://coderbyte.com/algorithm/two-sum-problem
 
 '''
 
