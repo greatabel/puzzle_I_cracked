@@ -1,3 +1,8 @@
+'''
+http://www.liangxiansen.cn/2016/08/05/IO%20Module/
+'''
+
+
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 # Author: Liang Lian
